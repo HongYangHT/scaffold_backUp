@@ -1,0 +1,90 @@
+.m-salebox-l {
+    width: 1090px;
+    height: 542px;
+    position: relative;
+    margin-bottom: 75px;
+    font-size: 14px;
+    background: #fff;
+    .title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    .detail {
+        padding: 35px 0 0 33px;
+        margin-left: 640px;
+        max-height: 235px;
+        overflow: hidden;
+        line-height: 24px;
+        color: #2c2a2b;
+        .text {
+            color: #929292;
+        }
+    }
+    .pic {
+        width: 640px;
+        height: 433px;
+        float: left;
+        overflow: hidden;
+    }
+    .price {
+        width: 350px;
+        height: 225px;
+        box-sizing: border-box;
+        color: #2c2a2b;
+        background: #fff;
+        position: absolute;
+        bottom: 46px;
+        left: 560px;
+        padding: 33px 0 0 40px;
+        line-height: 25px;
+        font-size: 18px;
+    }
+    .z-em {
+        color: #ab2b2b;
+    }
+    .oripri {
+        font-size: 14px;
+        color: #888;
+        text-decoration: line-through;
+        line-height: 44px;
+    }
+    .u-btn {
+        display: block;
+        width: 255px;
+        height: 62px;
+        color: #fff;
+        position: relative;
+        line-height: 62px;
+        text-align: center;
+        font-size: 24px;
+        background-color: #ab2b2b;
+        &:before {
+            content: "立即1元购";
+        }
+        &:after {
+            content: "";
+            position: absolute;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            top: 12px;
+            left: 12px;
+            border: 3px solid #ab2b2b;
+        }
+        &.z-dis {
+            background-color: #666666;
+        }
+        &.z-dis:before {
+            content: "太火爆，已抢完"
+        }
+        &.z-dis:after {
+            content: "";
+            border: 3px solid #666666;
+        }
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+    }
+}

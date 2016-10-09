@@ -1,0 +1,20 @@
+.m-hd {
+  width: 100%;
+  background: url(http://mimg.127.net/hz/uploader/20160918/14741640807231253.jpg) 50% 0 no-repeat #fff;
+  background-size: 1920px 680px;
+}
+.m-hd > .g-con {
+  position: relative;
+  display: block;
+  height: 680px;
+  margin: 0 auto;
+  padding-top: 1px;
+  width: 1090px;
+}
+.m-hd .m-tt {
+  position: relative;
+  width: 573px;
+  height: 221px;
+  margin: 120px auto 0;
+  background: url(http://mimg.127.net/hz/uploader/20160918/14741640812411321.png) 50% 0 no-repeat;
+}

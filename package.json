@@ -1,0 +1,22 @@
+{
+    "name": "scaffold",
+    "version": "1.0.0",
+    "description": "compile less with grunt",
+    "author": "netease | PSC",
+    "private": "true",
+    "devDependencies": {
+        "grunt": "latest",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-cssmin": "latest",
+        "grunt-contrib-htmlmin": "latest",
+        "grunt-contrib-less": "latest",
+        "grunt-contrib-requirejs": "latest",
+        "grunt-contrib-sass": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-text-replace": "^0.4.0",
+        "grunt-contrib-concat": "^1.0.1",
+        "grunt-contrib-imagemin": "^1.0.1",
+        "grunt-contrib-uglify": "^2.0.0"
+    },
+    "dependencies": {}
+}

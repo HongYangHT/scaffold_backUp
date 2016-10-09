@@ -1,0 +1,240 @@
+.m-page {
+    position: relative;
+    width: 100%;
+    height: 874px;
+    overflow: hidden;
+}
+
+.m-page > .g-con {
+    position: relative;
+    height: 100%;
+    width: 1090px;
+    margin: 0 auto;
+}
+
+.m-page .m-block {
+    position: absolute;
+    left: 50%;
+}
+
+.m-block.small,
+.m-block.medium {
+    height: 256px;
+    top: 94px;
+}
+
+.m-block.medium,
+.m-block.large {
+    width: 512px;
+}
+
+.m-block.large {
+    height: 380px;
+    top: 355px;
+}
+
+.m-block.small {
+    width: 365px;
+}
+
+.m-block > .pd {
+    position: relative;
+    display: inline-block;
+}
+
+.m-block.small > .pd {
+    width: 305px;
+    height: 255px;
+}
+
+.m-block.medium > .pd {
+    width: 440px;
+    height: 255px;
+}
+
+.m-block.large > .pd {
+    width: 440px;
+    height: 380px;
+}
+
+.m-block > .dsc {
+    position: absolute;
+    display: inline-block;
+    width: 72px;
+    height: 100%;
+    bottom: 34px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 50% 100%;
+}
+
+.m-block > .dsc > .u-cart {
+    position: absolute;
+    display: block;
+    width: 32px;
+    height: 30px;
+    bottom: -32px;
+    left: 50%;
+    margin-left: -16px;
+    background-repeat: no-repeat;
+    background-size: 32px 30px;
+    background-position: 0 0;
+}
+
+.m-page.s-left .u-cart {
+    background-image: url(http://mimg.127.net/hz/uploader/20160930/14752001057770220.png);
+}
+
+.m-page.s-right .u-cart {
+    background-image: url(http://mimg.127.net/hz/uploader/20160930/14752001057840221.png);
+}
+
+.m-block.small > .dsc,
+.m-block.medium > .dsc {
+    top: 0px;
+}
+
+.m-block.large > .dsc {
+    bottom: 34px;
+}
+
+.m-block .pd > .u-info {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(0, 0, 0, .4);
+    filter: progid:DXImageTransform.Microsoft.gradient(startcolorstr=#66000000,endcolorstr=#66000000);
+    font-size: 18px;
+    line-height: 60px;
+    text-align: center;
+    color: #eee;
+    bottom: 0;
+    left: 0;
+}
+
+.m-page.s-left .m-block.medium,
+.m-page.s-left .m-block.large {
+    margin-left: -385px;
+}
+
+.m-page.s-left .m-block.small {
+    margin-left: 133px;
+}
+
+.m-page.s-right .m-block.medium,
+.m-page.s-right .m-block.large {
+    margin-left: -125px;
+}
+
+.m-page.s-right .m-block.small {
+    margin-left: -495px;
+}
+
+
+/* .pd 控制 */
+
+.m-page.s-left .m-block.medium > .pd,
+.m-page.s-left .m-block.large > .pd {
+    float: right;
+}
+
+.m-page.s-right .m-block.small > .pd {
+    float: right;
+}
+
+.m-page .u-tt {
+    position: absolute;
+    display: block;
+    width: 122px;
+    height: 350px;
+    top: 400px;
+    left: 50%;
+}
+
+.m-page.s-left .u-tt {
+    margin-left: 240px;
+}
+
+.m-page.s-right .u-tt {
+    margin-left: -370px;
+}
+
+.m-page .u-tt > .content {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+}
+
+.m-page .u-tt-bg {
+    position: absolute;
+    display: block;
+    width: 481px;
+    height: 53px;
+    left: 50%;
+    top: 640px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.m-page.s-left .u-tt-bg {
+    margin-left: 318px;
+    background-image: url(http://mimg.127.net/hz/uploader/20160930/14752001057650218.png);
+}
+
+.m-page.s-right .u-tt-bg {
+    margin-left: -800px;
+    background-image: url(http://mimg.127.net/hz/uploader/20160930/14752001057710219.png);
+}
+
+
+/* 商品区块分割线 */
+
+.u-bar {
+    height: 10px;
+    width: 100%;
+}
+
+
+/* 
+	商品部分
+	圆圈icon
+	和下部的虚线 
+*/
+
+.u-page-icon {
+    position: absolute;
+    width: 127px;
+    height: auto;
+    top: 33px;
+}
+
+.u-page-icon > .icon {
+    display: block;
+    height: 119px;
+    width: 119px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: 119px 119px;
+    background-position: 0 0;
+}
+
+.u-page-icon > .line {
+    display: block;
+    width: 2px;
+    height: 720px;
+    margin: 10px auto;
+    background-image: url(http://mimg.127.net/hz/uploader/20160930/14752001059440244.png);
+    background-repeat: repeat-y;
+    background-position: 0 0;
+}
+
+.m-page.s-left .u-page-icon {
+    left: 0px;
+}
+
+.m-page.s-right .u-page-icon {
+    right: 0px;
+}

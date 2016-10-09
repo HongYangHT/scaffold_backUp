@@ -1,0 +1,66 @@
+<div class="g-psc-hd" id="mainHeader">
+    <div class="m-btn-group">
+    	<div class="m-group">
+            <div class="m-hd-btn-group">
+                <div class="u-psc-btn u-edit" v-bind:class="{'active' : editActive}" v-on:click="handleClick($event,0)">
+                    <label for="edit">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>{{edit}}
+                    </label>
+                    <input type="radio" v-model="picked" id="edit" name="picked" value="0" style="display: none;"/>
+                </div>
+                 <div class="u-psc-btn u-prev" v-bind:class="{'active' : prevActive}" v-on:click="handleClick($event,1)">
+                    <label for="preview">
+                        <i class="fa fa-th" aria-hidden="true"></i>{{prev}}
+                    </label>
+                    <input type="radio" v-model="picked" id="preview" name="picked" value="1" style="display: none;"/>
+                </div>
+                <div class="u-psc-btn u-back" v-bind:class="{'active' : backActive}" v-on:click="backHtml($event)">
+                    <label for="back">
+                        <i class="fa fa-reply" aria-hidden="true"></i>{{back}}
+                    </label>
+                    <input type="radio" v-model="picked" id="back" name="picked" value="3" style="display: none;"/>
+                </div>
+                <div class="u-psc-btn u-clear" v-bind:class="{'active' : clearActive}" v-on:click="clearHtml($event)">
+                    <label for="clear">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>{{clear}}
+                    </label>
+                    <input type="radio" v-model="picked" id="clear" name="picked" value="4" style="display: none;"/>
+                </div>
+            </div>
+            <div class="m-hd-btn-group">
+                <div class="u-psc-btn u-prevView" v-bind:class="{'active' : prevViewActive}" v-on:click="prevViewHtml($event)">
+                    <label for="prevView">
+                        <i class="fa fa-eye" aria-hidden="true"></i>{{prevView}}
+                    </label>
+                    <input type="radio" v-model="picked" id="prevView" name="picked" value="7" style="display: none;"/>
+                </div>
+                <div class="u-psc-btn u-save" v-bind:class="{'active' : saveActive}" v-on:click="saveHtml($event)">
+                    <label for="save">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>{{save}}
+                    </label>
+                    <input type="radio" v-model="picked" id="save" name="picked" value="5" style="display: none;"/>
+                </div>
+                <div class="u-psc-btn u-download" v-bind:class="{'active' : downloadActive}" v-on:click="downloadHtml($event)">
+                    <label for="download">
+                        <i class="fa fa-download" aria-hidden="true"></i>{{download}}
+                    </label>
+                    <input type="radio" v-model="picked" id="download" name="picked" value="2" style="display: none;"/>
+                </div>
+                <div class="u-psc-btn u-publish" v-bind:class="{'active' : publishActive}" v-on:click="publishHtml($event)">
+                    <label for="publish">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>{{publish}}
+                    </label>
+                    <input type="radio" v-model="picked" id="publish" name="picked" value="6" style="display: none;"/>
+                </div>
+            </div>
+            <div class="m-hd-btn-group">
+                <div class="u-psc-btn u-psc-btn-large" v-bind:class="{'active': showListActive}" v-on:click="showListTable($event)" v-show="showListVal">
+                    <label for="showList">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>{{showList}}
+                    </label>
+                    <input type="radio" v-model="picked" id="showList" name="picked" value="8" style="display: none;"/>
+                </div>
+            </div>
+    	</div>
+    </div>
+</div>

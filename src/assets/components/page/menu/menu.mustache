@@ -1,0 +1,121 @@
+<div class="m-arrow">
+	<a href="javascript:;" target="_self" class="u-arrow u-showMenu J_showMenu" v-on:click="hideMenu($event)"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>	
+	<div class="m-psc-menu" v-show="showMenu">
+		<div class="m-nav">
+			<div class="s-page s-page-module s-page-master" v-show="master.isMaster">
+				<div>邮箱大师</div>
+				<div class="m-sect m-sect-1 J_collapse">
+					<div class="u-h">
+						<div class="u-t">邮箱大师模块 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in master.modules" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+					<div class="u-h">
+						<div class="u-t">邮箱大师元件 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in master.units" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="s-page s-page-module s-page-yanxuan" v-show="yanxuan.isYanxuan">
+				<div>网易严选</div>
+				<div class="m-sect m-sect-1 J_collapse">
+					<div class="u-h">
+						<div class="u-t">网易严选模块 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in yanxuan.modules" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)" data-zoom="{{item.zoom}}">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+					<div class="u-h">
+						<div class="u-t">网易严选元件 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in yanxuan.units" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)" data-zoom="{{item.zoom}}">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="s-page s-page-module s-page-youqian" v-show="youqian.isYouqian">
+				<div>网易有钱</div>
+				<div class="m-sect m-sect-1 J_collapse">
+					<div class="u-h">
+						<div class="u-t">网易有钱模块 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in youqian.modules" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+					<div class="u-h">
+						<div class="u-t">网易有钱元件 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in youqian.units" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="s-page s-page-module s-page-yiyuan" v-show="yiyuan.isYiyuan">
+				<div>一元夺宝</div>
+				<div class="m-sect m-sect-1 J_collapse">
+					<div class="u-h">
+						<div class="u-t">一元夺宝模块 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in yiyuan.modules" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)">
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+					<div class="u-h">
+						<div class="u-t">一元夺宝元件 <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+						<div class="u-c">
+							<div class="u-view" v-for="item in yiyuan.units" data-type="{{item.type}}" v-on:mouseenter="showZoom($event)" v-on:mouseleave="hideZoom($event)">
+								<!-- <label title="{{item.name}}">{{item.name}}</label> -->
+								<div class="u-zoom">
+									<img :src="item.name" alt="zoom">
+								</div>
+								<a href="javascript:;" target="_self" class="u-btn-s" v-on:click="addComponent($event)">增加</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="m-zoom">
+		<div class="m-zoom-inner">
+			<img src=""/>
+		</div>
+	</div>
+</div>

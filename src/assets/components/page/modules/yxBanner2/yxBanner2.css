@@ -1,0 +1,92 @@
+.m-nav-con {
+  position: relative;
+  height: 149px;
+  width: 100%;
+  background: url(http://mimg.127.net/hz/uploader/20160918/14741640807771260.jpg) 50% 0 no-repeat;
+}
+.m-nav-con > .m-nav {
+  position: relative;
+  width: 1090px;
+  height: 149px;
+  margin: 0 auto;
+}
+.m-nav-con > .m-nav > .u-btn-fav {
+  position: absolute;
+  width: 110px;
+  height: 168px;
+  left: 0;
+  top: -20px;
+  background: url(http://mimg.127.net/hz/uploader/20160918/14741640807491256.png);
+}
+.m-nav-con > .m-nav > .u-btn-share {
+  position: absolute;
+  width: 63px;
+  height: 149px;
+  right: 0;
+  top: 0;
+  background: url(http://mimg.127.net/hz/uploader/20160918/14741640807551257.png);
+}
+.m-nav-con > .m-nav .m-process-box {
+  position: absolute;
+  left: 110px;
+}
+.m-nav-con > .m-nav .m-process-box .u-line {
+  position: absolute;
+  left: 100px;
+  top: 102px;
+  width: 680px;
+  height: 1px;
+  background: #566389;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.m-nav-con .m-process-item {
+  padding-top: 30px;
+}
+.m-nav-con .m-process-item .u-item {
+  width: 223px;
+  float: left;
+  text-align: center;
+}
+.m-nav-con .m-process-item .u-item .tlt {
+  color: #566b94;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+}
+.m-nav-con .m-process-item .u-item .tip {
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 17px;
+  text-align: center;
+  color: #566b94;
+}
+.m-nav-con .m-process-item .u-item .icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: block;
+  margin: 10px auto 0;
+  background: url(http://mimg.127.net/hz/uploader/20160918/14741640809111280.png) no-repeat;
+}
+.m-nav-con .m-process-item .u-item .icon span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.m-nav-con .m-process-item .u-item .icon span.i1 {
+  background-image: url(http://mimg.127.net/hz/uploader/20160918/14741640808811275.png);
+}
+.m-nav-con .m-process-item .u-item .icon span.i2 {
+  background-image: url(http://mimg.127.net/hz/uploader/20160918/14741640808871276.png);
+}
+.m-nav-con .m-process-item .u-item .icon span.i3 {
+  background-image: url(http://mimg.127.net/hz/uploader/20160918/14741640808931277.png);
+}
+.m-nav-con .m-process-item .u-item .icon span.i4 {
+  background-image: url(http://mimg.127.net/hz/uploader/20160918/14741640808991278.png);
+}
