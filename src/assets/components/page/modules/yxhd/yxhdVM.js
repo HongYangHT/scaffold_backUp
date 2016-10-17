@@ -6,6 +6,7 @@ define([
 	'common/helper/tpl2vue',
 	'common/helper/data2vue',
 	'common/directive/setAttr',
+	'common/directive/draggable',
 	'uuid'
 ], function(Vue, mustache, tpl, pageMixins, Tpl2Vue, Data2Vue) {
 	var _default = {

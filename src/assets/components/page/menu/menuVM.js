@@ -20,43 +20,43 @@ define([
 				yanxuan: {
 					isYanxuan: true,
 					modules: [{
-						'name': 'assets/imgs/preview_yxTemp_18.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_18.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714486151576.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485361568.jpg',
 						'value': 'yxhd',
 						'type': 'yxhd'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_19.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_19.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714486221577.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485441569.jpg',
 						'value': 'yxBanner',
 						'type': 'yxBanner'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_20.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_20.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714484941562.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485561570.jpg',
 						'value': 'yxBanner2',
 						'type': 'yxBanner2'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_21.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_21.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714485001563.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485661571.jpg',
 						'value': 'yxBackModule',
 						'type': 'yxBackModule'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_22.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_22.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714485071564.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485771572.jpg',
 						'value': 'yxBackModule2',
 						'type': 'yxBackModule2'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_24.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_24.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714485191566.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485981574.jpg',
 						'value': 'yxRule',
 						'type': 'yxRule'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_1.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_1.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714486091575.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485261567.jpg',
 						'value': 'yxTemp',
 						'type': 'yxTemp'
 					}, {
-						'name': 'assets/imgs/preview_yxTemp_23.jpg',
-						'zoom': 'assets/imgs/preview_yxTemp_l_23.jpg',
+						'name': 'http://mimg.127.net/hz/uploader/20161011/14761714485131565.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485881573.jpg',
 						'value': 'yxft',
 						'type': 'yxft'
 					}],

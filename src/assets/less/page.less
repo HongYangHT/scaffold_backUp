@@ -29,6 +29,11 @@
     }
 }
 
+.u-img-wrap {
+    width: 100%;
+    height: 100%;
+}
+
 .u-psc-btn {
     display: inline-block;
     min-width: 80px;
@@ -135,6 +140,10 @@
     color: #000;
     border-radius: 3px;
     border: 1px solid #ccc;
+    &.active {
+        background: #151414;
+        color: white;
+    }
 }
 
 .u-psc-textarea {
@@ -214,12 +223,6 @@
     .u-close {
         display: block;
         position: absolute;
-        /* top: -45px;
-        right: -5px;
-        width: 40px;
-        height: 40px;
-        background: url('data:images/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFQTcyMzAxQjA5MDAxMUU2QjNBQUI0Mzk2OTc2RDJCRCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFQTcyMzAxQzA5MDAxMUU2QjNBQUI0Mzk2OTc2RDJCRCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkVBNzIzMDE5MDkwMDExRTZCM0FBQjQzOTY5NzZEMkJEIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkVBNzIzMDFBMDkwMDExRTZCM0FBQjQzOTY5NzZEMkJEIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+8dKodAAABoRJREFUeNrsXF1oXEUU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') no-repeat;
-        background-size: 100% auto; */
         top: 10px;
         right: 10px;
         font-size: 20px;
@@ -287,29 +290,6 @@
                 vertical-align: middle;
             }
         }
-        /* li {
-            color: #999;
-            margin-left: 16px;
-            line-height: 20px;
-            cursor: pointer;
-            vertical-align: middle;
-            span{
-                display: inline-block;
-                width: 40px;
-                text-align: center;
-            }
-            .u-title{
-                width: 330px;
-                text-align: left;
-                overflow: hidden;
-                text-overflow:ellipsis;
-                white-space: nowrap;
-                vertical-align: middle;
-            }
-            .u-time{
-                width: 200px;
-            }
-        } */
     }
     .s-page-mail,
     .s-page,
@@ -818,6 +798,92 @@
     z-index: 999;
 }
 
+.u-psc-mask-scaffold::before {
+    content: attr(aria-label);
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 12px;
+    word-wrap: normal;
+    /*white-space: nowrap;*/
+    /* animation */
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    pointer-events: none;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    transition-delay: 100ms;
+    z-index: 1000;
+}
+
+
+/* 禁用 a标签的link*/
+
+a[href^='http'] {
+    pointer-events: none;
+}
+
+
+/* 显示可编辑 */
+
+[data-h55970f92]:hover:before {
+    content: '\f044';
+    position: absolute;
+    font: normal normal normal 14px/1 FontAwesome;
+    top: 0;
+    right: 0;
+    color: white;
+    width: 100%;
+    height: 100%;
+    padding: 4px 10px;
+    background: rgba(0, 0, 0, .6);
+    box-sizing: border-box;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+
+/* Prevent the text contents of draggable elements from being selectable. */
+
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+}
+
+li {
+    color: black;
+}
+
+.dragging {
+    opacity: 0.8;
+    color: #6894D1;
+}
+
+.drag-over {
+    text-decoration: underline;
+}
+
+.drag-enter {
+    color: #C93742;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -835,4 +901,24 @@
     border-radius: 10px;
     background: #999;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-moz-selection {
+    color: #ab2b2b;
+    background: rgba(0, 0, 0, .6);
+}
+
+::-webkit-selection {
+    color: #ab2b2b;
+    background: rgba(0, 0, 0, .6);
+}
+
+::-o-selection {
+    color: #ab2b2b;
+    background: rgba(0, 0, 0, .6);
+}
+
+::selection {
+    color: #ab2b2b;
+    background: rgba(0, 0, 0, .6);
 }

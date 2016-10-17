@@ -5,7 +5,8 @@ define([
 	'underscore',
 	'model/model',
 	'colorpicker',
-	'common/filter/checkType'
+	'common/filter/checkType',
+	'notify'
 ], function(Vue, tpl, mustache, _, Model) {
 	var _model = new Model();
 	var EditMenu = Vue.extend({
@@ -249,15 +250,32 @@ define([
 			uploadImg: function($event) {
 				var $target = $($event.target),
 					_that = this,
-					id = $target.closest('.m-arrow-right').data('id');
+					id = $target.closest('.m-arrow-right').attr('data-id'),
+					key = $target.attr('data-key');
 				if (!$target.val()) return;
 				if (!$target.val().match(/\.(png|jpg|bmp|jpeg)$/i)) {
-					alert("目前只支持png,jpg,jpeg,bmp文件格式的图片文件，请重试");
+					// alert("目前只支持png,jpg,jpeg,bmp文件格式的图片文件，请重试");
+					$.notify({
+						title: '目前只支持png,jpg,jpeg,bmp文件格式的图片文件，请重试',
+						type: 'error'
+					});
 					$target.parents('form').get(0).reset();
 					return;
 				}
 				var Filesdata = new FormData($target.parents('form')[0]),
 					_isCompress = $target.data('type');
+
+				var file = $target[0].files[0];
+				var reader = new FileReader();
+				reader.readAsDataURL(file);
+				reader.onload = function(e) {
+					console.log(this.result);
+					_that.$dispatch('notifyRootPreviewSection', {
+						id: id,
+						key: key,
+						src: this.result
+					});
+				}
 				_model.uploadFiles({
 					data: Filesdata,
 					compress: _isCompress
@@ -267,12 +285,23 @@ define([
 						var upload = [];
 						$.each(_data.cdnURL, function(i) {
 							var _item = {};
-							item.src = _data.cdnURL[i].remote;
-							item.fileName = _data.cdnURL[i].filename;
-							upload.push(item);
+							_item.src = _data.cdnURL[i].remote;
+							_item.fileName = _data.cdnURL[i].filename;
+							upload.push(_item);
 						});
 						$target.closest('.u-psc-input-group').find('.u-psc-input').val(upload[0].src);
 						// 这里需要直接修改数据，并执行vm.nextTick(callback)
+						for (var k in _that._data.properties[0]) {
+							if (k == key) {
+								_that._data.properties[0][k].value = upload[0].src;
+							}
+						}
+						// _that.nextTick();
+						/*_that.$dispatch('updateDataInTime', {
+							id: id,
+							key: key,
+							value: upload[0].src
+						});*/
 					}
 				});
 			},
@@ -283,17 +312,20 @@ define([
 				$($event.target).data('colorpicker').show();
 			},
 			// 标识出现在对应的区域
-			focusInput: function($event, key, id) {
+			focusInput: function($event, key, id, value) {
 				this.$dispatch('notifyRootFocusSection', {
 					key: key,
-					id: id
+					id: id,
+					val: value
 				});
+				$('.m-arrow-right').find('.m-group .active').removeClass('active');
 			},
 			blurInput: function($event, key, id) {
 				this.$dispatch('notifyRootBlurSection', {
 					key: key,
 					id: id
 				});
+				$($event.target).removeClass('active');
 			}
 		},
 		events: {
@@ -356,7 +388,7 @@ define([
 
 				data.layout && (_layout = data);
 				/* modules YQHeaderLogo*/
-				data.YQHeaderLogo && _properties.push(data.YQHeaderLogo);
+				// data.YQHeaderLogo && _properties.push(data.YQHeaderLogo);
 				data.style && (_style = data.style);
 
 				data && !data.layout && _properties.push(data);
@@ -364,6 +396,27 @@ define([
 				_that.layout = _layout;
 				_that.properties = _properties;
 				_that.style = _style;
+			},
+			/* 通过编辑区的key来修改 */
+			notifyEditMenuChangeComponent: function(info) {
+				var _properties = [],
+					_style = [],
+					_layout = {},
+					_that = this;
+				_that.id = info.data.id;
+				info.data.layout && (_layout = info.data.layout);
+				info.data.style && (_style = info.data.style);
+
+				info.data && !info.data.layout && _properties.push(info.data);
+				_that.layout = _layout;
+				_that.properties = _properties;
+				_that.style = _style;
+				_that.showMenu = true;
+				setTimeout(function(){
+					$('.m-arrow-right').find('[data-lable="'+info.keyInfo.key+'"]').addClass('active')
+						.closest('.m-group').siblings('.m-group').find('.active').removeClass('active');	
+				},500);
+				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right');	
 			}
 		}
 	});

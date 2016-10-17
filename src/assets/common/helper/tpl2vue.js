@@ -55,11 +55,20 @@ define(['jquery', 'underscore'], function($, _) {
 	};
 
 	Tpl2Vue.prototype.render = function() {
-		var _default = '<div class="m-psc-oparate" v-set-attr="oparate">' +
-			'<a href="javascript:;" target="_self" class="u-btn-s f-fr u-delete" v-on:click="operateDelete($event)">删除</a>' +
-			'<a href="javascript:;" target="_self" class="u-btn-s f-fr" v-on:click="operateEdit($event)">编辑</a></div>';
-		// console.log(this.tpl);	
-		return '<div class="m-wrap J_wrap" v-set-attr="id" v-on:click="showModal($event)" v-on:mouseenter="addClassActive($event)" v-on:mouseleave="removeClassActive($event)">' + _default + this.tpl + '</div>';
+		// var _default = '<div class="m-psc-oparate" v-set-attr="oparate">' +
+		// 	'<a href="javascript:;" target="_self" class="u-btn-s f-fr u-delete" v-on:click="operateDelete($event)">删除</a>' +
+		// 	'<a href="javascript:;" target="_self" class="u-btn-s f-fr" v-on:click="operateEdit($event)">编辑</a></div>';
+		// // console.log(this.tpl); v-drag-and-drop drag-start="handleDragStart" drag-over="handleDragOver" drag-enter="handleDragEnter" drag-leave="handleDragLeave" drag-end="handleDragEnd" drop="handleDrop" drag="handleDrag"	
+		// return '<div class="m-wrap J_wrap" v-set-attr="id" v-on:click="showModal($event)" v-on:mouseenter="addClassActive($event)" v-on:mouseleave="removeClassActive($event)">' + _default + this.tpl + '</div>';
+		//v-on:click="showModal($event)"
+		return [
+				 '<div class="m-wrap J_wrap" v-set-attr="id" v-on:dblclick="showModal($event)" v-on:click="focusKeyEdit" v-on:mouseenter="addClassActive($event)" v-on:mouseleave="removeClassActive($event)">',
+				 '<div class="m-psc-oparate" v-set-attr="oparate">',
+				 '<a href="javascript:;" target="_self" class="u-btn-s f-fr u-delete" v-on:click="operateDelete($event)">删除</a>',
+				 '<a href="javascript:;" target="_self" class="u-btn-s f-fr" v-on:click="operateEdit($event)">编辑</a></div>',
+				 ''+this.tpl+'',
+				 '</div>'
+			   ].join('');
 	};
 
 	Tpl2Vue.prototype.init = function() {

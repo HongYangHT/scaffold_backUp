@@ -9,7 +9,7 @@ define([
     'Blob',
     'FileSaver',
     'uuid'
-], function(Vue, tpl, ContentVM,  EditMenuVM, MenuVM, ModalVM, localStorage) {
+], function(Vue, tpl, ContentVM, EditMenuVM, MenuVM, ModalVM, localStorage) {
     var Body = Vue.extend({
         name: 'body',
         components: {
@@ -44,20 +44,44 @@ define([
             },
             notifyBodyToDownload: function() {
                 $(this.$el).find('.m-psc-oparate').hide();
-                var html = $(this.$el).find('.m-psc-container').html(),
+                var innerHtml = $(this.$el).find('.m-psc-container').html(),
                     title = $(this.$el).find('.g-doc').data('title'),
                     description = $(this.$el).find('.g-doc').data('description'),
                     keywords = $(this.$el).find('.g-doc').data('keywords');
                 var style = '',
-                    script = '';
+                    script = '',
+                    scriptLib = '',
+                    styleLib = '';
                 var imgRoot = window.location.protocol + '//' + window.location.host + ((/\.html$/).test(window.location.pathname.split('/')[1]) ? '' : '/' + window.location.pathname.split('/')[1]) + '/';
 
+
+
                 function unique(arr) {
-                    return arr.filter(function(item, index, self) {
-                        return ((index + 1 < self.length) && (item.key == self[index + 1].key)) ? false : true;
+                    var ret = [],
+                        json = {},
+                        length = arr.length;
+
+                    for (var i = 0; i < length; i++) {
+                        var val = arr[i];
+                        if (!json[val]) {
+                            json[val] = 1;
+                            ret.push(val);
+                        }
+                    }
+                    return ret;
+                }
+                if (this._data.body.loadLib.scriptLib) {
+                    var _scriptLib = unique(this._data.body.loadLib.scriptLib);
+                    $.each(_scriptLib, function(i, item) {
+                        scriptLib += '<script type="text/javascript" src="' + item + '"></script>';
                     });
                 }
-
+                if (this._data.body.loadLib.styleLib) {
+                    var _styleLib = unique(this._data.body.loadLib.styleLib);
+                    $.each(_styleLib, function(i, item) {
+                        styleLib += '<link rel="stylesheet" type="text/css" href="' + item + '"/>';
+                    });
+                }
                 // 把数据中最后出现的加入新的数组
                 function unique2(arr) {
                     var r = [];
@@ -72,7 +96,7 @@ define([
                 if (this._data.body.load.loadStyle) {
                     var _loadStyle = unique2(this._data.body.load.loadStyle);
                     $.each(_loadStyle, function(i, n) {
-                        ajaxDeferredArr.push($.ajax({
+                        n.value && ajaxDeferredArr.push($.ajax({
                             url: n.value,
                             type: 'GET',
                             success: function(data) {
@@ -84,7 +108,7 @@ define([
                 if (this._data.body.load.loadScript) {
                     var _loadScript = unique2(this._data.body.load.loadScript);
                     $.each(_loadScript, function(i, n) {
-                        ajaxDeferredArr.push($.ajax({
+                        n.value && ajaxDeferredArr.push($.ajax({
                             url: n.value,
                             type: 'GET',
                             success: function(data) {
@@ -94,7 +118,7 @@ define([
                     });
                 }
                 $.when.apply($, ajaxDeferredArr).done(function() {
-                    html = '<!DOCTYPE html>' +
+                    var html = '<!DOCTYPE html>' +
                         '<head>' +
                         '<meta content="text/html; charset=utf-8" http-equiv="Content-Type">' +
                         '<meta charset="utf-8">' +
@@ -109,14 +133,18 @@ define([
                         '<meta name="Author" content="netease | PSC">' +
                         '<meta name="Version" content="1.0.0">' +
                         '<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>' +
-                        '<link rel="apple-touch-icon" href="touchicon.png" type="image/x-icon"/>' +
+                        '<link rel="apple-touch-icon" href="touchicon.png" type="image/x-icon"/>' + styleLib +
                         style +
                         '</head>' +
-                        '<body>' + html + script + '</body>' +
+                        '<body>' + innerHtml + scriptLib + script + '</body>' +
                         '</html>';
                     // 匹配图片的相对路径，过滤绝对路径
                     var reg = /src=(?=\"(?!http|https[\w\d_\/-]+\.(gif|jpg|jpeg|png|bmp)))\"/g;
+                    var reg2 = /background-image:\s?url\(\S+\)/g;
+                    var reg3 = /<div\s+class=\"m-psc-oparate\"\s*.*?<\/div>/g;
                     html = html.replace(reg, 'src="' + imgRoot + '$1');
+                    html = html.replace(reg2, '');
+                    html = html.replace(reg3, '');
                     var blob = new Blob([html], {
                         type: "text/html;charset=utf-8"
                     });
@@ -132,6 +160,9 @@ define([
             // 保存外链的css 和 js
             saveLink: function(load) {
                 this._data.body['load'] = load;
+            },
+            saveLibLink: function(loadLib) {
+                this._data.body['loadLib'] = loadLib;
             },
             // 设置layout的数据在root 
             saveLayoutDataInRoot: function(data) {
@@ -312,6 +343,22 @@ define([
             //blur section
             notifyRootBlurSection: function(sectionInfo) {
                 this.$broadcast('notifyContentBlurSection', sectionInfo);
+            },
+            /* 
+             * 实现上传图片的预览
+             * 预览是采用html5 的fileReader
+             * 在下载或者部署之前先把预览的base64的图片删除
+             */
+            notifyRootPreviewSection: function(sectionInfo) {
+                this.$broadcast('notifyContentPreviewSection', sectionInfo);
+            },
+            // 通过点击编辑区域可编辑，显示具体的组件信息到具体编辑区
+            notifyRootFocusKeyEdit: function(keyInfo) {
+                var _data = this._data.body['d_' + keyInfo.id];
+                this.$broadcast('notifyEditMenuChangeComponent', {
+                    keyInfo: keyInfo,
+                    data: _data
+                });
             }
         }
     });

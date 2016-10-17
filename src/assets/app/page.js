@@ -15,7 +15,7 @@ require(['components/page', 'collapse'], function() {
 	});
 	$(document).on('scroll',function(e){
 		var _top = $(document).scrollTop();
-		if(_top > 60){
+		if(_top > 5){
 			$('.u-showMenu').addClass('u-scroll');
 		}else{
 			$('.u-showMenu').removeClass('u-scroll');

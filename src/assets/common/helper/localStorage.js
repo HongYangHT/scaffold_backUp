@@ -1,4 +1,4 @@
-define(['notify'], function() {
+define(['jquery','notify'], function($) {
     /*
         由于localStorage 不支持过期时间设置，所以需要自己来设置
     */
@@ -28,11 +28,22 @@ define(['notify'], function() {
         value = this.serializer(value, expire);
         if (!_that.isSupport()) {
             console.log("your brower doesn't support localStorage");
+            $.notify({
+                title: "your brower doesn't support localStorage",
+                type: "notice"
+            });
             return false;
         }
         try {
             _that.unEffectiveItem(); // 删除失效的localStorage
             this.storageProxy.setItem(key, value);
+            var cache = this.get(this.keyCache),
+                keys = cache;
+            if(cache) var cacheArr = cache.split(',');
+            if(_that.distinct(cacheArr,key)){
+                keys = (cache ? (cache + ',') : '') + key;
+            }
+            this.storageProxy.setItem(this.keyCache, keys);
             $.notify({
                 title: '保存成功',
                 type: 'success'
@@ -40,6 +51,10 @@ define(['notify'], function() {
         } catch (e) {
             if (_that.isQuotaExceeded(e)) {
                 console.log('Not enough storage is available to complete this operation.');
+                $.notify({
+                    title: "Not enough storage is available to complete this operation.",
+                    type: "notice"
+                });
             }
         }
 
@@ -49,12 +64,13 @@ define(['notify'], function() {
         key = typeof key !== 'string' ? String(key) : key;
         var cacheItem = null;
         try {
-            cacheItem = this.unSerializer(this.storageProxy.getItem(key));
+            key == this.keyCache ? (cacheItem = this.storageProxy.getItem(key)) : cacheItem = this.unSerializer(this.storageProxy.getItem(key));
         } catch (e) {
             return null;
         }
         var _now = new Date().getTime();
-        if (_now < new Date(cacheItem.t).getTime()) return cacheItem.v;
+        if (key == this.keyCache) return cacheItem;
+        if (cacheItem && _now < new Date(cacheItem.t).getTime()) return cacheItem.v;
         else this.delete(key);
         return null;
     };
@@ -63,14 +79,22 @@ define(['notify'], function() {
         var localStorages = [],
             _that = this;
         if (!this.storageProxy && !this.storageProxy.length) return '';
-        $.each(this.storageProxy, function(i, item) {
-            var n = {};
-            var cacheItem = _that.unSerializer(item);
-            n.id = i;
-            n.st = cacheItem.st;
-            n.v = cacheItem.v;
-            localStorages.push(n);
-        });
+        var keys = this.get(this.keyCache);
+        if (keys) {
+            var keys = keys.split(',');
+            $.each(this.storageProxy, function(i, item) {
+                $.each(keys, function(j, n) {
+                    if (i == n) {
+                        var n = {};
+                        var cacheItem = _that.unSerializer(item);
+                        n.id = i;
+                        n.st = cacheItem.st;
+                        n.v = cacheItem.v;
+                        localStorages.push(n);
+                    }
+                });
+            });
+        }
         return localStorages;
     };
 
@@ -84,8 +108,10 @@ define(['notify'], function() {
             _that = this;
         if (!_that.storageProxy && !_that.storageProxy.length) return;
         $.each(_that.storageProxy, function(i, item) {
-            var cacheItem = _that.unSerializer(item);
-            if (_now > new Date(cacheItem.t).getTime()) _that.delete(i);
+            // var cacheItem = _that.unSerializer(item);
+            var cacheItem = '';
+            i == _that.keyCache ? (cacheItem = item) : (_that.unSerializer(item));
+            if (cacheItem && cacheItem.t && _now > new Date(cacheItem.t).getTime()) _that.delete(i);
         });
     };
 
@@ -119,14 +145,14 @@ define(['notify'], function() {
                         break;
                     case 1014:
                         /*
-                                            for Firefox 
-                                            {
-                                              code: 1014,
-                                              name: 'NS_ERROR_DOM_QUOTA_REACHED',
-                                              message: 'Persistent storage maximum size reached',
-                                              // …
-                                            }           
-                                        */
+                            for Firefox 
+                            {
+                              code: 1014,
+                              name: 'NS_ERROR_DOM_QUOTA_REACHED',
+                              message: 'Persistent storage maximum size reached',
+                              // …
+                            }           
+                        */
                         if (e.name == 'NS_ERROR_DOM_QUOTA_REACHED')
                             _isQuotaExceeded = true;
                         break;
@@ -142,6 +168,8 @@ define(['notify'], function() {
 
             */
                 _isQuotaExceeded = true;
+            } else {
+                throw e;
             }
         }
 
@@ -161,7 +189,11 @@ define(['notify'], function() {
     };
 
     Storage.prototype.unSerializer = function(obj) {
-        return JSON.parse(obj);
+        try{
+            return obj ? JSON.parse(obj) : '';
+        }catch(e){
+            return obj;
+        }
     };
 
     Storage.prototype.handleJSON = function(obj) {
@@ -201,6 +233,19 @@ define(['notify'], function() {
         }
 
         return map[Object.prototype.toString.call(obj)];
+    };
+
+    Storage.prototype.distinct = function(arr, val) {
+        if (!arr || !arr.length) return true;
+        var _json = {};
+        for (var i = 0, len = arr.length; i < len; i++) {
+            var _val = arr[i];
+            if (!_json[_val]) {
+                _json[_val] = 1;
+            }
+        }
+
+        return _json[val] ? false : true;
     };
 
     return new Storage();

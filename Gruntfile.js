@@ -18,6 +18,16 @@ module.exports = function(grunt) {
                     ext: '.css'
                 }]
             },
+            compileAsset: {
+                options: {},
+                files: [{
+                    expand: true,
+                    cwd: 'src/assets/less',
+                    src: '*.less',
+                    dest: 'src/assets/css',
+                    ext: '.css'
+                }]
+            },
             compileLess2: {
                 options: {},
                 files: [{
@@ -294,7 +304,7 @@ module.exports = function(grunt) {
                     'assets/app/page.<%= grunt.template.today("yyyymmddHHMM") %>.min.js': ['src/assets/app/page.js'],
                     'assets/app/config.min.js': ['src/assets/app/config.js']
                 }
-            },
+            }/*,
             uglifyVM: {
                 files: [{
                     expand: true,
@@ -345,7 +355,7 @@ module.exports = function(grunt) {
                     dest: 'assets/components/page/modules/yxRule',
                     ext: '.js'
                 }]
-            }
+            }*/
         },
         imagemin: {
             dynamic: {
