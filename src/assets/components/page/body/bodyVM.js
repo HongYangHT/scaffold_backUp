@@ -5,18 +5,22 @@ define([
     'components/page/editMenu/editMenuVM',
     'components/page/menu/menuVM',
     'components/page/modal/modalVM',
+    'components/page/preModal/preModalVM',
+    'components/page/tip/tipVM',
     'common/helper/localStorage',
     'Blob',
     'FileSaver',
     'uuid'
-], function(Vue, tpl, ContentVM, EditMenuVM, MenuVM, ModalVM, localStorage) {
+], function(Vue, tpl, ContentVM, EditMenuVM, MenuVM, ModalVM, PreModalVM, TipVM, localStorage) {
     var Body = Vue.extend({
         name: 'body',
         components: {
             'content-view': ContentVM,
             'edit-menu-view': EditMenuVM,
-            'menu-view': MenuVM,
-            'modal-view': ModalVM
+            // 'menu-view': MenuVM,
+            'pre-modal': PreModalVM,
+            'modal-view': ModalVM,
+            'tip-view': TipVM
         },
         template: tpl,
         data: function() {
@@ -34,13 +38,13 @@ define([
         events: {
             notifyBody: function(picked) {
                 this.$broadcast('editShowOrHide', picked);
-                if (picked == 0) {
-                    $(this.$el).find('.m-psc-oparate').show();
-                    $(this.$el).find('.m-container').removeClass('prev');
-                } else {
-                    $(this.$el).find('.m-psc-oparate').hide();
-                    $(this.$el).find('.m-container').addClass('prev');
-                }
+                /* if (picked == 0) {
+                     $(this.$el).find('.m-psc-oparate').show();
+                     $(this.$el).find('.m-container').removeClass('prev');
+                 } else {
+                     $(this.$el).find('.m-psc-oparate').hide();
+                     $(this.$el).find('.m-container').addClass('prev');
+                 }*/
             },
             notifyBodyToDownload: function() {
                 $(this.$el).find('.m-psc-oparate').hide();
@@ -140,6 +144,7 @@ define([
                         '</html>';
                     // 匹配图片的相对路径，过滤绝对路径
                     var reg = /src=(?=\"(?!http|https[\w\d_\/-]+\.(gif|jpg|jpeg|png|bmp)))\"/g;
+                    // 正则有问题 这个是为了去除预览图片的base64 图片
                     var reg2 = /background-image:\s?url\(\S+\)/g;
                     var reg3 = /<div\s+class=\"m-psc-oparate\"\s*.*?<\/div>/g;
                     html = html.replace(reg, 'src="' + imgRoot + '$1');
@@ -202,7 +207,15 @@ define([
             },
             notifyClearHtml: function() {
                 this.body = {};
-                this.$broadcast('removeAll');
+                // this.$broadcast('removeAll');
+                this.$broadcast('removeAllConfirm', {
+                    tip: '确定清空编辑区吗？',
+                    type: 'removeAll'
+                });
+            },
+            // 确认操作
+            confirmOperation: function(info) {
+                this.$broadcast(info.operation, info.info);
             },
             notifySaveHtml: function() {
                 this.$broadcast('savePage');
@@ -359,6 +372,22 @@ define([
                     keyInfo: keyInfo,
                     data: _data
                 });
+            },
+            // 通知显示预览弹窗
+            showPrevList: function() {
+                this.$broadcast('notifyShowPrevList');
+            },
+            // 通知到body需要删除compoent
+            notifyRootForRemoveComponent: function(info) {
+                this.$broadcast('removeComponentConfirm', {
+                    tip: '确认删除该模块吗？',
+                    type: 'removeComponent',
+                    info: info
+                })
+            },
+            // showGroup 通知显示某个区域
+            showGroup:function(info){
+                this.$broadcast('notifyShowGroup',info);
             }
         }
     });

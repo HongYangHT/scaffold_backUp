@@ -13,7 +13,7 @@ define([
         data: function() {
             var localStorages = localStorage.getAll();
 
-            if (localStorages)
+            if (localStorages && localStorages.length)
                 return {
                     localStorages: localStorages,
                     showModal: true

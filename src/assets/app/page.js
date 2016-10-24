@@ -1,4 +1,4 @@
-require(['components/page', 'collapse'], function() {
+require(['components/page', 'collapse','notify'], function() {
 	$('.J_collapse').collapse({
 		accordion: true,
 		query: '.u-h .u-t',

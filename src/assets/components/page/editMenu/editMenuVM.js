@@ -6,6 +6,7 @@ define([
 	'model/model',
 	'colorpicker',
 	'common/filter/checkType',
+	'common/filter/checkGroup',
 	'notify'
 ], function(Vue, tpl, mustache, _, Model) {
 	var _model = new Model();
@@ -19,8 +20,21 @@ define([
 				style: {},
 				properties: [],
 				layout: {},
-				showMenu: false
+				showMenu: false,
+				showGroupItem:'content'
 			};
+		},
+		watch:{
+			'showGroupItem':{
+				'handler':function(value,old){
+					// 选择某个区域
+					this.$dispatch('showGroup',{
+						id: this.id,
+						location: value,
+						oldLocation: old
+					});
+				}
+			}
 		},
 		computed: {
 			editStyle: function() {
@@ -296,12 +310,6 @@ define([
 								_that._data.properties[0][k].value = upload[0].src;
 							}
 						}
-						// _that.nextTick();
-						/*_that.$dispatch('updateDataInTime', {
-							id: id,
-							key: key,
-							value: upload[0].src
-						});*/
 					}
 				});
 			},
@@ -355,8 +363,6 @@ define([
 					_that = this;
 				_that.id = data.id;
 
-				/* 有钱的headerLogo */
-				data.YQHeaderLogo && _properties.push(data.YQHeaderLogo);
 				data.style && (_style = data.style);
 
 				data && _properties.push(data);
@@ -387,8 +393,6 @@ define([
 				_that.id = data.id;
 
 				data.layout && (_layout = data);
-				/* modules YQHeaderLogo*/
-				// data.YQHeaderLogo && _properties.push(data.YQHeaderLogo);
 				data.style && (_style = data.style);
 
 				data && !data.layout && _properties.push(data);
@@ -412,8 +416,9 @@ define([
 				_that.properties = _properties;
 				_that.style = _style;
 				_that.showMenu = true;
+				this.showGroupItem = info.keyInfo.key;
 				setTimeout(function(){
-					$('.m-arrow-right').find('[data-lable="'+info.keyInfo.key+'"]').addClass('active')
+					$('.m-arrow-right').find('[data-lable="'+info.keyInfo.location+'"]').addClass('active')
 						.closest('.m-group').siblings('.m-group').find('.active').removeClass('active');	
 				},500);
 				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right');	

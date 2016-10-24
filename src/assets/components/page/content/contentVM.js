@@ -6,11 +6,12 @@ define([
     'components/page/popLayout/popLayoutVM',
     'common/helper/load',
     'common/helper/localStorage',
+    'jquery',
     'notify',
     'uuid'
 ], function(Vue, tpl, Model,
     LayoutVM, PopLayoutVM,
-    Load, localStorage) {
+    Load, localStorage, $) {
     var model = new Model();
     var load = new Load();
     var Content = Vue.extend({
@@ -58,6 +59,7 @@ define([
             // 是预览还是编辑过程
             editShowOrHide: function(picked) {
                 this.picked = picked;
+                this.$broadcast('notifyComponentEditShowOrHide',picked);
             },
             // 设置layout的数据
             saveLayoutData: function(data) {
@@ -534,7 +536,7 @@ define([
                                         loadScript: _that.loadScript
                                     });
                                     _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                                    var tplData = $.extend({}, window.tplData);
+                                    var tplData = window.tplData;
                                     if (tplData && !isEmpty(tplData)) {
                                         window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                                     }
@@ -611,7 +613,7 @@ define([
                                         loadScript: _that.loadScript
                                     });
                                     _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                                    var tplData = $.extend({}, window.tplData);
+                                    var tplData = window.tplData;
                                     if (tplData && !isEmpty(tplData)) {
                                         window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                                     }
@@ -1086,7 +1088,7 @@ define([
                                         loadScript: _that.loadScript
                                     });
                                     _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                                    var tplData = $.extend({}, window.tplData);
+                                    var tplData = window.tplData;
                                     if (tplData && !isEmpty(tplData)) {
                                         window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                                     }
@@ -1164,7 +1166,7 @@ define([
                                         loadScript: _that.loadScript
                                     });
                                     _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                                    var tplData = $.extend({}, window.tplData);
+                                    var tplData = window.tplData;
                                     if (tplData && !isEmpty(tplData)) {
                                         window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                                     }
@@ -1179,13 +1181,13 @@ define([
                         type: 'success'
                     });
                 } else {
-                    this.$dispatch('notifyRootChangeEdit', {
-                        changeEditId: this.layout.id,
-                        oparate: 1
-                    });
                     $.notify({
                         title: '没有更多的修改记录',
                         type: 'error'
+                    });
+                    this.$dispatch('notifyRootChangeEdit', {
+                        changeEditId: this.layout.id,
+                        oparate: 1
                     });
                 }
 
@@ -1360,7 +1362,7 @@ define([
                             });
 
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1379,7 +1381,7 @@ define([
                                 vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
                             }
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1441,7 +1443,7 @@ define([
                             });
 
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1504,7 +1506,7 @@ define([
                             });
 
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1567,7 +1569,7 @@ define([
                                 loadScript: _that.loadScript
                             });
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1644,7 +1646,7 @@ define([
                                 loadScript: _that.loadScript
                             });
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1709,7 +1711,7 @@ define([
                             });
 
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1785,7 +1787,7 @@ define([
                                 loadScript: _that.loadScript
                             });
                             _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                            var tplData = $.extend({}, window.tplData);
+                            var tplData = window.tplData;
                             if (tplData && !isEmpty(tplData)) {
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
@@ -1798,6 +1800,7 @@ define([
             removeComponent: function(data) {
                 var _that = this;
                 delete this.content['d_' + data.removeId];
+                $('.g-doc [data-id="' + data.removeId + '"]').remove();
                 $.each(this.loadStyle, function(i, n) {
                     if (data.removeId == n.id) {
                         _that.loadStyle.splice(i, 1);
@@ -1832,8 +1835,8 @@ define([
                     reg = /.+\.(gif|jpg|jpeg|png|bmp)$/,
                     _width = $target.width(),
                     _height = $target.height();
-                if(reg.test(sectionInfo.val)){
-                    $target.attr('aria-label','图片大小：'+ _width + ' x ' + _height);
+                if (reg.test(sectionInfo.val)) {
+                    $target.attr('aria-label', '图片大小：' + _width + ' x ' + _height);
                 }
                 $target.addClass('u-psc-mask-scaffold');
             },
@@ -1841,8 +1844,54 @@ define([
             notifyContentBlurSection: function(sectionInfo) {
                 $('[data-id="' + sectionInfo.id + '"]').find('[data-h55970f92="' + sectionInfo.key + '"]').removeClass('u-psc-mask-scaffold');
             },
-            notifyContentPreviewSection:function(sectionInfo){
-                $('[data-id="' + sectionInfo.id + '"]').find('[data-h55970f92="' + sectionInfo.key + '"]').css('background-image',"url("+sectionInfo.src+")");
+            notifyContentPreviewSection: function(sectionInfo) {
+                $('[data-id="' + sectionInfo.id + '"]').find('[data-h55970f92="' + sectionInfo.key + '"]').css('background-image', "url(" + sectionInfo.src + ")");
+            },
+            // 修改数据和保存数据
+            notifyDragLocation: function(info) {
+                /*
+                 * 需要考虑两种情况
+                 * 一种是在g-doc 下面的模块
+                 * 一种是不在根目录下的模块
+                 */
+                // 先存储上一次的结果
+                window.pageData.unshift(JSON.parse(JSON.stringify(window.tplData)));
+                var len = window.tplData.length;
+                $.each(window.tplData, function(i, n) {
+                    /* 
+                     *  判断条件 newIndex < oldIndex  
+                     *  如果newIndex == 1  这种情况直接splice(i,1) unshift(item);
+                     *  如果newIndex != 1  这种先删除splice(i,1) 再插入相对应的位置splice(newIndex-1,0,item)
+                     *  判断条件 newIndex > oldIndex
+                     *  如果newIndex == len 这种情况splice(i,1) push(item)
+                     *  如果newIndex != len 先插入splice(newIndex-1,0,item) splice(i,1)
+                     */
+                    if (info.targetId == n.id && $(info.from).hasClass('g-doc')) {
+                        var item = window.tplData[i];
+                        if (info.newIndex < info.oldIndex) {
+                            if (info.newIndex == 1) {
+                                window.tplData.splice(i, 1);
+                                window.tplData.unshift(item);
+                            } else {
+                                window.tplData.splice(i, 1);
+                                window.tplData.splice(info.newIndex - 1, 0, item);
+                            }
+                        } else {
+                            if (info.newIndex == len) {
+                                window.tplData.splice(i, 1);
+                                window.tplData.push(item);
+                            } else {
+                                window.tplData.splice(info.newIndex - 1, 0, item);
+                                window.tplData.splice(i, 1);
+                            }
+                        }
+                    }
+                });
+            },
+            // 显示某个区域
+            notifyShowGroup:function(info){
+                $(this.$el).find('[data-id="'+info.id+'"]').find('[data-h55970f92group="'+info.location+'"]').addClass('J-location-active').end()
+                    .find('[data-h55970f92group="'+info.oldLocation+'"]').removeClass('J-location-active');    
             }
         }
     });

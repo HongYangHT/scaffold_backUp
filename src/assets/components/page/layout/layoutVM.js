@@ -5,6 +5,7 @@ define([
 	'common/mixins/pageMixins',
 	'mustache',
 	'common/directive/setStyle',
+	'common/directive/sort',
 	'uuid'
 ], function(Vue, tpl, Model, pageMixins, mustache) {
 	var model = new Model();
@@ -29,7 +30,8 @@ define([
 				"name": "页面 keywords",
 				"type": "textarea"
 			}
-		}
+		},
+		showFlag: true
 	};
 	var Layout = Vue.extend({
 		name: 'layout',
@@ -59,6 +61,10 @@ define([
 						flag: true
 					};
 				this.$dispatch('addShowModal', data);
+			},
+			// 通知显示预览弹窗
+			addShowPrevList:function(){
+				this.$dispatch('showPrevList');
 			}
 		},
 		events: {

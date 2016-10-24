@@ -3,59 +3,36 @@
 	<div class="m-psc-menu-2" v-show="showMenu">
 		<div class="m-psc-edit">
 			<div class="m-psc-edit-wrap">
-				<!-- <div class="m-group" v-for="(index, item) in editStyle">
-						<div class="u-group" v-if="item.input">
-							<label>{{item.name}}：</label>
+				<div class="u-group" v-for="item in editLayout">
+					<label>{{item.name}}：</label>
+					<div class="u-psc-input-group" v-if="item.type == 'input'">
+						<input type="text" class="u-psc-input" v-model="item.value" />
+					</div>
+					<div class="u-psc-input-group" v-if="item.type == 'textarea'">
+						<textarea v-model="item.value" class="u-psc-textarea">{{item.value}}</textarea>
+					</div>
+					<div class="u-psc-input-group" v-if="item.type == 'select'">
+						<input type="text" class="u-psc-input" v-model="item.value" />
+						<select class="u-psc-input" v-model="item.value" >
+							<option v-for="option in item.options" value="{{option.value}}">
+								<span>{{option.name}}</span>
+							</option>
+						</select>
+					</div>
+				</div>
+
+				<div v-for="props in editProperties">
+					<div class="m-group">
+						<div class="u-group">
+							<label>选择配置内容区：</label>
 							<div class="u-psc-input-group">
-								<input type="text" class="u-psc-input J_colorpicker" v-model="item.value" v-if="item.changeColor" v-on:focus="bindColorPicker($event)" v-on:click="bindColorPicker($event)" />
-								<input type="text" class="u-psc-input" v-model="item.value" v-else />
-							</div>
-						</div>
-						<div class="u-group" v-if="item.textArea">
-							<label>{{item.name}}：</label>
-							<div class="u-psc-input-group">
-								<textarea v-model="item.value" class="u-psc-textarea">{{item.value}}</textarea>
-							</div>
-						</div>
-						<div class="u-group" v-if="item.select">
-							<label>{{item.name}}：</label>
-							<div class="u-psc-input-group">
-								<input type="text" class="u-psc-input" v-model="item.value" />
-								<select class="u-psc-input" v-model="item.value" >
-									<option v-for="option in item.options" value="{{option.value}}">
-										<span>{{option.name}}</span>
-									</option>
+								<select class="u-psc-select" v-for="items in props" v-if="$key == 'H5597Groups'" v-model="showGroupItem">
+									<option v-for="item in items" value="{{item.key}}">{{item.value}}</option>
 								</select>
 							</div>
 						</div>
-					</div> -->	
-				<div v-for="item in editLayout">
-					<div class="u-group" v-if="item.type == 'input'">
-						<label>{{item.name}}：</label>
-						<div class="u-psc-input-group">
-							<input type="text" class="u-psc-input" v-model="item.value" />
-						</div>
 					</div>
-					<div class="u-group" v-if="item.type == 'textarea'">
-						<label>{{item.name}}：</label>
-						<div class="u-psc-input-group">
-							<textarea v-model="item.value" class="u-psc-textarea">{{item.value}}</textarea>
-						</div>
-					</div>
-					<div class="u-group" v-if="item.type == 'select'">
-						<label>{{item.name}}：</label>
-						<div class="u-psc-input-group">
-							<input type="text" class="u-psc-input" v-model="item.value" />
-							<select class="u-psc-input" v-model="item.value" >
-								<option v-for="option in item.options" value="{{option.value}}">
-									<span>{{option.name}}</span>
-								</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div v-for="props in editProperties">
-					<div class="m-group" v-for="item in props">
+					<div class="m-group" v-for="item in props" v-if="$key != 'H5597Groups'" v-show="showGroupItem | checkGroup showGroupItem $key">
 						<div v-if="item | checkType item 'object'">
 							<div v-for="prop in item">
 								<div class="u-group" v-if="prop.input">

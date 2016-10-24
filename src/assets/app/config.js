@@ -13,7 +13,8 @@ require.config({
         'Blob': 'libs/Blob',
         'colorpicker': 'libs/bootstrap-colorpicker',
         'pnotify': 'libs/pnotify',
-        'notify': 'libs/notify'
+        'notify': 'libs/notify',
+        'sortable':'libs/sortable'
     },
     shim: {
         'underscore': {
@@ -46,6 +47,9 @@ require.config({
         'notify': {
             deps: ['jquery', 'pnotify'],
             exports: 'notify'
+        },
+        'sortable':{
+            exports:'sortable'
         }
     }
 });

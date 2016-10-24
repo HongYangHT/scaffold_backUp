@@ -56,50 +56,56 @@ define([
 			}
 		},
 		methods: {
-			handleClick: function($event, picked) {
+			handleClick: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('editOrPreview', picked);
 			},
-			downloadHtml: function($event) {
+			downloadHtml: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('downloadAndSave');
+				this.$dispatch('editOrPreview', picked);
 			},
 			//撤销
-			backHtml: function($event) {
+			backHtml: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('backHtml');
+				this.$dispatch('editOrPreview', picked);
 			},
-			clearHtml: function($event) {
+			clearHtml: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('clearHtml');
+				this.$dispatch('editOrPreview', picked);
 			},
-			saveHtml: function($event) {
+			saveHtml: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('saveHtml');
+				this.$dispatch('editOrPreview', picked);
 			},
-			publishHtml: function($event) {
+			publishHtml: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('publishHtml');
+				this.$dispatch('editOrPreview', picked);
 			},
-			prevViewHtml: function($event) {
+			prevViewHtml: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}
 				this.$dispatch('preViewHtml');
+				this.$dispatch('editOrPreview', picked);
 			},
-			showListTable: function($event) {
+			showListTable: function($event,picked) {
 				if ($($event.target).is('input')) {
 					return;
 				}

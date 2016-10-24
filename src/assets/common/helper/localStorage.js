@@ -1,4 +1,4 @@
-define(['jquery','notify'], function($) {
+define(['jquery', 'notify'], function($) {
     /*
         由于localStorage 不支持过期时间设置，所以需要自己来设置
     */
@@ -39,8 +39,8 @@ define(['jquery','notify'], function($) {
             this.storageProxy.setItem(key, value);
             var cache = this.get(this.keyCache),
                 keys = cache;
-            if(cache) var cacheArr = cache.split(',');
-            if(_that.distinct(cacheArr,key)){
+            if (cache) var cacheArr = cache.split(',');
+            if (_that.distinct(cacheArr, key)) {
                 keys = (cache ? (cache + ',') : '') + key;
             }
             this.storageProxy.setItem(this.keyCache, keys);
@@ -189,9 +189,9 @@ define(['jquery','notify'], function($) {
     };
 
     Storage.prototype.unSerializer = function(obj) {
-        try{
+        try {
             return obj ? JSON.parse(obj) : '';
-        }catch(e){
+        } catch (e) {
             return obj;
         }
     };
