@@ -59,7 +59,7 @@ define([
             // 是预览还是编辑过程
             editShowOrHide: function(picked) {
                 this.picked = picked;
-                this.$broadcast('notifyComponentEditShowOrHide',picked);
+                this.$broadcast('notifyComponentEditShowOrHide', picked);
             },
             // 设置layout的数据
             saveLayoutData: function(data) {
@@ -101,7 +101,7 @@ define([
                 this.layout = item.item[0];
                 this.$broadcast('changeLayout', item.item[0]);
                 var dataTpl = item.item[1];
-                $('.g-doc').find('.J_wrap').remove();
+                $('.g-doc').find('.J_psc_wrap').remove();
                 this.content = {};
                 var _that = this;
                 if (dataTpl) {
@@ -620,6 +620,87 @@ define([
                                     window.tplData.push($.extend({}, vm._data, _options));
                                 });
                                 break;
+                            case 'YX_N_M_9BBD':
+                                require(['components/page/modules/YX_N_M_9BBD/YX_N_M_9BBDVM',],function(YX_N_M_9BBDVM){
+                                    vm = new YX_N_M_9BBDVM();
+                                    _id = vm._data.id;
+                                    _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                    vm.$parent = _that;
+                                    if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                        vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                    } else {
+                                        vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                    }
+
+                                    /* js lib */
+                                    var libJ = [
+                                        'http://mimg.127.net/pub/common/js/jquery-1.11.1.js',
+                                        'http://mimg.127.net/pub/common/js/jquery.lazyload.js',
+                                        'http://mimg.127.net/hxm/dashi/promote/plugIn/swiper.min.js',
+                                        'http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js',
+                                        'http://mimg.127.net/pub/common/js/PSC_C_statistics.js'
+                                    ];
+                                    $.each(libJ, function(i, n) {
+                                        if (distinct(_that.scriptLib, n)) {
+                                            _that.scriptLib.push(n);
+                                            load.loadScript(n);
+                                        }
+                                    });
+                                    // 这一份是逻辑js
+                                    loadJs = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.js';
+                                    if (distinct(_that.needScript, loadJs)) {
+                                        _that.needScript.push(loadJs);
+                                        // load.loadScript(loadJs); 
+                                        // 这一份是保存的基本js
+                                        load.loadScript('assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD_S.js');
+                                    }
+
+                                    /* css lib */
+                                    var libC = ['http://mimg.127.net/pub/common/css/PSC_YX_PC_reset.css'];
+                                    $.each(libC, function(i, n) {
+                                        if (distinct(_that.styleLib, n)) {
+                                            _that.styleLib.push(n);
+                                            load.loadStyle(n);
+                                        }
+                                    });
+
+                                    _that.$dispatch('saveLibLink', {
+                                        scriptLib: _that.scriptLib,
+                                        styleLib: _that.styleLib
+                                    });
+
+                                    loadCss = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.css';
+                                    if (distinct(_that.needStyle, loadCss)) {
+                                        _that.needStyle.push(loadCss);
+                                        load.loadStyle(loadCss);
+                                    }
+
+                                    _loadStyle = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.css';
+                                    _loadScript = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.js';
+                                    _that.loadStyle.push({
+                                        id: vm.id,
+                                        key: data.type,
+                                        value: _loadStyle
+                                    });
+                                    _that.loadScript.push({
+                                        id: vm.id,
+                                        key: data.type,
+                                        value: _loadScript
+                                    });
+
+                                    _that.$dispatch('saveLink', {
+                                        loadStyle: _that.loadStyle,
+                                        loadScript: _that.loadScript
+                                    });
+
+                                    _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                    var tplData = window.tplData;
+                                    if (tplData && !isEmpty(tplData)) {
+                                        window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                                    }
+                                    window.tplData.push($.extend({}, vm._data, _options));
+                                 });
+                                break;    
                         }
                     });
                 } else {
@@ -660,7 +741,7 @@ define([
                 }
                 var dataTpl = window.pageData.shift();
                 window.tplData = [];
-                $('.g-doc').find('.J_wrap').remove();
+                $('.g-doc').find('.J_psc_wrap').remove();
                 this.content = {};
                 var _that = this;
                 if (dataTpl) {
@@ -1173,6 +1254,87 @@ define([
                                     window.tplData.push($.extend({}, vm._data, _options));
                                 });
                                 break;
+                            case 'YX_N_M_9BBD':
+                                require(['components/page/modules/YX_N_M_9BBD/YX_N_M_9BBDVM',],function(YX_N_M_9BBDVM){
+                                    vm = new YX_N_M_9BBDVM();
+                                    _id = vm._data.id;
+                                    _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                    vm.$parent = _that;
+                                    if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                        vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                    } else {
+                                        vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                    }
+
+                                    /* js lib */
+                                    var libJ = [
+                                        'http://mimg.127.net/pub/common/js/jquery-1.11.1.js',
+                                        'http://mimg.127.net/pub/common/js/jquery.lazyload.js',
+                                        'http://mimg.127.net/hxm/dashi/promote/plugIn/swiper.min.js',
+                                        'http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js',
+                                        'http://mimg.127.net/pub/common/js/PSC_C_statistics.js'
+                                    ];
+                                    $.each(libJ, function(i, n) {
+                                        if (distinct(_that.scriptLib, n)) {
+                                            _that.scriptLib.push(n);
+                                            load.loadScript(n);
+                                        }
+                                    });
+                                    // 这一份是逻辑js
+                                    loadJs = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.js';
+                                    if (distinct(_that.needScript, loadJs)) {
+                                        _that.needScript.push(loadJs);
+                                        // load.loadScript(loadJs); 
+                                        // 这一份是保存的基本js
+                                        load.loadScript('assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD_S.js');
+                                    }
+
+                                    /* css lib */
+                                    var libC = ['http://mimg.127.net/pub/common/css/PSC_YX_PC_reset.css'];
+                                    $.each(libC, function(i, n) {
+                                        if (distinct(_that.styleLib, n)) {
+                                            _that.styleLib.push(n);
+                                            load.loadStyle(n);
+                                        }
+                                    });
+
+                                    _that.$dispatch('saveLibLink', {
+                                        scriptLib: _that.scriptLib,
+                                        styleLib: _that.styleLib
+                                    });
+
+                                    loadCss = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.css';
+                                    if (distinct(_that.needStyle, loadCss)) {
+                                        _that.needStyle.push(loadCss);
+                                        load.loadStyle(loadCss);
+                                    }
+
+                                    _loadStyle = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.css';
+                                    _loadScript = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.js';
+                                    _that.loadStyle.push({
+                                        id: vm.id,
+                                        key: data.type,
+                                        value: _loadStyle
+                                    });
+                                    _that.loadScript.push({
+                                        id: vm.id,
+                                        key: data.type,
+                                        value: _loadScript
+                                    });
+
+                                    _that.$dispatch('saveLink', {
+                                        loadStyle: _that.loadStyle,
+                                        loadScript: _that.loadScript
+                                    });
+
+                                    _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                    var tplData = window.tplData;
+                                    if (tplData && !isEmpty(tplData)) {
+                                        window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                                    }
+                                    window.tplData.push($.extend({}, vm._data, _options));
+                                 });
+                                break;    
                         }
                     });
                     // 将数据切换到layout
@@ -1196,7 +1358,7 @@ define([
                 清空功能
             */
             removeAll: function() {
-                $('.g-doc').find('.J_wrap').remove();
+                $('.g-doc').find('.J_psc_wrap').remove();
                 this.content = {};
                 window.tplData = [];
                 window.pageData = [];
@@ -1794,6 +1956,87 @@ define([
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
                         break;
+                    case 'YX_N_M_9BBD':
+                        require(['components/page/modules/YX_N_M_9BBD/YX_N_M_9BBDVM',],function(YX_N_M_9BBDVM){
+                            vm = new YX_N_M_9BBDVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            /* js lib */
+                            var libJ = [
+                                'http://mimg.127.net/pub/common/js/jquery-1.11.1.js',
+                                'http://mimg.127.net/pub/common/js/jquery.lazyload.js',
+                                'http://mimg.127.net/hxm/dashi/promote/plugIn/swiper.min.js',
+                                'http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js',
+                                'http://mimg.127.net/pub/common/js/PSC_C_statistics.js'
+                            ];
+                            $.each(libJ, function(i, n) {
+                                if (distinct(_that.scriptLib, n)) {
+                                    _that.scriptLib.push(n);
+                                    load.loadScript(n);
+                                }
+                            });
+                            // 这一份是逻辑js
+                            loadJs = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.js';
+                            if (distinct(_that.needScript, loadJs)) {
+                                _that.needScript.push(loadJs);
+                                // load.loadScript(loadJs); 
+                                // 这一份是保存的基本js
+                                load.loadScript('assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD_S.js');
+                            }
+
+                            /* css lib */
+                            var libC = ['http://mimg.127.net/pub/common/css/PSC_YX_PC_reset.css'];
+                            $.each(libC, function(i, n) {
+                                if (distinct(_that.styleLib, n)) {
+                                    _that.styleLib.push(n);
+                                    load.loadStyle(n);
+                                }
+                            });
+
+                            _that.$dispatch('saveLibLink', {
+                                scriptLib: _that.scriptLib,
+                                styleLib: _that.styleLib
+                            });
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                         });
+                        break;
                 }
             },
             // 删除组件
@@ -1836,7 +2079,11 @@ define([
                     _width = $target.width(),
                     _height = $target.height();
                 if (reg.test(sectionInfo.val)) {
-                    $target.attr('aria-label', '图片大小：' + _width + ' x ' + _height);
+                    if(_width > 1290){
+                        $target.attr('aria-label', '图片大小：' + '1920' + ' x ' + _height);
+                    }else{
+                        $target.attr('aria-label', '图片大小：' + _width + ' x ' + _height);
+                    }
                 }
                 $target.addClass('u-psc-mask-scaffold');
             },
@@ -1889,9 +2136,9 @@ define([
                 });
             },
             // 显示某个区域
-            notifyShowGroup:function(info){
-                $(this.$el).find('[data-id="'+info.id+'"]').find('[data-h55970f92group="'+info.location+'"]').addClass('J-location-active').end()
-                    .find('[data-h55970f92group="'+info.oldLocation+'"]').removeClass('J-location-active');    
+            notifyShowGroup: function(info) {
+                $(this.$el).find('[data-id="' + info.id + '"]').find('[data-h55970f92group="' + info.location + '"]').addClass('J-location-active').end()
+                    .find('[data-h55970f92group="' + info.oldLocation + '"]').removeClass('J-location-active');
             }
         }
     });

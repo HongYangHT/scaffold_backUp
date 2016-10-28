@@ -62,13 +62,13 @@ define(['jquery', 'underscore'], function($, _) {
 		// return '<div class="m-wrap J_wrap" v-set-attr="id" v-on:click="showModal($event)" v-on:mouseenter="addClassActive($event)" v-on:mouseleave="removeClassActive($event)">' + _default + this.tpl + '</div>';
 		//v-on:click="showModal($event)"
 		return [
-				 '<div class="m-wrap J_wrap" v-set-attr="id" v-on:dblclick="showModal($event)" v-on:click="focusKeyEdit" v-on:mouseenter="addClassActive($event)" v-on:mouseleave="removeClassActive($event)">',
-				 '<div class="m-psc-oparate" v-set-attr="oparate">',
-				 '<a href="javascript:;" target="_self" class="u-btn-s f-fr u-delete" v-on:click="operateDelete($event)">删除</a>',
-				 '<a href="javascript:;" target="_self" class="u-btn-s f-fr" v-on:click="operateEdit($event)">编辑</a></div>',
-				 ''+this.tpl+'',
-				 '</div>'
-			   ].join('');
+			'<div class="J_psc_wrap" v-set-attr="id" v-on:dblclick="showModal($event)" v-on:click="focusKeyEdit" v-on:mouseenter="addClassActive($event)" v-on:mouseleave="removeClassActive($event)">',
+			'<div class="m-psc-oparate" v-set-attr="oparate">',
+			'<a href="javascript:;" target="_self" class="u-btn-s f-fr u-delete" v-on:click="operateDelete($event)">删除</a>',
+			'<a href="javascript:;" target="_self" class="u-btn-s f-fr" v-on:click="operateEdit($event)">编辑</a></div>',
+			'' + this.tpl + '',
+			'</div>'
+		].join('');
 	};
 
 	Tpl2Vue.prototype.init = function() {
@@ -140,17 +140,38 @@ define(['jquery', 'underscore'], function($, _) {
 					var _str1 = '\{\{\\^' + item + '\}\}',
 						_reg1 = new RegExp(_str1, 'g');
 					if (_reg1.test(_that.tpl)) {
-						_that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
+						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
+						// _that.tpl = _that.tpl.replace(_reg1, '<div v-show="!' + item + '">');
+						/**
+						 * 找到第一个标签并把v-for 指令插入进去
+						 *
+						 */
+						var temp = child[0][1],
+							regTemp = /<([a-zA-Z][^>]*)+?>/,
+							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+							sReg = new RegExp(temp);
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+
+						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
+						_that.tpl = _that.tpl.replace(_reg, '');
 						_that.tpl = _that.tpl.replace(_reg1, '<div v-show="!' + item + '">');
 					} else {
-						_that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
+						var temp = child[0][1],
+							regTemp = /<([a-zA-Z][^>]*)+?>/,
+							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+							sReg = new RegExp(temp);
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg, '');
+						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
 					}
 					for (var j = 0, tlen = child.length; j < tlen; j++) {
-						if (child[j][0] == 'name' && (child[j][1] in itemData[0])) {
+						// if (child[j][0] == 'name' && (child[j][1] in itemData[0])) {
+						if (child[j][0] == 'name') {
 							// _that.renderPropDefault(item + 'Item', child[j][1]);
 							_that.renderPropWith(item + 'Item', child[j][1]);
 							_that.renderProp(item + 'Item', child[j][1]);
 							_that.renderDefault(item + 'Item', child[j][1]);
+							// _that.renderPropDefault(item + 'Item', child[j][1]);
 						}
 					}
 				}
@@ -168,28 +189,42 @@ define(['jquery', 'underscore'], function($, _) {
 					var _str1 = '\{\{\\^' + item + '\}\}',
 						_reg1 = new RegExp(_str1, 'g');
 					if (_reg1.test(_that.tpl)) {
-						_that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Value in ' + item + '">');
+						var temp = child[0][1],
+							regTemp = /<([a-zA-Z][^>]*)+?>/,
+							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+							sReg = new RegExp(temp);
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg, '');
+						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Value in ' + item + '">');
 						_that.tpl = _that.tpl.replace(_reg1, '<div v-show="!' + item + '">');
 					} else {
-						_that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Value in ' + item + '">');
+						var temp = child[0][1],
+							regTemp = /<([a-zA-Z][^>]*)+?>/,
+							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+							sReg = new RegExp(temp);
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg, '');
+						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Value in ' + item + '">');
 					}
 					for (var j = 0, tlen = child.length; j < tlen; j++) {
-						if (child[j][0] == 'name' && (child[j][1] in itemData)) {
+						// if (child[j][0] == 'name' && (child[j][1] in itemData[0])) {
+						if (child[j][0] == 'name') {
 							// _that.renderPropDefault(item + 'Item', child[j][1]);
 							_that.renderPropWith(item + 'Item', child[j][1]);
 							_that.renderProp(item + 'Item', child[j][1]);
 							_that.renderDefault(item + 'Item', child[j][1]);
+							// _that.renderPropDefault(item + 'Item', child[j][1]);
 						}
 					}
 				}
 			}
 		}
-		console.log(this.tokens);
+		// console.log(this.tokens);
 	};
 
 	// 编译{{/xxx}}
 	Tpl2Vue.prototype.renderEnd = function() {
-		this.tpl = this.tpl.replace(symbolRe5, '</div>');
+		this.tpl = this.tpl.replace(symbolRe5, '');
 	};
 
 	// {{{xxx}}}
@@ -253,7 +288,7 @@ define(['jquery', 'underscore'], function($, _) {
 	};
 
 	Tpl2Vue.prototype.clearMoreTag = function() {
-		var reg = /data-v-bind:([\w\d_]+)="([\w\d_]+.{0,1}[\w\d_]+)"/g; // ([\w\d_]+)="\{\{([\w\d_]+.{0,1}[\w\d_]+)\}\}"
+		var reg = /data-v-bind:([\w\d_]+)="([\w\d_.]*)"/g; // ([\w\d_]+)="\{\{([\w\d_]+.{0,1}[\w\d_]+)\}\}"
 		this.tpl = this.tpl.replace(reg, 'data-' + '$1' + '=' + '"{{' + '$2' + '}}"');
 	};
 
@@ -651,7 +686,7 @@ define(['jquery', 'underscore'], function($, _) {
 		if (_.isFunction(value))
 			value = value.call(this.view);
 
-		console.log(value)
+		// console.log(value)
 		return value;
 	};
 	return Tpl2Vue;

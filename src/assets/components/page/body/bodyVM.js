@@ -144,12 +144,20 @@ define([
                         '</html>';
                     // 匹配图片的相对路径，过滤绝对路径
                     var reg = /src=(?=\"(?!http|https[\w\d_\/-]+\.(gif|jpg|jpeg|png|bmp)))\"/g;
-                    // 正则有问题 这个是为了去除预览图片的base64 图片
-                    var reg2 = /background-image:\s?url\(\S+\)/g;
-                    var reg3 = /<div\s+class=\"m-psc-oparate\"\s*.*?<\/div>/g;
+                    // 去除预览图片的base64 图片
+                    var reg2 = /background-image:\s?url\(\S+base64\S+\)/g;
+                    // 正则去除操作栏
+                    // var reg3 = /<div\s+\S*class=\"m-psc-oparate\"\s*.+?<\/div>/g;
+                    var reg3 = /<div\s+\S*class=\"m-psc-oparate\"\s*(.|\n)+?<\/div>/g;
+                    // 正则去除添加模块的dom
+                    var reg4 = /<div\s+\S*class=\"m-psc-add-wrap\"\s*(.|\n)+?<\/div>/g;
+                    // 正则去除J_psc_wrap 模块
+                    var reg5 = /<div\s+\S*class=\"J_psc_wrap\"\s*(.|\n)+?>{1}/g;
                     html = html.replace(reg, 'src="' + imgRoot + '$1');
                     html = html.replace(reg2, '');
                     html = html.replace(reg3, '');
+                    html = html.replace(reg4, '');
+                    html = html.replace(reg5, '<div>');
                     var blob = new Blob([html], {
                         type: "text/html;charset=utf-8"
                     });
@@ -386,8 +394,8 @@ define([
                 })
             },
             // showGroup 通知显示某个区域
-            showGroup:function(info){
-                this.$broadcast('notifyShowGroup',info);
+            showGroup: function(info) {
+                this.$broadcast('notifyShowGroup', info);
             }
         }
     });

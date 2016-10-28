@@ -7,7 +7,7 @@ define(['jquery', 'underscore'], function($, _) {
 				$event.stopPropagation();
 				var $target = $($event.target),
 					data = {
-						insertId: $target.data('id') ? $target.data('id') : $($event.currentTarget).data('id'),
+						insertId: $target.attr('data-id') ? $target.attr('data-id') : $($event.currentTarget).attr('data-id'),
 						flag: true
 					};
 				if (this.$parent.picked == 0) {
@@ -19,7 +19,7 @@ define(['jquery', 'underscore'], function($, _) {
 				$event.preventDefault();
 				$event.stopPropagation();
 				var $target = $($event.target),
-					_id = $target.data('id');
+					_id = $target.attr('data-id');
 				if (this.$parent.picked == 0) {
 					$target.find('.m-psc-oparate[data-oparate="' + _id + '"]').show();
 				}
@@ -30,7 +30,7 @@ define(['jquery', 'underscore'], function($, _) {
 				$event.preventDefault();
 				$event.stopPropagation();
 				var $target = $($event.target),
-					_id = $target.data('id');
+					_id = $target.attr('data-id');
 				if (this.$parent.picked == 0) {
 					$target.find('.m-psc-oparate[data-oparate="' + _id + '"]').hide();
 				}
@@ -53,7 +53,7 @@ define(['jquery', 'underscore'], function($, _) {
 				$event.stopPropagation();
 				var $target = $($event.target),
 					_id = $target.closest('.m-psc-oparate').data('oparate'),
-					_changeEditId = $target.closest('.m-wrap').parent('*[data-id]').data('id');
+					_changeEditId = $target.closest('.J_psc_wrap').parent('*[data-id]').attr('data-id');
 				// $target.closest('.m-psc-oparate').closest('[data-id="' + _id + '"]').remove().end().remove();
 				// this.$dispatch('removeComponent', {
 				// 	removeId: _id,
@@ -61,7 +61,7 @@ define(['jquery', 'underscore'], function($, _) {
 				// 	oparate: 2
 				// });
 				// 向上通知需要删除
-				this.$dispatch('notifyRootForRemoveComponent',{
+				this.$dispatch('notifyRootForRemoveComponent', {
 					removeId: _id,
 					changeEditId: _changeEditId,
 					oparate: 2
@@ -88,45 +88,44 @@ define(['jquery', 'underscore'], function($, _) {
 			 * 拿出来 id 和 key值，然后定位到具体的一个component
 			 */
 			focusKeyEdit: function($event) {
-					$event.preventDefault();
-					var $target = $($event.target),
-						id = $target.closest('.J_wrap').data('id'),
-						key = $target.data('h55970f92group'),
-						location = $target.data('h55970f92');
-					// console.log(id + '' + key);
-					if(key){
-						this.$dispatch('notifyRootFocusKeyEdit', {
-							id: id,
-							key: key,
-							location:location
-						});
-					}
+				$event.preventDefault();
+				var $target = $($event.target),
+					id = $target.closest('.J_psc_wrap').attr('data-id'),
+					key = $target.data('h55970f92group'),
+					location = $target.data('h55970f92');
+				if (key) {
+					this.$dispatch('notifyRootFocusKeyEdit', {
+						id: id,
+						key: key,
+						location: location
+					});
 				}
+			},
 				/* handle draggable*/
-				/*handleDragStart: function(elem) {
-					this.loggedEvent = 'handleDragStart';
-				},
-				handleDragOver: function(elem) {
-					this.loggedEvent = 'handleDragOver';
-				},
-				handleDragEnter: function(elem) {
-					this.loggedEvent = 'handleDragEnter';
-				},
-				handleDragLeave: function(elem) {
-					this.loggedEvent = 'handleDragLeave';
-				},
-				handleDragEnd: function(elem) {
-					this.loggedEvent = 'handleDragEnd';
-				},
-				handleDrop: function(itemOne, itemTwo) {
-					this.loggedEvent = 'handleDrop';
-				},
-				handleImageDrop: function(itemOne, itemTwo) {
-					this.loggedEvent = 'handleImageDrop';
-				},
-				handleDrag: function(elem) {
-					this.loggedEvent = 'handleDrag';
-				}*/
+			/*handleDragStart: function(elem) {
+				this.loggedEvent = 'handleDragStart';
+			},
+			handleDragOver: function(elem) {
+				this.loggedEvent = 'handleDragOver';
+			},
+			handleDragEnter: function(elem) {
+				this.loggedEvent = 'handleDragEnter';
+			},
+			handleDragLeave: function(elem) {
+				this.loggedEvent = 'handleDragLeave';
+			},
+			handleDragEnd: function(elem) {
+				this.loggedEvent = 'handleDragEnd';
+			},
+			handleDrop: function(itemOne, itemTwo) {
+				this.loggedEvent = 'handleDrop';
+			},
+			handleImageDrop: function(itemOne, itemTwo) {
+				this.loggedEvent = 'handleImageDrop';
+			},
+			handleDrag: function(elem) {
+				this.loggedEvent = 'handleDrag';
+			}*/
 		},
 		events: {
 			// 显示编辑或者隐藏编辑区域

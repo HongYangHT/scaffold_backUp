@@ -9,10 +9,10 @@ define(['Vue', 'sortable'], function(Vue, Sortable) {
 				group: {
 					put: false
 				},
-				handle: '.J_wrap',
+				handle: '.J_psc_wrap',
 				onEnd: function(result) {
 					var targetId = $(result.item).data('id'),
-						purposeId = $(result.from).find('.J_wrap').eq(result.newIndex - 1).data('id');
+						purposeId = $(result.from).find('.J_psc_wrap').eq(result.newIndex - 1).data('id');
 					// 通知content 修改和保存数据	
 					that.vm.$dispatch('notifyDragLocation', {
 						newIndex: result.newIndex,

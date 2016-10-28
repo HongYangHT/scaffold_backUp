@@ -1,1 +1,5 @@
-/*! 2016-10-09 */!function(){document.querySelector(".u-btn").onclick=function(){alert(1)}}();
+;(function(){
+	document.querySelector('.u-btn').onclick = function(){
+		alert(1);
+	}
+})();

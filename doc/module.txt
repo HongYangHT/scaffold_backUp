@@ -1,0 +1,20 @@
+模板命名：
+eg:
+  YX-N-M-9BBD
+  YX 表示类型
+  N  Normal 普通活动模块, N/S Special 特殊活动的模块
+  M  表示模块 M/U U表示组件（元件）
+  9BBD 表示唯一码
+
+1. 常用的严选活动商品位模块
+   活动             |                   链接                         |        活动类型                     |   提取的样式
+严选 - 大华乐橙活动   http://you.163.com/act/static/SzhNwLzy4a.html     普通活动（2016年08月26日00:00:00）     YX-N-M-9BBD  
+严选 - 严选结婚季     http://you.163.com/act/static/kGOJIa0Jhk.html     普通活动（2016年08月25日00:00:00）     
+严选 - 重阳节活动     http://you.163.com/act/static/sbbBRTnXIR.html     大促活动 
+严选 - 假期预备       http://you.163.com/act/static/cdCNSi3uEs.html     普通活动
+严选 - 回礼类活动     http://you.163.com/act/static/xunVXSoioT.html     回礼活动
+严选 - 秋季上新       http://you.163.com/act/static/iyRnkoGjHK.html     普通活动
+严选 - 太子妃         http://you.163.com/act/static/BbRqAADvxR.html     普通活动
+严选 - 中秋节活动     http://you.163.com/act/pub/ilEOypKgaa.html        大促活动
+
+http://you.163.com/act/static/C7ibtTU8k8.html

@@ -96,7 +96,7 @@ body,
   padding: 20px 30px 50px 20px;
   border: 2px dashed #eee;
 }
-.g-psc-bd .m-wrap,
+.g-psc-bd .J_psc_wrap,
 .g-psc-bd .g-doc {
   position: relative;
 }
@@ -443,7 +443,8 @@ body,
   border: 1px dashed #ccc;
 }
 .m-psc-pre-modal .u-flex-box-container .u-flex-img {
-  height: 120px;
+  height: 110px;
+  padding-bottom: 10px;
 }
 .m-psc-pre-modal .u-modal-pre-container {
   display: -webkit-flex;
@@ -643,6 +644,8 @@ body,
 .m-arrow-right .m-psc-menu-2 .u-psc-input-group {
   position: relative;
   margin: 10px auto;
+  width: 100%;
+  min-height: 36px;
 }
 .m-arrow-right .m-psc-menu-2 .u-psc-input {
   width: 300px;

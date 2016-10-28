@@ -42,6 +42,12 @@ define([
 						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485661571.jpg',
 						'value': 'yxBackModule',
 						'type': 'yxBackModule'
+					},
+					{
+						'img': 'http://mimg.127.net/hz/uploader/20161028/14776529914842415.jpg',
+						'zoom': 'http://mimg.127.net/hz/uploader/20161028/14776529914842415.jpg',
+						'value': 'YX_N_M_9BBD',
+						'type': 'YX_N_M_9BBD'
 					}/*, {
 						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485071564.jpg',
 						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485771572.jpg',

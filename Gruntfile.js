@@ -34,49 +34,55 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxhd',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxhd',
+                    dest: 'src/assets/components/page/modules/yxhd',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxBanner',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxBanner',
+                    dest: 'src/assets/components/page/modules/yxBanner',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxBanner2',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxBanner2',
+                    dest: 'src/assets/components/page/modules/yxBanner2',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxBackModule',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxBackModule',
+                    dest: 'src/assets/components/page/modules/yxBackModule',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxBackModule2',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxBackModule2',
+                    dest: 'src/assets/components/page/modules/yxBackModule2',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxRule',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxRule',
+                    dest: 'src/assets/components/page/modules/yxRule',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxTemp',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxTemp',
+                    dest: 'src/assets/components/page/modules/yxTemp',
                     ext: '.css'
                 }, {
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxft',
                     src: '*.less',
-                    dest: 'assets/components/page/modules/yxft',
+                    dest: 'src/assets/components/page/modules/yxft',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_9BBD',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_9BBD',
                     ext: '.css'
                 }]
             }
@@ -140,6 +146,12 @@ module.exports = function(grunt) {
                     ext: '.css'
                 }, {
                     expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_9BBD',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_9BBD',
+                    ext: '.css'
+                }, {
+                    expand: true,
                     cwd: 'src/assets/components/page/modules/yxRule',
                     src: '*.css',
                     dest: 'assets/components/page/modules/yxRule',
@@ -195,7 +207,8 @@ module.exports = function(grunt) {
                     'assets/components/page/modules/yxBanner2/yxBanner2.mustache': 'src/assets/components/page/modules/yxBanner2/yxBanner2.mustache',
                     'assets/components/page/modules/yxTemp/yxTemp.mustache': 'src/assets/components/page/modules/yxTemp/yxTemp.mustache',
                     'assets/components/page/modules/yxBackModule/yxBackModule.mustache': 'src/assets/components/page/modules/yxBackModule/yxBackModule.mustache',
-                    'assets/components/page/modules/yxBackModule2/yxBackModule2.mustache': 'src/assets/components/page/modules/yxBackModule2/yxBackModule2.mustache'
+                    'assets/components/page/modules/yxBackModule2/yxBackModule2.mustache': 'src/assets/components/page/modules/yxBackModule2/yxBackModule2.mustache',
+                    'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache': 'src/assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache'
                 }
             }
         },
@@ -205,6 +218,63 @@ module.exports = function(grunt) {
                 cwd: 'src/assets/css/fonts',
                 src: '**',
                 dest: 'assets/css/fonts/',
+            },
+            js:{
+                files: [{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxhd',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxhd',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxBanner',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxBanner',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxBanner2',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxBanner2',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxTemp',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxTemp',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxBackModule',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxBackModule',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxBackModule2',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxBackModule2',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxft',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxft',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/yxRule',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/yxRule',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_9BBD',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_9BBD',
+                    ext: '.js'
+                }]
             }
         },
         requirejs: {
@@ -254,6 +324,7 @@ module.exports = function(grunt) {
                         'common/helper/data2vue',
                         'common/helper/tpl2vue',
                         'common/helper/localStorage',
+                        'common/helper/tools',
                         'text!components/page/root/root.mustache',
                         'text!components/page/head/head.mustache',
                         'text!components/page/body/body.mustache',
@@ -280,6 +351,8 @@ module.exports = function(grunt) {
                         'components/page/modules/yxBackModule/yxBackModuleVM',
                         'text!components/page/modules/yxBackModule2/yxBackModule2.mustache',
                         'components/page/modules/yxBackModule2/yxBackModule2VM',
+                        'text!components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache',
+                        'components/page/modules/YX_N_M_9BBD/YX_N_M_9BBDVM',
                         'text!components/page/modules/yxRule/yxRule.mustache',
                         'components/page/modules/yxRule/yxRuleVM'
                     ],
