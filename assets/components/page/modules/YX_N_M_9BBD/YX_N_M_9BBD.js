@@ -102,7 +102,7 @@
 
 				setTimeout(function() {
 					self.addCart($('.J-addCart'));
-					$("img.lazy").lazyload({
+					$(".YX-N-M-9BBD img.lazy").lazyload({
 						effect: "fadeIn",
 						threshold: 500,
 					});

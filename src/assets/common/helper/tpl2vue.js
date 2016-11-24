@@ -29,7 +29,7 @@ define(['jquery', 'underscore'], function($, _) {
 	//相关的正则
 	var symbolRe1 = /\{\{#([\s]*[\w\d_]+.{0,1}[\w\d_]+)\}\}/g, //匹配{{#xxx}}
 		symbolRe2 = /\{\{\/([\s]*[\w\d_]+.{0,1}[\w\d_]+)\}\}/g, //匹配{{/xxx}}
-		symbolRe3 = /([\w\d_]+)="\{\{([\w\d_]+.{0,1}[\w\d_]+)\}\}"/g, // 匹配 xx={{xx}}
+		symbolRe3 = /([\w\d_]+)="\{\{([\w\d_]+.{0,1}[\w\d_]+)\}\}/g, // 匹配 xx={{xx}}
 		symbolRe4 = /\{\{([\s]*[\w\d_]+.{0,1}[\w\d_]+)\}\}/g, //匹配{{xx}}
 		symbolRe5 = /\{\{\/([\s]*[\w\d_]+.{0,1}[\w\d_]+)\}\}/g, //{{/xxx}}
 		symbolRe6 = /\{\{(\.)\}\}/g, //{{.}}
@@ -159,9 +159,17 @@ define(['jquery', 'underscore'], function($, _) {
 						var temp = child[0][1],
 							regTemp = /<([a-zA-Z][^>]*)+?>/,
 							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
-							sReg = new RegExp(temp);
-						_that.tpl = _that.tpl.replace(sReg, sTemp);
-						_that.tpl = _that.tpl.replace(_reg, '');
+							sReg = new RegExp($.trim(temp),'g');
+						if(sReg.test(_that.tpl)){
+							_that.tpl = _that.tpl.replace(sReg, sTemp);
+							_that.tpl = _that.tpl.replace(_reg, '');
+						}else{
+							var tempMatch = temp.match(regTemp)[0],
+								tempMatchVal = tempMatch.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+								reg = new RegExp(tempMatch,'g');
+							_that.tpl = _that.tpl.replace(reg, tempMatchVal);
+							_that.tpl = _that.tpl.replace(_reg, '');	
+						}	
 						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
 					}
 					for (var j = 0, tlen = child.length; j < tlen; j++) {
@@ -193,17 +201,33 @@ define(['jquery', 'underscore'], function($, _) {
 							regTemp = /<([a-zA-Z][^>]*)+?>/,
 							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
 							sReg = new RegExp(temp);
-						_that.tpl = _that.tpl.replace(sReg, sTemp);
-						_that.tpl = _that.tpl.replace(_reg, '');
+						if(sReg.test(_that.tpl)){
+							_that.tpl = _that.tpl.replace(sReg, sTemp);
+							_that.tpl = _that.tpl.replace(_reg, '');
+						}else{
+							var tempMatch = temp.match(regTemp)[0],
+								tempMatchVal = tempMatch.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+								reg = new RegExp(tempMatch,'g');
+							_that.tpl = _that.tpl.replace(reg, tempMatchVal);
+							_that.tpl = _that.tpl.replace(_reg, '');	
+						}	
 						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Value in ' + item + '">');
 						_that.tpl = _that.tpl.replace(_reg1, '<div v-show="!' + item + '">');
 					} else {
 						var temp = child[0][1],
 							regTemp = /<([a-zA-Z][^>]*)+?>/,
 							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
-							sReg = new RegExp(temp);
-						_that.tpl = _that.tpl.replace(sReg, sTemp);
-						_that.tpl = _that.tpl.replace(_reg, '');
+							sReg = new RegExp($.trim(temp),'g');
+						if(sReg.test(_that.tpl)){
+							_that.tpl = _that.tpl.replace(sReg, sTemp);
+							_that.tpl = _that.tpl.replace(_reg, '');
+						}else{
+							var tempMatch = temp.match(regTemp)[0],
+								tempMatchVal = tempMatch.replace(regTemp, '<' + '$1' + ' ' + ' v-for="' + item + 'Item in ' + item + '"' + '>'),
+								reg = new RegExp(tempMatch,'g');
+							_that.tpl = _that.tpl.replace(reg, tempMatchVal);
+							_that.tpl = _that.tpl.replace(_reg, '');	
+						}	
 						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Value in ' + item + '">');
 					}
 					for (var j = 0, tlen = child.length; j < tlen; j++) {
@@ -243,7 +267,7 @@ define(['jquery', 'underscore'], function($, _) {
 		var _that = this;
 		// this.getPropWithTag();
 		if (parent) {
-			var _str = '([\\w\\d_]+)="\{\{' + item + '\}\}"',
+			var _str = '([\\w\\d_]+)="\{\{' + item + '\}\}',
 				_reg = new RegExp(_str, 'g');
 			_that.tpl = _that.tpl.replace(_reg, ('v-bind:' + '$1' + '=' + '"' + parent + '.' + item + '.value"').trim());
 		} else {

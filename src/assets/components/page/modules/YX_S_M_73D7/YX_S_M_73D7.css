@@ -1,0 +1,27 @@
+.YX-S-M-73D7 {
+  position: relative;
+  height: 576px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-color: #f7dcd9;
+}
+.YX-S-M-73D7 .m-73D7-inner {
+  position: relative;
+  width: 1090px;
+  margin: 0 auto;
+  overflow: auto;
+}
+.YX-S-M-73D7 .m-73D7-inner .m-73D7-tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 78px;
+  height: 117px;
+  z-index: 1;
+}
+.YX-S-M-73D7 .m-73D7-inner .m-73D7-title {
+  display: block;
+  width: 637px;
+  height: 321px;
+  margin: 140px auto 0;
+}

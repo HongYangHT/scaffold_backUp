@@ -21,14 +21,14 @@ define([
 				properties: [],
 				layout: {},
 				showMenu: false,
-				showGroupItem:'content'
+				showGroupItem: 'content'
 			};
 		},
-		watch:{
-			'showGroupItem':{
-				'handler':function(value,old){
+		watch: {
+			'showGroupItem': {
+				'handler': function(value, old) {
 					// 选择某个区域
-					this.$dispatch('showGroup',{
+					this.$dispatch('showGroup', {
 						id: this.id,
 						location: value,
 						oldLocation: old
@@ -314,10 +314,10 @@ define([
 				});
 			},
 			bindColorPicker: function($event) {
-				$($event.target).colorpicker({
-					horizontal: true
-				});
-				$($event.target).data('colorpicker').show();
+				// $($event.target).colorpicker({
+				// 	horizontal: true
+				// });
+				// $($event.target).data('colorpicker').show();
 			},
 			// 标识出现在对应的区域
 			focusInput: function($event, key, id, value) {
@@ -417,11 +417,11 @@ define([
 				_that.style = _style;
 				_that.showMenu = true;
 				this.showGroupItem = info.keyInfo.key;
-				setTimeout(function(){
-					$('.m-arrow-right').find('[data-lable="'+info.keyInfo.location+'"]').addClass('active')
-						.closest('.m-group').siblings('.m-group').find('.active').removeClass('active');	
-				},500);
-				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right');	
+				setTimeout(function() {
+					$('.m-arrow-right').find('[data-lable="' + info.keyInfo.location + '"]').addClass('active')
+						.closest('.m-group').siblings('.m-group').find('.active').removeClass('active');
+				}, 500);
+				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right');
 			}
 		}
 	});

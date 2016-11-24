@@ -150,7 +150,7 @@ define([
 		watch: {
 			'contentInfo.goodsId.value': {
 				'handler': function(value, old) {
-					if(value){
+					if (value) {
 						var data = {
 								'contentInfo': {
 									'goodsId': {
@@ -182,7 +182,8 @@ define([
 							var tempData = $.extend({}, _that._data, new Data2Vue({
 								data: {
 									temp: _temp
-								}
+								},
+								id: _that.id
 							}).getResult());
 
 							_that.$data = tempData;

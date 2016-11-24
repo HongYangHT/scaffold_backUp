@@ -84,6 +84,60 @@ module.exports = function(grunt) {
                     src: '*.less',
                     dest: 'src/assets/components/page/modules/YX_N_M_9BBD',
                     ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_2BE2',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_2BE2',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_7A5D',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_7A5D',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_A1C6',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_A1C6',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_881B',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_881B',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_73D7',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_73D7',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_0CE9',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_0CE9',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_19AB',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_19AB',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_AFA4',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_AFA4',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_46EB',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_46EB',
+                    ext: '.css'
                 }]
             }
         },
@@ -152,11 +206,65 @@ module.exports = function(grunt) {
                     ext: '.css'
                 }, {
                     expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_2BE2',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_2BE2',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_7A5D',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_7A5D',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_A1C6',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_A1C6',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_881B',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_881B',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_73D7',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_73D7',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_0CE9',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_0CE9',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_19AB',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_19AB',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_AFA4',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_AFA4',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_46EB',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_46EB',
+                    ext: '.css'
+                },{
+                    expand: true,
                     cwd: 'src/assets/components/page/modules/yxRule',
                     src: '*.css',
                     dest: 'assets/components/page/modules/yxRule',
                     ext: '.css'
-                }, {
+                },{
                     expand: true,
                     cwd: 'src/assets/components/page/modules/yxft',
                     src: '*.css',
@@ -208,7 +316,16 @@ module.exports = function(grunt) {
                     'assets/components/page/modules/yxTemp/yxTemp.mustache': 'src/assets/components/page/modules/yxTemp/yxTemp.mustache',
                     'assets/components/page/modules/yxBackModule/yxBackModule.mustache': 'src/assets/components/page/modules/yxBackModule/yxBackModule.mustache',
                     'assets/components/page/modules/yxBackModule2/yxBackModule2.mustache': 'src/assets/components/page/modules/yxBackModule2/yxBackModule2.mustache',
-                    'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache': 'src/assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache'
+                    'assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache': 'src/assets/components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache',
+                    'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.mustache': 'src/assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.mustache',
+                    'assets/components/page/modules/YX_N_M_7A5D/YX_N_M_7A5D.mustache': 'src/assets/components/page/modules/YX_N_M_7A5D/YX_N_M_7A5D.mustache',
+                    'assets/components/page/modules/YX_N_M_A1C6/YX_N_M_A1C6.mustache': 'src/assets/components/page/modules/YX_N_M_A1C6/YX_N_M_A1C6.mustache',
+                    'assets/components/page/modules/YX_N_M_881B/YX_N_M_881B.mustache': 'src/assets/components/page/modules/YX_N_M_881B/YX_N_M_881B.mustache',
+                    'assets/components/page/modules/YX_S_M_73D7/YX_S_M_73D7.mustache': 'src/assets/components/page/modules/YX_S_M_73D7/YX_S_M_73D7.mustache',
+                    'assets/components/page/modules/YX_S_M_0CE9/YX_S_M_0CE9.mustache': 'src/assets/components/page/modules/YX_S_M_0CE9/YX_S_M_0CE9.mustache',
+                    'assets/components/page/modules/YX_S_M_19AB/YX_S_M_19AB.mustache': 'src/assets/components/page/modules/YX_S_M_19AB/YX_S_M_19AB.mustache',
+                    'assets/components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache': 'src/assets/components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache',
+                    'assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache': 'src/assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache'
                 }
             }
         },
@@ -273,6 +390,60 @@ module.exports = function(grunt) {
                     cwd: 'src/assets/components/page/modules/YX_N_M_9BBD',
                     src: '*.js',
                     dest: 'assets/components/page/modules/YX_N_M_9BBD',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_2BE2',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_2BE2',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_7A5D',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_7A5D',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_A1C6',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_A1C6',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_881B',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_881B',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_73D7',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_73D7',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_0CE9',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_0CE9',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_19AB',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_19AB',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_AFA4',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_AFA4',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_46EB',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_46EB',
                     ext: '.js'
                 }]
             }
@@ -353,6 +524,24 @@ module.exports = function(grunt) {
                         'components/page/modules/yxBackModule2/yxBackModule2VM',
                         'text!components/page/modules/YX_N_M_9BBD/YX_N_M_9BBD.mustache',
                         'components/page/modules/YX_N_M_9BBD/YX_N_M_9BBDVM',
+                        'text!components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.mustache',
+                        'components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2VM',
+                        'text!components/page/modules/YX_N_M_7A5D/YX_N_M_7A5D.mustache',
+                        'components/page/modules/YX_N_M_7A5D/YX_N_M_7A5DVM',
+                        'text!components/page/modules/YX_N_M_A1C6/YX_N_M_A1C6.mustache',
+                        'components/page/modules/YX_N_M_A1C6/YX_N_M_A1C6VM',
+                        'text!components/page/modules/YX_N_M_881B/YX_N_M_881B.mustache',
+                        'components/page/modules/YX_N_M_881B/YX_N_M_881BVM',
+                        'text!components/page/modules/YX_S_M_73D7/YX_S_M_73D7.mustache',
+                        'components/page/modules/YX_S_M_73D7/YX_S_M_73D7VM',
+                        'text!components/page/modules/YX_S_M_0CE9/YX_S_M_0CE9.mustache',
+                        'components/page/modules/YX_S_M_0CE9/YX_S_M_0CE9VM',
+                        'text!components/page/modules/YX_S_M_19AB/YX_S_M_19AB.mustache',
+                        'components/page/modules/YX_S_M_19AB/YX_S_M_19ABVM',
+                        'text!components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache',
+                        'components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4VM',
+                        'text!components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache',
+                        'components/page/modules/YX_N_M_46EB/YX_N_M_46EBVM',
                         'text!components/page/modules/yxRule/yxRule.mustache',
                         'components/page/modules/yxRule/yxRuleVM'
                     ],

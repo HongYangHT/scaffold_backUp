@@ -43,6 +43,12 @@ define([
 				this.tip = info.tip;
 				this.operation = info.type;
 				info.info && (this.info = info.info);
+			},
+			confirmPublish:function(info){
+				this.showFlag = true;
+				this.tip = info.tip;
+				this.operation = info.type;
+				info.info && (this.info = info.info);
 			}
 		}
 	});

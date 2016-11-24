@@ -13,18 +13,17 @@ define([
         data: function() {
             var localStorages = localStorage.getAll();
 
-            if (localStorages && localStorages.length)
-                return {
-                    localStorages: localStorages,
-                    showModal: true
-                };
-
-            else
+            if (localStorages && localStorages.length){
+                this.$dispatch('notifyRootShowList');  
                 return {
                     localStorages: localStorages,
                     showModal: false
                 };
-
+            } else
+                return {
+                    localStorages: localStorages,
+                    showModal: false
+                };
         },
         methods: {
             hideModal: function() {

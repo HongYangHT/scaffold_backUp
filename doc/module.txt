@@ -7,14 +7,22 @@ eg:
   9BBD 表示唯一码
 
 1. 常用的严选活动商品位模块
-   活动             |                   链接                         |        活动类型                     |   提取的样式
-严选 - 大华乐橙活动   http://you.163.com/act/static/SzhNwLzy4a.html     普通活动（2016年08月26日00:00:00）     YX-N-M-9BBD  
-严选 - 严选结婚季     http://you.163.com/act/static/kGOJIa0Jhk.html     普通活动（2016年08月25日00:00:00）     
+   活动             |                   链接                         |   活动类型   |           提取的样式
+严选 - 大华乐橙活动   http://you.163.com/act/static/C7ibtTU8k8.html      普通活动       YX-N-M-9BBD,YX-N-M-2BE2,YX-N-M-7A5D,YX_N_M_881B,YX_N_M_A1C6  
+http://you.163.com/act/static/SzhNwLzy4a.html  
+严选 - 严选结婚季     http://you.163.com/act/static/kGOJIa0Jhk.html     普通活动    
+
 严选 - 重阳节活动     http://you.163.com/act/static/sbbBRTnXIR.html     大促活动 
+
 严选 - 假期预备       http://you.163.com/act/static/cdCNSi3uEs.html     普通活动
+
 严选 - 回礼类活动     http://you.163.com/act/static/xunVXSoioT.html     回礼活动
+
 严选 - 秋季上新       http://you.163.com/act/static/iyRnkoGjHK.html     普通活动
+
 严选 - 太子妃         http://you.163.com/act/static/BbRqAADvxR.html     普通活动
+
 严选 - 中秋节活动     http://you.163.com/act/pub/ilEOypKgaa.html        大促活动
 
-http://you.163.com/act/static/C7ibtTU8k8.html
+
+http://you.163.com/act/static/SzhNwLzy4a.html 

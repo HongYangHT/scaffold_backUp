@@ -23,7 +23,7 @@ define(['jquery', 'model/base', 'uuid'], function($, BaseModel) {
 	};
 
 	Data2Vue.prototype.setId = function() {
-		this.result.id = Math.uuid(32, 16).toLowerCase();
+		this.options.id ? (this.result.id = this.options.id) : (this.result.id = Math.uuid(32, 16).toLowerCase());
 	};
 
 	Data2Vue.prototype.getType = function(obj) {
