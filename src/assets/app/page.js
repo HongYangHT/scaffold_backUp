@@ -4,6 +4,12 @@ require(['components/page', 'collapse','notify'], function() {
 		query: '.u-h .u-t',
 		open: function() {
 	        this.slideDown(150);
+	        this.find('.u-flex-img:not(.J_fixImg)').each(function(i,n){
+	        	var $n = $(n),
+	        		src = $n.find('img').data('src');
+	        	$n.addClass('J_fixImg');	
+	        	$n.find('img').attr('src',src);	
+	        });
 	        this.siblings('.u-t').find('i').removeClass('fa-chevron-down');
 	        this.siblings('.u-t').find('i').addClass('fa-chevron-up');
 	    },

@@ -12,7 +12,6 @@ define([
 	var _default = {
 		contentInfo: {
 			goodsId: '124',
-			stat_subject: '124',
 			title:'优雅男士皮具好物',
 			tip1:'来自Coach制造商的优雅精致皮具，品质典范象征。',
 			tip2:'对于男生来说手机、移动电源、数据线、耳机、钥匙都是出门必备，一个不同的钱包已经无法满足了。',
@@ -116,21 +115,6 @@ define([
 							_that.$data = tempData;
 							_that.$dispatch('changeDataDefault', _that.id, tempData, true);
 						});
-					}
-				}
-			},
-			'contentInfo.stat_subject.value':{
-				'handler':function(value,old){
-					if(value){
-						var data = {
-								'contentInfo': {
-									'stat_subject': {
-										'value': old
-									}
-								}
-							},
-							_that = this;
-						this.$dispatch('changeDataDefault', this.id, data);	
 					}
 				}
 			},

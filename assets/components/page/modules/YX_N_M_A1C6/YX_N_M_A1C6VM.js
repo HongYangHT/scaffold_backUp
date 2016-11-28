@@ -18,7 +18,6 @@
 	var _default = {
 		contentInfo: {
 			goodsId: '66',
-			stat_subject: '66',
 			titleImage: 'http://mimg.127.net/hz/uploader/20160823/14719320935940206.png',
 			tips:'*价格为市场同类商品的参考价'
 		},

@@ -1,7 +1,6 @@
 <div class="YX-N-M-881B m-section-module" style="background:{{contentInfo.bgColor}};">
 	<div class="J_module_info f-hide">
 		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
-		<div class="stat_subject" data-stat_subject="{{contentInfo.stat_subject}}"></div>
 	</div>
 	<div class="m-section-inner">
 		<div class="m-section-content">
@@ -12,7 +11,7 @@
     			{{#temp}}
     				<li class="m-new-item">
         				<a href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" target="_blank" class="u-goods">
-        					<img src="{{primaryPicUrl}}?imageView&thumbnail=360x360&quality=95" title="{{title}}" class="J_lazyload">
+        					<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" title="{{title}}" class="J_lazyload">
         				</a>
         				<div class="m-new-desc">
         					<p class="u-new-tlt" title="{{title}}">{{title}}</p>

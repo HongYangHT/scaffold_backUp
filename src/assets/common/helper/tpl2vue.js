@@ -269,9 +269,9 @@ define(['jquery', 'underscore'], function($, _) {
 		if (parent) {
 			var _str = '([\\w\\d_]+)="\{\{' + item + '\}\}',
 				_reg = new RegExp(_str, 'g');
-			_that.tpl = _that.tpl.replace(_reg, ('v-bind:' + '$1' + '=' + '"' + parent + '.' + item + '.value"').trim());
+			_that.tpl = _that.tpl.replace(_reg, ('v-bind:' + '$1' + '=' + '"' + parent + '.' + item + '.value').trim());
 		} else {
-			_that.tpl = _that.tpl.replace(symbolRe3, ('v-bind:' + '$1' + '=' + '"' + '$2' + '.value"').trim());
+			_that.tpl = _that.tpl.replace(symbolRe3, ('v-bind:' + '$1' + '=' + '"' + '$2' + '.value').trim());
 		}
 	};
 	// {{xx}}

@@ -18,7 +18,6 @@ define([
 	var _default = {
 		contentInfo: {
 			goodsId: '66',
-			stat_subject: '66',
 			backgroundImage: 'http://mimg.127.net/hz/uploader/20160823/14719320936020207.jpg',
 			bgColor:'#fafafa'
 		},
@@ -160,21 +159,6 @@ define([
 							_that.$data = tempData;
 							_that.$dispatch('changeDataDefault', _that.id, tempData);
 						});
-					}
-				}
-			},
-			'contentInfo.stat_subject.value':{
-				'handler':function(value,old){
-					if(value){
-						var data = {
-								'contentInfo': {
-									'stat_subject': {
-										'value': old
-									}
-								}
-							},
-							_that = this;
-						this.$dispatch('changeDataDefault', this.id, data);	
 					}
 				}
 			},

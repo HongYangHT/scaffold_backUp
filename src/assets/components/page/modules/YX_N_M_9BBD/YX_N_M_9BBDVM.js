@@ -19,7 +19,6 @@ define([
 	var _default = {
 		contentInfo: {
 			goodsId: '66',
-			stat_subject: '66',
 			backgroundImage: 'http://mimg.127.net/hz/uploader/20160823/14719320935400200.jpg'
 		},
 		temp: [{
@@ -189,6 +188,21 @@ define([
 							_that.$data = tempData;
 							_that.$dispatch('changeDataDefault', _that.id, tempData);
 						});
+					}
+				}
+			},
+			'contentInfo.backgroundImage.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'backgroundImage': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
 					}
 				}
 			}

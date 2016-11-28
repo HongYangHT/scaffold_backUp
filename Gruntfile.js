@@ -138,6 +138,18 @@ module.exports = function(grunt) {
                     src: '*.less',
                     dest: 'src/assets/components/page/modules/YX_N_M_46EB',
                     ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_C6E9',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_C6E9',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_DB08',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_DB08',
+                    ext: '.css'
                 }]
             }
         },
@@ -260,6 +272,18 @@ module.exports = function(grunt) {
                     ext: '.css'
                 },{
                     expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_C6E9',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_C6E9',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_DB08',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_DB08',
+                    ext: '.css'
+                },{
+                    expand: true,
                     cwd: 'src/assets/components/page/modules/yxRule',
                     src: '*.css',
                     dest: 'assets/components/page/modules/yxRule',
@@ -325,7 +349,9 @@ module.exports = function(grunt) {
                     'assets/components/page/modules/YX_S_M_0CE9/YX_S_M_0CE9.mustache': 'src/assets/components/page/modules/YX_S_M_0CE9/YX_S_M_0CE9.mustache',
                     'assets/components/page/modules/YX_S_M_19AB/YX_S_M_19AB.mustache': 'src/assets/components/page/modules/YX_S_M_19AB/YX_S_M_19AB.mustache',
                     'assets/components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache': 'src/assets/components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache',
-                    'assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache': 'src/assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache'
+                    'assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache': 'src/assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache',
+                    'assets/components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9.mustache': 'src/assets/components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9.mustache',
+                    'assets/components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache': 'src/assets/components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache'
                 }
             }
         },
@@ -445,6 +471,18 @@ module.exports = function(grunt) {
                     src: '*.js',
                     dest: 'assets/components/page/modules/YX_N_M_46EB',
                     ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_C6E9',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_C6E9',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_DB08',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_DB08',
+                    ext: '.js'
                 }]
             }
         },
@@ -542,6 +580,10 @@ module.exports = function(grunt) {
                         'components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4VM',
                         'text!components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache',
                         'components/page/modules/YX_N_M_46EB/YX_N_M_46EBVM',
+                        'text!components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9.mustache',
+                        'components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9VM',
+                        'text!components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache',
+                        'components/page/modules/YX_N_M_DB08/YX_N_M_DB08VM',
                         'text!components/page/modules/yxRule/yxRule.mustache',
                         'components/page/modules/yxRule/yxRuleVM'
                     ],
@@ -582,48 +624,6 @@ module.exports = function(grunt) {
                     src: '*.js',
                     dest: 'assets/components/page/modules/yxhd',
                     ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxBanner',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxBanner',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxBanner2',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxBanner2',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxTemp',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxTemp',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxBackModule',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxBackModule',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxBackModule2',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxBackModule2',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxft',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxft',
-                    ext: '.js'
-                }, {
-                    expand: true,
-                    cwd: 'src/assets/components/page/modules/yxRule',
-                    src: '*.js',
-                    dest: 'assets/components/page/modules/yxRule',
-                    ext: '.js'
                 }]
             }*/
         },
@@ -655,6 +655,9 @@ module.exports = function(grunt) {
                     to: ''
                 }, {
                     from: /\<link rel\=\"stylesheet\" type\=\"text\/css\" href\=\"assets\/css\/pnotify.css\"\>/g,
+                    to: ''
+                }, {
+                    from: /\<link rel\=\"stylesheet\" type\=\"text\/css\" href\=\"assets\/css\/hint.css\"\>/g,
                     to: ''
                 }, {
                     from: /\<script type\=\"text\/javascript\" src\=\"assets\/libs\/require.js"\>\<\/script\>/g,

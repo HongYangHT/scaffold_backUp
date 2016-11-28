@@ -18,7 +18,6 @@ define([
 	var _default = {
 		contentInfo: {
 			goodsId: '66',
-			stat_subject: '66',
 			backgroundImage: 'http://mimg.127.net/hz/uploader/20160823/14719320936020207.jpg',
 			bgColor:'#fafafa'
 		},

@@ -74,7 +74,7 @@ define([
 								'suitH5': false
 							}]
 						},
-						pubGoods:{
+						GoodsModules:{
 							title:'商品位模块(接入goods系统)',
 							modules:[{
 								'img': 'http://mimg.127.net/hz/uploader/20161122/14797812303460424.jpg',
@@ -118,9 +118,23 @@ define([
 								'type': 'YX_N_M_881B',
 								'suitWeb': true,
 								'suitH5': false
+							},{
+								'img':'http://mimg.127.net/hz/uploader/20161128/14802985110610600.jpg',
+								'zoom': 'http://mimg.127.net/hz/uploader/20161128/14802985110610600.jpg',
+								'value': 'YX_N_M_C6E9',
+								'type': 'YX_N_M_C6E9',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img':'http://mimg.127.net/hz/uploader/20161128/14803040464190649.jpg',
+								'zoom': 'http://mimg.127.net/hz/uploader/20161128/14803040464190649.jpg',
+								'value': 'YX_N_M_DB08',
+								'type': 'YX_N_M_DB08',
+								'suitWeb': true,
+								'suitH5': false
 							}]
 						},
-						goods:{
+						NoneGoodsModules:{
 							title:'商品位模块（未接入goods系统）',
 							modules:[{
 								'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485001563.jpg',

@@ -10,7 +10,7 @@
 					<div class="u-flex-box-container">
 						<div class="u-flex-box" v-for="item in prop.modules" v-bind:class="{'u-flex-box-web':item.suitWeb,'u-flex-box-h5':item.suitH5}">
 							<div class="u-flex-img">
-								<img v-bind:src="item.zoom" alt=""/>
+								<img alt="" data-src="{{item.zoom}}"/>
 							</div>
 							<div class="m-btn-flex-group">
 								<a href="javascript:;" target="_self" class="u-btn-default" v-on:click="changeToView($event, item.zoom)">预览</a>

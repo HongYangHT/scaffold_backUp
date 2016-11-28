@@ -99,7 +99,7 @@
 
 	$('.YX-N-M-A1C6 .goodsId').each(function(i, n) {
 		var _id = $(n).data('goodsid');
-		myModule.goodsList($(n).closest('.YX-N-M-A1C6'), _id,'');
+		myModule.goodsList($(n).closest('.YX-N-M-A1C6'), _id, window.psc_act_id);
 	});
 	$('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
 		PSC_C_statistics.normalGoods(this);
