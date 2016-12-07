@@ -1,5 +1,12 @@
- <div class="YX-S-M-19AB m-section-module">
-    <div class="m-19AB-img-wrap" data-h55970f92="bannerImage">
-        <img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload" />
+ <div class="YX-S-M-19AB m-section-module" data-h55970f92="bannerImage">
+    <div class="m-19AB-img-wrap">
+    	{{^contentInfo.link}}
+    		<img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload J_needImage"/>
+    	{{/contentInfo.link}}
+    	{{#contentInfo.link}}
+    		<a href="{{contentInfo.link}}" target="_blank">
+    			<img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload J_needImage"/>
+    		</a>
+    	{{/contentInfo.link}}	
     </div>
 </div>

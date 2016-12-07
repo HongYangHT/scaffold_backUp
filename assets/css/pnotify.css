@@ -1,0 +1,108 @@
+.ui-pnotify {
+  top: 25px;
+  right: 25px;
+  position: fixed;
+  height: auto;
+  z-index: 9999;
+  -webkit-box-shadow: 0 2px 10px #bbb;
+  -moz-box-shadow: 0 2px 10px #bbb;
+  -ms-box-shadow: 0 2px 10px #bbb;
+  box-shadow: 0 2px 10px #bbb;
+  /* Alternate stack initial positioning. */
+  /* Alert success less change from default */
+}
+.ui-pnotify .ui-pnotify-shadow {
+  -webkit-box-shadow: inset 2px 2px 30px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow: inset 2px 2px 30px rgba(50, 50, 50, 0.25);
+  -ms-box-shadow: inset 2px 2px 30px rgba(50, 50, 50, 0.25);
+  box-shadow: inset 2px 2px 30px rgba(50, 50, 50, 0.25);
+}
+.ui-pnotify .ui-pnotify-container {
+  background-position: 0 0;
+  padding: 20px;
+  height: 100%;
+  margin: 0;
+  background: #fff;
+}
+.ui-pnotify .ui-pnotify-title {
+  display: block;
+  font-size: 15px;
+  line-height: 28px;
+  margin-top: 0;
+}
+.ui-pnotify .ui-pnotify-text {
+  display: block;
+}
+.ui-pnotify .i-warning-blue {
+  background-position: -630px -264px;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+}
+.ui-pnotify .fa {
+  margin: 4px;
+  width: 24px;
+  height: 24px;
+  font-size: 17px;
+}
+.ui-pnotify .fa-exclamation-circle {
+  color: #999;
+}
+.ui-pnotify .fa-check {
+  color: #9D9D24;
+}
+.ui-pnotify .fa-info {
+  color: #337ab7;
+}
+.ui-pnotify .fa-info-circle {
+  color: #337ab7;
+}
+.ui-pnotify .fa-warning {
+  color: #e02e2e;
+}
+.ui-pnotify .fa-exclamation-triangle {
+  color: #e02e2e;
+}
+.ui-pnotify .alert {
+  padding: 32px;
+  border: none;
+  border-radius: 0;
+}
+.ui-pnotify .alert-info {
+  background: #FFF;
+  color: #555;
+}
+.ui-pnotify .ui-pnotify-icon,
+.ui-pnotify .ui-pnotify-icon span {
+  display: block;
+  float: left;
+}
+.ui-pnotify .ui-pnotify.stack-topleft,
+.ui-pnotify .ui-pnotify.stack-bottomleft {
+  left: 25px;
+  right: auto;
+}
+.ui-pnotify .ui-pnotify.stack-bottomright,
+.ui-pnotify .ui-pnotify.stack-bottomleft {
+  bottom: 25px;
+  top: auto;
+}
+.ui-pnotify .ui-pnotify-closer,
+.ui-pnotify .ui-pnotify-sticker {
+  float: right;
+  margin-left: 8px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  font-size: 20px;
+}
+.ui-pnotify .ui-pnotify .alert-success {
+  background: #FFF;
+  color: #555;
+}
+.ui-pnotify .alert-success {
+  border-color: #333;
+}
+.ui-pnotify .ui-pnotify-closer .fa {
+  width: 18px;
+}

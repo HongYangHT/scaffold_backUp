@@ -190,6 +190,21 @@ define([
 						});
 					}
 				}
+			},
+			'contentInfo.backgroundImage.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'backgroundImage': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
 			}
 		},
 		computed: {

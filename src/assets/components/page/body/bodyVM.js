@@ -90,6 +90,15 @@ define([
                     return r;
                 }
                 var ajaxDeferredArr = [];
+                // 增加rebase.css
+                ajaxDeferredArr.push($.ajax({
+                    url: 'assets/css/rebase.css',
+                    type: 'GET',
+                    dataType:'text',
+                    success: function(data) {
+                        style += '<style>' + data + '</style>';
+                    }
+                }));
                 if (this._data.body.load && this._data.body.load.loadStyle) {
                     var _loadStyle = unique2(this._data.body.load.loadStyle);
                     $.each(_loadStyle, function(i, n) {

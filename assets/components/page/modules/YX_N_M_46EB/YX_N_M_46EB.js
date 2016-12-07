@@ -52,7 +52,7 @@
             }, function(res) {
                 var _goods = res.content.goodsList,
                     _html = '',
-                    _subject = $(element).find('.stat_subject').val();
+                    _subject = subject || $(element).find('.stat_subject').val();
                 $.each(_goods, function(k, v) {
                     var _detail = v.detail;
                     _html += [

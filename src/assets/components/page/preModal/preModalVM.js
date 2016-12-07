@@ -31,7 +31,7 @@ define([
 								'value': 'yxhd',
 								'type': 'yxhd',
 								'suitWeb': true,
-								'suitH5': false
+								'suitH5': true
 							},
 							{
 								'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485131565.jpg',
@@ -39,16 +39,38 @@ define([
 								'value': 'yxft',
 								'type': 'yxft',
 								'suitWeb': true,
-								'suitH5': false
+								'suitH5': true
 							}]
 						},
 						banner:{
 							title:'Banner模块',
 							modules:[{
-								'img': 'http://mimg.127.net/hz/uploader/20161118/14794552636840001.jpg',
-								'zoom': 'http://mimg.127.net/hz/uploader/20161118/14794552636840001.jpg',
+								'img': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
+								'value': 'YX_S_M_97D8',
+								'type': 'YX_S_M_97D8',
+								'suitWeb': true,
+								'suitH5': true
+							},
+							{
+								'img': 'https://mimg.127.net/hz/uploader/20161205/14809121475660356.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809121475660356.jpg',
+								'value': 'YX_S_M_0AA8',
+								'type': 'YX_S_M_0AA8',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'http://mimg.127.net/hz/uploader/20161129/14804085064791443.jpg',
+								'zoom': 'http://mimg.127.net/hz/uploader/20161129/14804085064791443.jpg',
 								'value': 'YX_S_M_19AB',
 								'type': 'YX_S_M_19AB',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'http://mimg.127.net/hz/uploader/20161202/14806436916670873.jpg',
+								'zoom': 'http://mimg.127.net/hz/uploader/20161202/14806436916670873.jpg',
+								'value': 'YX_S_M_6D5E',
+								'type': 'YX_S_M_6D5E',
 								'suitWeb': true,
 								'suitH5': true
 							},{
@@ -77,6 +99,13 @@ define([
 						GoodsModules:{
 							title:'商品位模块(接入goods系统)',
 							modules:[{
+								'img': 'https://mimg.127.net/hz/uploader/20161205/14809274258960399.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809274258960399.jpg',
+								'value': 'YX_N_M_92C9',
+								'type': 'YX_N_M_92C9',
+								'suitWeb': true,
+								'suitH5': true
+							},{
 								'img': 'http://mimg.127.net/hz/uploader/20161122/14797812303460424.jpg',
 								'zoom': 'http://mimg.127.net/hz/uploader/20161122/14797812303460424.jpg',
 								'value': 'YX_N_M_46EB',

@@ -39,7 +39,7 @@ define(['jquery', 'underscore'], function($, _) {
 		symbolRe10 = /\{\{\^([\s]*[\w\d_]+.{0,1}[\w\d_]+)\}\}/g, //{{^xx}}
 		symbolRe11 = /\{\{\{([\s]*[\w\d_]+.{0,1}[\w\d_]+)\}\}\}/g; // {{{xxx}}}
 
-	var keyRe = /[\w\d_]+/g; //获取key值的正则
+	var keyRe = /[\w\d_\.]+/g; //获取key值的正则
 
 	var Tpl2Vue = function(tpl, data, partials) {
 		this.tpl = tpl ? tpl : '';
@@ -48,8 +48,8 @@ define(['jquery', 'underscore'], function($, _) {
 		this.tokens = parseTemplate(tpl, defaultTags);
 		this.partials = partials;
 		this.arrayOrObjectKey = []; // {{#}} 中的key
-		// this.propWithKey = []; // xx={{xx}} 中的key
-		// this.propKey = []; // {{xx}}中的key
+		this.propWithKey = []; // xx={{xx}} 中的key
+		this.propKey = []; // {{xx}}中的key
 		this.partialKey = []; //{{>xx}}中的key
 		this.init();
 	};
@@ -140,8 +140,6 @@ define(['jquery', 'underscore'], function($, _) {
 					var _str1 = '\{\{\\^' + item + '\}\}',
 						_reg1 = new RegExp(_str1, 'g');
 					if (_reg1.test(_that.tpl)) {
-						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
-						// _that.tpl = _that.tpl.replace(_reg1, '<div v-show="!' + item + '">');
 						/**
 						 * 找到第一个标签并把v-for 指令插入进去
 						 *
@@ -170,7 +168,6 @@ define(['jquery', 'underscore'], function($, _) {
 							_that.tpl = _that.tpl.replace(reg, tempMatchVal);
 							_that.tpl = _that.tpl.replace(_reg, '');	
 						}	
-						// _that.tpl = _that.tpl.replace(_reg, '<div style="display:inline-block;" v-for="' + item + 'Item in ' + item + '">');
 					}
 					for (var j = 0, tlen = child.length; j < tlen; j++) {
 						// if (child[j][0] == 'name' && (child[j][1] in itemData[0])) {
@@ -180,6 +177,8 @@ define(['jquery', 'underscore'], function($, _) {
 							_that.renderProp(item + 'Item', child[j][1]);
 							_that.renderDefault(item + 'Item', child[j][1]);
 							// _that.renderPropDefault(item + 'Item', child[j][1]);
+						}else if(child[j][0] == '#'){
+							_that.mapKey(_that.context, item + '.' + child[j][1], item + 'Item');
 						}
 					}
 				}
@@ -238,12 +237,115 @@ define(['jquery', 'underscore'], function($, _) {
 							_that.renderProp(item + 'Item', child[j][1]);
 							_that.renderDefault(item + 'Item', child[j][1]);
 							// _that.renderPropDefault(item + 'Item', child[j][1]);
+						}else if(child[j][0] == '#'){
+							_that.mapKey(_that.context, item + '.' + child[j][1], item + 'Item');
 						}
 					}
 				}
 			}
+		}else{
+			for(var i = 0,len = tokens.length;i<len;i++){
+				var token = tokens[i],
+					child = token[4],
+					Itemlen = item.split('.').length;
+				if(token[0] == '#' && token[1] == item){
+					var temp = child[0][1],
+						// regTemp = /<([a-zA-Z][^>]*)+?>/,
+						regTemp = /<([a-zA-Z]+)+?/,
+						sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="' + item +'.value"'),
+						sReg = new RegExp(temp),
+						_str1 = '\{\{\\#' + item + '\}\}',
+						_reg = new RegExp($.trim(_str1),'g');
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg,'');
+				}else if(token[0] == '^' && token[1] == item){
+					var temp = child[0][1],
+						// regTemp = /<([a-zA-Z][^>]*)+?>/,
+						regTemp = /<([a-zA-Z]+)+?/,
+						sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="!'+ item +'.value"'),
+						sReg = new RegExp(temp),
+						_str1 = '\{\{\\^' + item + '\}\}',
+						_reg = new RegExp($.trim(_str1),'g');
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg,'');
+				}else if(token[0] == '#' && (token[1] == item || token[1] == item.split('.')[0]) && Itemlen>1){
+					/* 这种情况表示是object中嵌套 ,要遍历一遍,由于vuejs是一次性渲染，所以这里需要将里层的{{xx}}修改*/
+					var innerChild = child;
+					for (var j = 0, tlen = innerChild.length; j < tlen; j++) {
+						if(innerChild[j][0] == '#' && item.split('.')[Itemlen-1] == innerChild[j][1]){
+							var temp = innerChild[j][4][0][1],
+							regTemp = /<([a-zA-Z]+)+?/,
+							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="' +(_prev ? (_prev + '.'): '')+ item.split('.')[Itemlen-1] +'.value"'),
+							sReg = new RegExp(temp),
+							_str1 = '\{\{\\#' + item.split('.')[Itemlen-1] + '\}\}',
+							_reg = new RegExp($.trim(_str1),'g');
+							
+							_that.tpl = _that.tpl.replace(sReg, sTemp);
+							_that.tpl = _that.tpl.replace(_reg,'');
+							$.each(innerChild[j][4],function(i,n){
+								if(n[0] == 'name'){
+									var _str2 = '\{\{\(' + n[1] + ')\}\}',
+										_reg1 = new RegExp($.trim(_str2),'g');
+								}
+								_that.tpl = _that.tpl.replace(_reg1,'{{' + (_prev ? (_prev + '.'): '') + '$1' + '}}');
+							});
+						}else if(innerChild[j][0] == '^' && item.split('.')[Itemlen-1] == innerChild[j][1]){
+							var temp = innerChild[j][4][0][1],
+								regTemp = /<([a-zA-Z]+)+?/,
+								sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="!' +(_prev ? (_prev + '.'): '')+ item.split('.')[Itemlen-1] +'.value"'),
+								sReg = new RegExp(temp),
+								_str1 = '\{\{\\^' + item.split('.')[Itemlen-1] + '\}\}',
+								_reg = new RegExp($.trim(_str1),'g');
+								_that.tpl = _that.tpl.replace(sReg, sTemp);
+								_that.tpl = _that.tpl.replace(_reg,'');
+								$.each(innerChild[j][4],function(i,n){
+									if(n[0] == 'name'){
+										var _str2 = '\{\{\(' + n[1] + ')\}\}',
+											_reg1 = new RegExp($.trim(_str2),'g');
+									}
+									_that.tpl = _that.tpl.replace(_reg1,'{{' + (_prev ? (_prev + '.'): '') + '$1' + '}}');
+								});
+						}
+					}
+					/*var temp = child[0][1],
+						regTemp = /<([a-zA-Z]+)+?/,
+						sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="' +(_prev ? (_prev + '.'): '')+ item +'.value"'),
+						sReg = new RegExp(temp),
+						_str1 = '\{\{\\#' + item + '\}\}',
+						_reg = new RegExp($.trim(_str1),'g');
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg,'');*/
+				}else if(token[0] == '^' && (token[1] == item || token[1] == item.split('.')[0]) && Itemlen>1){
+					/* 这种情况表示是object中嵌套 */
+					var innerChild = child;
+					for (var j = 0, tlen = innerChild.length; j < tlen; j++) {
+						if(innerChild[j][0] == '^' && item.split('.')[Itemlen-1] == innerChild[j][1]){
+							var temp = innerChild[j][4][0][1],
+							regTemp = /<([a-zA-Z]+)+?/,
+							sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="!' +(_prev ? (_prev + '.'): '')+ item.split('.')[Itemlen-1] +'.value"'),
+							sReg = new RegExp(temp),
+							_str1 = '\{\{\\#' + item.split('.')[Itemlen-1] + '\}\}',
+							_str2 = '\{\{\(' + item.split('.')[Itemlen-1] + ')\}\}',
+							_reg = new RegExp($.trim(_str1),'g'),
+							_reg1 = new RegExp($.trim(_str2),'g');
+							_that.tpl = _that.tpl.replace(sReg, sTemp);
+							_that.tpl = _that.tpl.replace(_reg,'');
+							_that.tpl = _that.tpl.replace(_reg1,'{{' + (_prev ? (_prev + '.'): '') + '$1' + '}}');
+						}
+					}
+					/*var temp = child[0][1],
+						// regTemp = /<([a-zA-Z][^>]*)+?>/,
+						regTemp = /<([a-zA-Z]+)+?/,
+						sTemp = temp.replace(regTemp, '<' + '$1' + ' ' + 'v-if="!' +(_prev ? (_prev + '.'): '')+ item +'.value"'),
+						sReg = new RegExp(temp),
+						_str1 = '\{\{\\^' + item + '\}\}',
+						_reg = new RegExp($.trim(_str1),'g');
+						_that.tpl = _that.tpl.replace(sReg, sTemp);
+						_that.tpl = _that.tpl.replace(_reg,'');*/
+				}
+					
+			}
 		}
-		// console.log(this.tokens);
 	};
 
 	// 编译{{/xxx}}
@@ -288,7 +390,7 @@ define(['jquery', 'underscore'], function($, _) {
 		}
 	};
 
-	/*// {{^xxx}}
+	// {{^xxx}}
 	Tpl2Vue.prototype.renderNone = function(parent, item) {
 		var _that = this;
 		if (parent) {
@@ -298,7 +400,7 @@ define(['jquery', 'underscore'], function($, _) {
 		} else {
 			this.tpl = _that.tpl.replace(symbolRe10, '<div v-if=' + '"' + '$1' + '.value">');
 		}
-	};*/
+	};
 
 	// render {{{xx}}}{{&xx}}
 	Tpl2Vue.prototype.renderHtml = function(parent, item) {
@@ -345,6 +447,8 @@ define(['jquery', 'underscore'], function($, _) {
 			return '';
 		}
 	};
+
+	
 
 	// getPropWithTag 获取模板中xx={{xx}} 的key数组
 	Tpl2Vue.prototype.getPropWithTag = function(tpl) {
@@ -675,9 +779,11 @@ define(['jquery', 'underscore'], function($, _) {
 
 	/**
 	 * 获取name在js对象中的值
+	 * flag 是否需要继续往下面找
 	 */
 	Context.prototype.lookup = function(name) {
-		var cache = this.cache;
+		var cache = this.cache,
+			that = this;
 
 		var value;
 		if (name in cache) {
@@ -693,7 +799,13 @@ define(['jquery', 'underscore'], function($, _) {
 					index = 0;
 
 					while (value != null && index < names.length)
-						value = value[names[index++]];
+					{
+						var name = names[index++];
+						if(that.getType(value) == 'object')
+							value = value[name];
+						else if(that.getType(value) == 'array')
+							value = value[0][name];
+					}
 				} else if (typeof context.view == 'object') {
 					value = context.view[name];
 				}
@@ -712,6 +824,28 @@ define(['jquery', 'underscore'], function($, _) {
 
 		// console.log(value)
 		return value;
+	};
+
+	// 判断数据类型
+	Context.prototype.getType = function(obj) {
+		var map = {
+			'[object Boolean]': 'boolean',
+			'[object Number]': 'number',
+			'[object String]': 'string',
+			'[object Function]': 'function',
+			'[object Array]': 'array',
+			'[object Data]': 'date',
+			'[object RegExp]': 'regExp',
+			'[object Undefined]': 'undefined',
+			'[object Null]': 'null',
+			'[object Object]': 'object'
+		};
+
+		if (obj instanceof Element) {
+			return 'element';
+		}
+
+		return map[Object.prototype.toString.call(obj)];
 	};
 	return Tpl2Vue;
 });

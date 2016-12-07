@@ -150,6 +150,30 @@ module.exports = function(grunt) {
                     src: '*.less',
                     dest: 'src/assets/components/page/modules/YX_N_M_DB08',
                     ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_6D5E',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_6D5E',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_97D8',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_97D8',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_0AA8',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_0AA8',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_92C9',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_92C9',
+                    ext: '.css'
                 }]
             }
         },
@@ -159,7 +183,7 @@ module.exports = function(grunt) {
                     'report': 'min'
                 },
                 files: {
-                    'assets/css/main.<%= grunt.template.today("yyyymmddHHMM") %>.min.css': ['src/assets/css/colorpicker.css', 'src/assets/css/page.css', 'src/assets/css/reset.css', 'src/assets/css/font-awesome.css', 'src/assets/css/pnotify.css']
+                    'assets/css/main.<%= grunt.template.today("yyyymmddHHMM") %>.min.css': ['src/assets/css/colorpicker.css', 'src/assets/css/page.css', 'src/assets/css/reset.css', 'src/assets/css/font-awesome.css', 'src/assets/css/pnotify.css','src/assets/css/rebase.css']
                 }
             },
             combineDev: {
@@ -284,6 +308,30 @@ module.exports = function(grunt) {
                     ext: '.css'
                 },{
                     expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_6D5E',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_6D5E',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_97D8',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_97D8',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_0AA8',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_S_M_0AA8',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_92C9',
+                    src: '*.css',
+                    dest: 'assets/components/page/modules/YX_N_M_92C9',
+                    ext: '.css'
+                },{
+                    expand: true,
                     cwd: 'src/assets/components/page/modules/yxRule',
                     src: '*.css',
                     dest: 'assets/components/page/modules/yxRule',
@@ -351,7 +399,11 @@ module.exports = function(grunt) {
                     'assets/components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache': 'src/assets/components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4.mustache',
                     'assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache': 'src/assets/components/page/modules/YX_N_M_46EB/YX_N_M_46EB.mustache',
                     'assets/components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9.mustache': 'src/assets/components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9.mustache',
-                    'assets/components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache': 'src/assets/components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache'
+                    'assets/components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache': 'src/assets/components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache',
+                    'assets/components/page/modules/YX_S_M_6D5E/YX_S_M_6D5E.mustache': 'src/assets/components/page/modules/YX_S_M_6D5E/YX_S_M_6D5E.mustache',
+                    'assets/components/page/modules/YX_S_M_97D8/YX_S_M_97D8.mustache': 'src/assets/components/page/modules/YX_S_M_97D8/YX_S_M_97D8.mustache',
+                    'assets/components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8.mustache': 'src/assets/components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8.mustache',
+                    'assets/components/page/modules/YX_N_M_92C9/YX_N_M_92C9.mustache': 'src/assets/components/page/modules/YX_N_M_92C9/YX_N_M_92C9.mustache'
                 }
             }
         },
@@ -360,7 +412,15 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: 'src/assets/css/fonts',
                 src: '**',
-                dest: 'assets/css/fonts/',
+                dest: 'assets/css/fonts/'
+            },
+            css:{
+                files:[{
+                   expand: true,
+                    cwd: 'src/assets/css',
+                    src: '*.css',
+                    dest: 'assets/css/'
+                }]
             },
             js:{
                 files: [{
@@ -483,6 +543,30 @@ module.exports = function(grunt) {
                     src: '*.js',
                     dest: 'assets/components/page/modules/YX_N_M_DB08',
                     ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_6D5E',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_6D5E',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_97D8',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_97D8',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_0AA8',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_S_M_0AA8',
+                    ext: '.js'
+                }, {
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_92C9',
+                    src: '*.js',
+                    dest: 'assets/components/page/modules/YX_N_M_92C9',
+                    ext: '.js'
                 }]
             }
         },
@@ -584,6 +668,14 @@ module.exports = function(grunt) {
                         'components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9VM',
                         'text!components/page/modules/YX_N_M_DB08/YX_N_M_DB08.mustache',
                         'components/page/modules/YX_N_M_DB08/YX_N_M_DB08VM',
+                        'text!components/page/modules/YX_S_M_6D5E/YX_S_M_6D5E.mustache',
+                        'components/page/modules/YX_S_M_6D5E/YX_S_M_6D5EVM',
+                        'text!components/page/modules/YX_S_M_97D8/YX_S_M_97D8.mustache',
+                        'components/page/modules/YX_S_M_97D8/YX_S_M_97D8VM',
+                        'text!components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8.mustache',
+                        'components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8VM',
+                        'text!components/page/modules/YX_N_M_92C9/YX_N_M_92C9.mustache',
+                        'components/page/modules/YX_N_M_92C9/YX_N_M_92C9VM',
                         'text!components/page/modules/yxRule/yxRule.mustache',
                         'components/page/modules/yxRule/yxRuleVM'
                     ],
@@ -698,6 +790,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
 
-    grunt.registerTask('build', ['htmlmin', 'cssmin', 'copy', 'uglify', 'imagemin', 'replace', 'requirejs']);
+    grunt.registerTask('build', ['htmlmin', 'cssmin', 'copy', 'uglify', 'replace', 'requirejs', 'imagemin']);
     grunt.registerTask('default', ['less', 'cssmin:combineDev', 'sass', 'watch']);
 };

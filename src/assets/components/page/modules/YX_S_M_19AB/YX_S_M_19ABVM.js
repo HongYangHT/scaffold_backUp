@@ -11,7 +11,8 @@ define([
 ],function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools){
 	var _default = {
 		contentInfo:{
-			bannerImage:'http://mimg.127.net/hz/uploader/20161118/14794552636840001.jpg'
+			bannerImage:'http://mimg.127.net/hz/uploader/20161129/14804085064791443.jpg',
+			link:'http://you.163.com/'
 		}
 	};
 	var YX_S_M_19AB = Vue.extend({
@@ -31,6 +32,21 @@ define([
 						var data = {
 								'contentInfo': {
 									'bannerImage': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.link.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'link': {
 										'value': old
 									}
 								}

@@ -118,21 +118,6 @@ define([
 					}
 				}
 			},
-			'contentInfo.stat_subject.value':{
-				'handler':function(value,old){
-					if(value){
-						var data = {
-								'contentInfo': {
-									'stat_subject': {
-										'value': old
-									}
-								}
-							},
-							_that = this;
-						this.$dispatch('changeDataDefault', this.id, data);	
-					}
-				}
-			},
 			'contentInfo.title.value':{
 				'handler':function(value,old){
 					if(value){

@@ -11,7 +11,8 @@ define([
 ],function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools){
 	var _default = {
 		contentInfo:{
-			goodsId: '77'
+			goodsId: '119',
+			sideImg: 'http://mimg.127.net/hz/uploader/20160829/14724404035690170.jpg'
 		},
 		temp:[{
 			"id": "1042007",
@@ -87,7 +88,7 @@ define([
 									id: v.detail.id,
 									title: v.detail.title,
 									simpleDesc: v.detail.simpleDesc,
-									primaryPicUrl: v.detail.primaryPicUrl,
+									primaryPicUrl: v.detail.primaryPicUrl + '?imageView&quality=95&thumbnail=264x264',
 									primarySkuId: v.detail.primarySkuId,
 									retailPrice: v.detail.retailPrice,
 									unitPrice: v.detail.unitPrice,
@@ -110,12 +111,12 @@ define([
 					}
 				}
 			},
-			'contentInfo.stat_subject.value':{
+			'contentInfo.sideImg.value':{
 				'handler':function(value,old){
 					if(value){
 						var data = {
 								'contentInfo': {
-									'stat_subject': {
+									'sideImg': {
 										'value': old
 									}
 								}

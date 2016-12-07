@@ -33,15 +33,18 @@ define(['jquery'], function($) {
 
         var expand = {},
             _expandStr = _that.splitExpand(result);
-        $.each(_expandStr, function(i, item) {
-            expand['' + _that.getQuery(item, 'name') + ''] = _that.getQuery(item, 'value');
-        });
-
+        if(_expandStr){    
+            $.each(_expandStr, function(i, item) {
+                expand['' + _that.getQuery(item, 'name') + ''] = _that.getQuery(item, 'value');
+            });
+        }
         return expand;
     };
 
     HandleData.prototype.splitExpand = function(expand) {
-        return expand.split('|');
+        if(expand)
+            return expand.split('|');
+        else return '';
     };
 
     HandleData.prototype.getQuery = function(str, name) {

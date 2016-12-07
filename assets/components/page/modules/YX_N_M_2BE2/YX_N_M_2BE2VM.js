@@ -162,21 +162,6 @@ define([
 					}
 				}
 			},
-			'contentInfo.stat_subject.value':{
-				'handler':function(value,old){
-					if(value){
-						var data = {
-								'contentInfo': {
-									'stat_subject': {
-										'value': old
-									}
-								}
-							},
-							_that = this;
-						this.$dispatch('changeDataDefault', this.id, data);	
-					}
-				}
-			},
 			'contentInfo.backgroundImage.value':{
 				'handler':function(value,old){
 					if(value){

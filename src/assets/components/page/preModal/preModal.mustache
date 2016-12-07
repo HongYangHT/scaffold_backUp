@@ -8,7 +8,7 @@
 				<div class="u-h" v-for="prop in yanxuan.modules">
 					<div class="u-t">{{prop.title}} <i class="fa fa-chevron-down" aria-hidden="true"></i></div>
 					<div class="u-flex-box-container">
-						<div class="u-flex-box" v-for="item in prop.modules" v-bind:class="{'u-flex-box-web':item.suitWeb,'u-flex-box-h5':item.suitH5}">
+						<div class="u-flex-box" v-for="item in prop.modules" v-bind:class="{'u-flex-box-web':item.suitWeb,'u-flex-box-h5':item.suitH5}" data-type="{{item.type}}">
 							<div class="u-flex-img">
 								<img alt="" data-src="{{item.zoom}}"/>
 							</div>

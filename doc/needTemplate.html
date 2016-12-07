@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>严选好物免费领取中</title>
+    <meta name="keywords" content="网易严选，严选，免费领，无印良品，MUJI，生活电商，制造商">
+    <meta name="description" content="严选好物免费领取中，先到先得>">
+    <link rel="shortcut icon" href="http://mimg.127.net/pub/common/favicon/yanxuan/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="http://mimg.127.net/pub/common/css/PSC_YX_PC_reset.css">
+    <style type="text/css">
+        body, h1, h2, h3, h4, h5, h6, p, form, input, textarea, button, th, td, ul, li { margin: 0; padding: 0; }
+        img { border: 0; outline: none; }
+        table { border-collapse: collapse; text-align: center; border: 1px solid #000000; }
+        th, td { border: 1px solid #000000; padding: 10px; }
+        body, textarea, select, input { color: #000000; font: 12px/21px 'Microsoft Yahei',STHeiti; }
+        body { width: 100%; min-width: 1140px; height: auto; position: relative; z-index: 1; }
+        a, button { cursor: pointer; text-decoration: none; }
+        a {color: #000;}
+        ul, li { list-style: none; }
+        img[src=""] { opacity: 0; filter: alpha(opacity=0); }
+        ::-ms-clear, ::-ms-reveal { display: none; }
+        input { outline: none; border: 0; }
+        ::-webkit-input-placeholder { color: #959595; }
+        ::-moz-placeholder { color: #959595; }
+        :-ms-input-placeholder { color: #959595; }
+        input:-moz-placeholder { color: #959595; }
+
+        .g-bd {width: 100%;background: #f9f9f9;position: relative; padding-bottom: 180px;}
+        .m-banner {position: relative; width: 100%;height: 637px;/*background: url("bannerBg.jpg") center no-repeat #fff;*/}
+        .m-banner-cont {position: relative; width: 1090px; height: 100%; margin: 0 auto;}
+        .u-getCoupon {display: block; width: 490px; height: 100%;}
+
+        .m-part {position: relative; width: 1140px; margin: 65px auto 0;min-height: 645px;}
+        .m-title {text-align: center; height: 40px; vertical-align: middle; font-size: 0;}
+        .m-title .u-line {display: inline-block; width: 46px; height: 1px; vertical-align: middle; background-color: #7c7c7c;}
+        .m-title .u-titleText {display: inline-block; width: 240px; height: 40px; line-height: 40px; font-size: 36px; text-align: center; text-indent: 18px; letter-spacing: 18px; vertical-align: middle;}
+
+        .m-goodsList {width: 100%; overflow: hidden;}
+        .u-goods {position: relative; float: left; margin: 65px 25px 0; width: 330px; height: 540px; line-height: 1;}
+        .u-maker {position: absolute; top: 10px; left: 12px; padding: 5px 16px; border: 1px solid #e2dbcc; background-color: #f5f3ef; font-size: 16px; color: #b4a078;}
+        .u-goods .u-goodsImg {position: relative; width: 330px; height: 417px; background-color: #fff;text-align: center;}
+        .u-goodsOptModal {position: absolute; display: none; top: 0; left: 0; width: 100%; height: 100%; background-color: #000; opacity: 0.6; -moz-opacity: 0.6; filter: alpha(opacity=60);}
+        .u-goodsOpt { position: absolute; display: none; font-size: 0; top: 188px; left: 64px; width: 204px; height: 40px; line-height: 40px; border-radius: 20px; background-color: #fff;}
+        .u-goodsOpt a { font-size: 12px; color: #1b1a1a;}
+        .u-goodsOpt a + a { margin-left: 25px;}
+        .u-goodsOpt .checkIcon {display: inline-block; margin-right: 5px; vertical-align: -1px; width: 12px; height: 12px; background: url("opt.png") top left no-repeat;}
+        .u-goodsOpt .cartIcon {display: inline-block; margin-right: 5px; vertical-align: -1px;width: 14px; height: 12px;background: url("opt.png") top right no-repeat;}
+        .u-goods .u-goodsImg:hover .u-goodsOpt, .u-goods .u-goodsImg:hover .u-goodsOptModal {display: block;}
+        .u-goods .u-goodsImg img {margin-top: 43px; width: 330px; height: 330px;}
+        .u-goods .u-intro {margin-top: 30px;text-align: center;}
+        .u-goods .u-intro .title {font-size: 20px; color: #333333; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;}
+        .u-goods .u-intro .title:hover { color: #b63223; text-decoration: underline;}
+        .u-goods .u-intro .info {font-size: 12px; color: #999;margin-top: 10px;font-family: SimSun, STHeiti;}
+        .u-goods .u-intro .price {margin-top: 12px; color: #b63223; font-size: 22px;font-weight: bold;}
+        .u-goods .u-intro .unit {font-size: 16px;}
+
+        .g-pop { width: 100%; }
+        .m-pop {background: #fff; z-index: 100;}
+        .u-modal { position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 99; background-color: #000; opacity: 0.6; -moz-opacity: 0.6; filter: alpha(opacity=60); }
+        .u-close { position: absolute;width: 24px;height: 24px;top: 20px;right: 20px; cursor: pointer; background: url(http://mimg.127.net/hz/uploader/20160309/14575123070030581.png) no-repeat;}
+        .m-pop-remind { position: fixed; top: 50%; left: 50%; width: 384px; height: 130px; padding: 48px 0 34px; margin: -150px 0 0 -192px; }
+        .m-pop-remind .u-tlt { width: 300px; height: 48px; line-height: 48px; font-size: 20px; text-align: center; color: #ab2b2b; padding: 0 40px; }
+        .m-pop-remind .u-btn { display: block; margin: 17px auto 0; width: 300px; height: 48px; line-height: 48px; text-align: center; color: #fff; font-size: 18px; background: #ab2b2b; }
+
+        .f-hide {display: none;}
+        .f-col6 {width: 50%;}
+        .f-font-red { color: #b63323; }
+
+    </style>
+</head>
+<body>
+<!-- 严选 start -->
+<div class="psc-m-hd">
+    <div class="psc-m-hdiframe J_hdIframe">
+        <iframe src="/activity/hd" class="J_iframeHD" allowtransparency="true" frameBorder="0" scrolling="no"></iframe>
+    </div>
+</div>
+<div class="g-bd">
+    <div class="m-banner">
+        <div class="m-banner-cont">
+            <a href="javascript:;" target="_blank" class="u-getCoupon J_log" data-log="立即免费领"></a>
+        </div>
+    </div>
+    <div class="m-part m-part-1">
+        <div class="m-title">
+            <div class="u-line"></div>
+            <div class="u-titleText">热销商品</div>
+            <div class="u-line"></div>
+        </div>
+        <div class="m-goodsList">
+            <!--<div class="u-goods">
+                <div class="u-goodsImg">
+                    <div class="u-maker">MUJI制造商</div>
+                    <img src="" data-original="goods1.png" class="J_lazyload">
+                    <div class="u-goodsOptModal"></div>
+                    <div class="u-goodsOpt">
+                        <a href="javascript:;" class="u-btn-check J_btn_check"><span class="checkIcon"></span>查看详情</a>
+                        <a href="javascript:;" class="u-btn-cart J_btn_cart"><span class="cartIcon"></span>加入购物车</a>
+                    </div>
+                </div>
+                <div class="u-intro">
+                    <a href="javascript:;" class="title">皇室御用头层水牛皮席</a>
+                    <p class="info">头层牛皮，经久耐用，持久恒温</p>
+                    <p class="price"><span class="unit">&yen;</span>2199</p>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    <div class="m-part m-part-2">
+        <div class="m-title">
+            <div class="u-line"></div>
+            <div class="u-titleText">新品推荐</div>
+            <div class="u-line"></div>
+        </div>
+        <div class="m-goodsList">
+        </div>
+    </div>
+</div>
+<div class="g-pop">
+    <div class="u-modal f-hide J_modal"></div>
+    <div class="m-pop m-pop-remind f-hide J_pop_remind J_pop">
+        <a href="javascript:;" class="u-close J_close"></a>
+        <p class="u-tlt" id="txtRemind">商品已下架!</p>
+        <a href="javascript:;" class="u-btn f-blink J_close">确定</a>
+    </div>
+</div>
+<!-- 严选 start -->
+<div class="psc-m-loginbox">
+    <div class="psc-m-youlogin">
+        <div class="psc-m-hd-login">
+            <h2 class="title psc-J_loginFrameHD">网易帐号登录</h2>
+        </div>
+        <div id="J_youLogin" class="psc-m-mn" allowtransparency="true">
+        </div>
+        <a href="javascript:;" class="psc-u-close psc-J_closeYouLogin"></a>
+    </div>
+    <i class="bg"></i>
+</div>
+<div class="m-fixedtool">
+    <!--<a href="javascript:;" class="u-memory J_memory">
+        <i></i>
+        <p class="text1">换季特卖</p>
+        <p class="text2">送记忆枕</p>
+    </a>-->
+    <a href="javascript:;" class="u-customerService J_customerService">
+        <i></i>
+        <p class="text">在线客服</p>
+    </a>
+    <a href="javascript:;" class="u-goTop J_goTop">
+        <i></i>
+        <p class="text">回顶部</p>
+    </a>
+</div>
+<iframe src="/activity/ft" class="J_iframeFT psc-g-ft"></iframe>
+<!-- end -->
+<script type="text/javascript" src="http://mimg.127.net/pub/common/js/jquery-1.11.1.js"></script>
+<script src="https://qiyukf.com/script/96ee78c0d9633761581e89d5019c5595.js" defer="" async="" compress="no-compress"></script>
+<script type="text/javascript" src="https://webzj.reg.163.com/webapp/javascript/page/json3.js" compress="no-compress"></script>
+<script type="text/javascript" src="https://webzj.reg.163.com/webapp/javascript/message.js" compress="no-compress"></script>
+<script type="text/javascript" src="http://mimg.127.net/pub/common/js/yx.1.0.1.js"></script>
+<script type="text/javascript" src="http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js"></script>
+<script type="text/javascript" src="http://mimg.127.net/pub/common/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="http://mimg.127.net/pub/common/js/PSC_C_statistics.js"></script>
+<script type="text/javascript">
+    $(function() {
+        var _protocal = '';
+        if((/^https/ig).test(window.location.protocol)){
+            _protocal = 'https://';
+        } else {
+            _protocal = 'http://';
+        }
+        var log = {
+            init: function(_activity, _type) {
+                var _this = this;
+                _this.act = _activity;
+                _this.tp = _type;
+                _this.sendLog({
+                    key: '活动落地页总'
+                });
+                _this.listen();
+            },
+            listen: function() {
+                var _this = this;
+                $('body').on('click', '.J_log', function() {
+                    var _name = $(this).attr('data-log');
+                    _this.sendLog({
+                        key: _name
+                    });
+                });
+            },
+            sendLog: function(_data) {
+                var _this = this;
+                var _params = [];
+                for (var _p in _data) {
+                    if (_data.hasOwnProperty(_p)) {
+                        _params.push('' + _p + '=' + _data[_p]);
+                    }
+                }
+                _params.push('rid=' + new Date().getTime());
+                _params.push('activity='+_this.act);
+                _params.push('type='+_this.tp);
+                var _url = _protocal + 'stat.mail.163.com/activity/a.js?' + _params.join('&');
+                _url = encodeURI(_url);
+                _this.addScript(_url);
+            },
+            addScript: function(_src) {
+                var _this = this;
+                var _script = document.createElement('script');
+                _script.async = 'async';
+                _script.src = _src;
+                document.getElementsByTagName('head')[0].appendChild(_script);
+            }
+        };
+        log.init('yxPCfree', 'web'); //初始化，需要填入activity和type
+
+        var oPage = {
+            init: function() {
+                var _this = this;
+                _this.uid = '';
+//                window.PSC_YX_API.trace();
+                _this.initPage();
+                _this.renderGoods();
+                _this.fLazyload();
+                _this.bindEvents();
+            },
+            initPage: function() {
+                $.ajax({
+                    url: 'http://mail.163.com/dashi/activity/act3/actcenter/act/getactlist.js?spreadId=45',
+                    type: 'get',
+                    dataType: 'jsonp',
+                    async : false,
+                    cache : false,
+                    success: function(data) {
+                        var list = data.result;
+                        var demandData = {};
+                        $.each(list, function(i) {
+                            if (list[i].demandId == 732) {
+                                demandData = list[i];
+                                return false;
+                            }
+                            return true;
+                        });
+                        var bgStr = 'url("' + demandData.imagePath + '") center no-repeat ' + demandData.backColor;
+                        $('.m-banner').css({background: bgStr});
+                        $('.u-getCoupon').attr('href', demandData.link);
+                    },
+                    error: function(xhr, errorType, error) {
+                    }
+                });
+            },
+            bindEvents: function () {
+                var _this = this;
+                $('.J_close').on('click', function() {
+                    _this.fCloseAll();
+                });
+                $('body').on('click', '.J_btn_cart', function() {
+                    var _img = $(this).attr('data-img'),
+                        _skuid = $(this).attr('data-skuid');
+                    window.PSC_YX_API.addCart(_skuid, _img, 1, function(_res) {
+                        var _code = _res.code;
+                        if(_code == 200) {
+                            window.PSC_YX_API.cartPcAnimate(_img, 2000);
+                        } else {
+                            _this.fOpenPop('.J_pop_remind', '商品已下架!');
+                        }
+                    });
+                });
+                $('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+                    PSC_C_statistics.normalGoods(this);
+                });
+                $('body').on('click', function() {
+                    if (_this.firstOpt == false) {
+                        log.sendLog({
+                            key: '用户操作'
+                        });
+                        _this.firstOpt = true;
+                    }
+                });
+                $(window).on('scroll', function() {
+                    if (_this.firstOpt == false) {
+                        log.sendLog({
+                            key: '用户操作'
+                        });
+                        _this.firstOpt = true;
+                    }
+                });
+            },
+            renderGoods: function() {
+                var _this = this;
+
+                $.ajax({
+                    url: 'http://activity.mail.163.com/hdapi/api2/goods/ajax/getGroups.do?ids=121,122',
+                    type: 'get',
+                    dataType: 'jsonp',
+                    async : false,
+                    cache : false,
+                    success: function(data) {
+                        if(data && data.code){
+                            switch(data.code){
+                                case 200:
+                                    var groupList = data.content;
+                                    for (var i = 0; i < groupList.length; i++) {
+                                        var goodsList = groupList[i].goodsList;
+                                        var tpl = '';
+                                        for (var j = 0; j < goodsList.length; j++) {
+                                            var maker = _this.rGetExtend(goodsList[j].detail.extend, 'maker');
+                                            if (maker == '-') maker = '';
+                                            tpl += '<div class="u-goods">'
+                                                 +     '<div class="u-goodsImg">'
+                                                 +         ((maker == '') ? '' : '<div class="u-maker">' + maker + '</div>')
+                                                 +         '<img src="" data-original="' + goodsList[j].detail.primaryPicUrl + '?imageView&quality=60&thumbnail=330x330" class="J_lazyload">'
+                                                 +         '<div class="u-goodsOptModal"></div>'
+                                                 +         '<div class="u-goodsOpt">'
+                                                 +             '<a target="_blank" href="http://you.163.com/item/detail?id=' + goodsList[j].detail.id + '&_stat_subject=580" class="u-btn-check PSC_J_normal_statistics_Goods"><span class="checkIcon"></span>查看详情</a>'
+                                                 +             '<a href="javascript:;" class="u-btn-cart J_btn_cart PSC_skuid_' + goodsList[j].detail.primarySkuId + ' PSC_J_normal_statistics_Goods" data-skuid="'+ goodsList[j].detail.primarySkuId + '" data-img="'+goodsList[j].detail.primaryPicUrl+'?imageView&quality=60&thumbnail=330x330"><span class="cartIcon"></span>加入购物车</a>'
+                                                 +         '</div>'
+                                                 +     '</div>'
+                                                 +     '<div class="u-intro">'
+                                                 +         '<a target="_blank" href="http://you.163.com/item/detail?id=' + goodsList[j].detail.id + '&_stat_subject=yxhuanji" class="title PSC_J_normal_statistics_Goods">' + goodsList[j].detail.title + '</a>'
+                                                 +         '<p class="info">' + goodsList[j].detail.simpleDesc + '</p>'
+                                                 +         '<p class="price"><span class="unit">&yen;</span>' + goodsList[j].detail.unitPrice + '</span></p>'
+                                                 +     '</div>'
+                                                 + '</div>';
+                                        }
+                                        $('.m-part-' + (i + 1) + ' .m-goodsList').html(tpl);
+                                    }
+                                    _this.fLazyload();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    },
+                    error: function(xhr, errorType, error) {
+                    }
+                });
+            },
+            rGetExtend: function(extend, name) {
+                var reg = new RegExp('(^|\\|)name=' + name + '(.*?)value=(.*?)\\&');
+                var result =  extend.match(reg);
+                return result ? result[3] : '';
+            },
+            fLazyload: function() {
+                var _this = this;
+                $('.J_lazyload').lazyload({
+                    threshold : 50,
+                    effect : 'fadeIn'
+                });
+            },
+            fOpenPop: function(_obj, _txt) {
+                var _this = this;
+                !!_txt && ($('#txtRemind').html(_txt));
+                $('.J_modal').fadeIn(200);
+                $(_obj).fadeIn(200);
+            },
+            fCloseAll: function() {
+                var _this = this;
+                $('.J_modal').fadeOut(200);
+                $('.J_pop').fadeOut(200);
+            }
+        };
+        oPage.init();
+    });
+</script>
+</body>
+</html>
