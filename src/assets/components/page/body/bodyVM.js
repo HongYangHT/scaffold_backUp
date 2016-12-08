@@ -92,7 +92,7 @@ define([
                 var ajaxDeferredArr = [];
                 // 增加rebase.css
                 ajaxDeferredArr.push($.ajax({
-                    url: 'assets/css/rebase.css',
+                    url: 'assets/css/reset.css',
                     type: 'GET',
                     dataType:'text',
                     success: function(data) {

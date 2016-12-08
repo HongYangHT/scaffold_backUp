@@ -188,7 +188,7 @@
   color: #333;
   font-size: 14px;
   line-height: 30px;
-  font-weight: normal;
+  font-weight: bold;
   text-align: center;
 }
 .YX-N-M-92C9 .u-92C9-product-bd .u-92C9-name a {
@@ -561,7 +561,7 @@
     color: #333;
     font-size: .28rem;
     line-height: .4rem;
-    font-weight: normal;
+    font-weight: bold;
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;

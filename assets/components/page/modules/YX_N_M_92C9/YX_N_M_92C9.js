@@ -91,38 +91,40 @@
                     _subject = subject || $(element).find('.stat_subject').val();
                 $.each(_goods, function(k, v) {
                     var _detail = v.detail;
-                    var extend = new HandleData().init(_detail.extend ? _detail.extend : '');
-                    _html += [
-                        '<li class="u-92C9-item">',
-                        '<div class="u-92C9-product">',
-                        '<div class="u-92C9-product-hd">',
-                        '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" title="' + _detail.title + '" target="_blank" class="PSC_J_normal_statistics_Goods u-92C9-link">',
-                        '<img class="u-92C9-img J_lazyload" data-original="' + _detail.primaryPicUrl + '?imageView&quality=95&thumbnail=245x245" alt="韩式帆布电脑双肩包">',
-                        '</a>',
-                        (_detail.newItemFlag ? '<span class="u-92C9-flag">新品</span>' : ''),
-                        '<div class="u-92C9-operate">',
-                        '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn u-92C9-buy J_92C9_buy">立即购买</a>',
-                        '<a href="javascript:;" target="_self" class="u-92C9-btn u-92C9-cart J_92C9_cart" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
-                        '</div>',
-                        '</div>',
-                        '<div class="u-92C9-product-bd">',
-                        '<h4 class="u-92C9-name">',
-                        '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" title="' + _detail.title + '" target="_blank">' + _detail.title + '</a>',
-                        '</h4>',
-                        (extend.maker ? '<p class="m-92C9-marker"><span class="u-92C9-marker">' + maker + '</span><p>' : '<p class="m-92C9-simpleDesc"><span class="u-92C9-simpleDesc">' + _detail.simpleDesc + '</span></p>'),
-                        '<p class="u-92C9-price">',
-                        (extend.coupon ? '<a href="javascript:;" target="_blank" class="u-92C9-coupon"></a>' : ''),
-                        '<span class="u-92C9-retailPrice">' + _detail.retailPrice + '</span>',
-                        '<span class="u-92C9-unitPrice">' + _detail.unitPrice + '</span>',
-                        '</p>',
-                        '<div class="m-92C9-btn-group">',
-                        '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn-group u-92C9-btn-buy J_92C9_btn_buy">立即购买</a>',
-                        '<a href="javascript:;" target="_self" class="u-92C9-btn-group u-92C9-btn-cart J_92C9_btn_cart" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
-                        '</div>',
-                        '</div>',
-                        '</div>',
-                        '</li>',
-                    ].join('');
+                    var extend = new HandleData(_detail.extend ? _detail.extend : '').init();
+                    if(!_detail.underShelf){
+                        _html += [
+                            '<li class="u-92C9-item">',
+                            '<div class="u-92C9-product">',
+                            '<div class="u-92C9-product-hd">',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" title="' + _detail.title + '" target="_blank" class="PSC_J_normal_statistics_Goods u-92C9-link">',
+                            '<img class="u-92C9-img J_lazyload" data-original="' + _detail.primaryPicUrl + '?imageView&quality=95&thumbnail=245x245" alt="韩式帆布电脑双肩包">',
+                            '</a>',
+                            (_detail.newItemFlag ? '<span class="u-92C9-flag">新品</span>' : ''),
+                            '<div class="u-92C9-operate">',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn u-92C9-buy J_92C9_buy">立即购买</a>',
+                            '<a href="javascript:;" target="_self" class="u-92C9-btn u-92C9-cart J_92C9_cart" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
+                            '</div>',
+                            '</div>',
+                            '<div class="u-92C9-product-bd">',
+                            '<h4 class="u-92C9-name">',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" title="' + _detail.title + '" target="_blank">' + _detail.title + '</a>',
+                            '</h4>',
+                            (extend.maker ? '<p class="m-92C9-marker"><span class="u-92C9-marker">' + extend.maker + '</span><p>' : '<p class="m-92C9-simpleDesc"><span class="u-92C9-simpleDesc">' + _detail.simpleDesc + '</span></p>'),
+                            '<p class="u-92C9-price">',
+                            (extend.coupon ? '<a href="'+extend.coupon+'" target="_blank" class="u-92C9-coupon"></a>' : ''),
+                            '<span class="u-92C9-retailPrice">' + _detail.offPrice + '</span>',
+                            (parseFloat(_detail.offPrice) == parseFloat(_detail.unitPrice) ? '':'<span class="u-92C9-unitPrice">' + _detail.unitPrice + '</span>'),
+                            '</p>',
+                            '<div class="m-92C9-btn-group">',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn-group u-92C9-btn-buy J_92C9_btn_buy">立即购买</a>',
+                            '<a href="javascript:;" target="_self" class="u-92C9-btn-group u-92C9-btn-cart J_92C9_btn_cart" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
+                            '</div>',
+                            '</div>',
+                            '</div>',
+                            '</li>',
+                        ].join('');
+                    }
                 });
                 $(element).find('ul').empty().append(_html);
                 self.lazyload();
@@ -181,10 +183,11 @@
             window.PSC_YX_API.addCart(skuId, img, 1, function(_res) {
                 var _code = _res.code;
                 if (_code == 200) {
-                    window.PSC_YX_API.cartPcAnimate(img, 2000);
                     if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
                         UA.versions.iPhone || UA.versions.iPad) {
                         window.PSC_YX_API.addToast('成功加入购物车', 300);
+                    }else{
+                        window.PSC_YX_API.cartPcAnimate(img, 2000);
                     }
                 } else {
                     if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||

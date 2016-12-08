@@ -40,8 +40,10 @@
 								{{#coupon}}
 									<a href="{{coupon}}" target="_blank" class="u-92C9-coupon"></a> 
 								{{/coupon}}             
-								<span class="u-92C9-retailPrice">{{retailPrice}}</span>
-								<span class="u-92C9-unitPrice">{{unitPrice}}</span>
+								<span class="u-92C9-retailPrice">{{offPrice}}</span>
+								{{#unitPrice}}
+									<span class="u-92C9-unitPrice">{{unitPrice}}</span>
+								{{/unitPrice}}
 							</p>							
 						</div>
 					</div>

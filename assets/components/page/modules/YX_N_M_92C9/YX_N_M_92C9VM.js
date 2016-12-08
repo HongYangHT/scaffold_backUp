@@ -25,9 +25,10 @@ define([
 			sellVolume: 1,
 			simpleDesc: "日式萌趣设计，环保安全",
 			title: "儿童日式卡通储蓄罐",
-			unitPrice: "69",
+			unitPrice: "",
 			maker:'MUJI制造商',
-			coupon:'http://you.163.com'
+			coupon:'http://you.163.com',
+			underShelf:false
 		},{
 			id: "1033000",
 			newItemFlag: false,
@@ -38,9 +39,10 @@ define([
 			sellVolume: 1,
 			simpleDesc: "贴心甄选，诚意之礼",
 			title: "新生彩棉初衣礼盒", 
-			unitPrice: "399",
+			unitPrice: "",
 			maker:'',
-			coupon:'http://you.163.com'
+			coupon:'http://you.163.com',
+			underShelf:false
 		},{
 			id: "1055015",
 			newItemFlag: false,
@@ -51,9 +53,10 @@ define([
 			sellVolume: 1,
 			simpleDesc: "亲肤舒适，呵护宝贝的每一寸肌肤",
 			title: "新生彩棉初衣礼盒",
-			unitPrice: "399",
+			unitPrice: "",
 			maker:'MUJI制造商',
-			coupon:'http://you.163.com'
+			coupon:'http://you.163.com',
+			underShelf:false
 		},{
 			id: "1061002",
 			newItemFlag: false,
@@ -66,7 +69,8 @@ define([
 			title: "日式儿童棉花被芯500G",
 			unitPrice: "199",
 			maker:'',
-			coupon:'http://you.163.com'
+			coupon:'http://you.163.com',
+			underShelf:false
 		}]
 	};
 	var YX_N_M_92C9 = Vue.extend({
@@ -104,12 +108,13 @@ define([
 									primaryPicUrl: v.detail.primaryPicUrl + '?imageView&quality=95&thumbnail=245x245',
 									primarySkuId: v.detail.primarySkuId,
 									retailPrice: v.detail.retailPrice,
-									unitPrice: v.detail.unitPrice,
+									unitPrice: (parseFloat(v.detail.unitPrice) == parseFloat(v.detail.offPrice) ? '' : v.detail.unitPrice),
 									offPrice: v.detail.offPrice,
 									sellVolume: v.detail.sellVolume,
 									newItemFlag: v.detail.newItemFlag,
 									maker:'',
-									coupon:''
+									coupon:'',
+									underShelf:false
 								},extend);
 							});
 							var tempData = $.extend({}, _that._data, new Data2Vue({
