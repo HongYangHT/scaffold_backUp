@@ -6,6 +6,5 @@ node_modules
 .npm
 .sass-cache
 node_modules/
-app.js
 .scssc
 dist/
