@@ -90,8 +90,18 @@
                     _html = '',
                     _subject = subject || $(element).find('.stat_subject').val();
                 $.each(_goods, function(k, v) {
-                    var _detail = v.detail;
+                    var _detail = v.detail,
+                        sellVolumeId = _detail.primarySkuId;
                     var extend = new HandleData(_detail.extend ? _detail.extend : '').init();
+                    for(var i=0, len = _detail.skuList.length;i<len;i++){
+                        if(_detail.skuList[i].sellVolume && _detail.skuList[i].id == _detail.primarySkuId){
+                            sellVolumeId = _detail.primarySkuId;
+                            break;
+                        }else if(_detail.skuList[i].sellVolume){
+                            sellVolumeId = _detail.skuList[i].id;
+                            break;
+                        }
+                    }
                     if(!_detail.underShelf){
                         _html += [
                             '<li class="u-92C9-item">',
@@ -103,7 +113,7 @@
                             (_detail.newItemFlag ? '<span class="u-92C9-flag">新品</span>' : ''),
                             '<div class="u-92C9-operate">',
                             '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn u-92C9-buy J_92C9_buy">立即购买</a>',
-                            '<a href="javascript:;" target="_self" class="u-92C9-btn u-92C9-cart J_92C9_cart" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
+                            '<a href="javascript:;" target="_self" class="u-92C9-btn u-92C9-cart J_92C9_cart" data-skuid="' + sellVolumeId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
                             '</div>',
                             '</div>',
                             '<div class="u-92C9-product-bd">',
@@ -118,7 +128,7 @@
                             '</p>',
                             '<div class="m-92C9-btn-group">',
                             '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn-group u-92C9-btn-buy J_92C9_btn_buy">立即购买</a>',
-                            '<a href="javascript:;" target="_self" class="u-92C9-btn-group u-92C9-btn-cart J_92C9_btn_cart" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
+                            '<a href="javascript:;" target="_self" class="u-92C9-btn-group u-92C9-btn-cart J_92C9_btn_cart" data-skuid="' + sellVolumeId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
                             '</div>',
                             '</div>',
                             '</div>',
@@ -213,10 +223,11 @@
                             window.PSC_YX_API.addCart(skuId, img, 1, function(_res) {
                                 var _code = _res.code;
                                 if (_code == 200) {
-                                    window.PSC_YX_API.cartPcAnimate(img, 2000);
                                     if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
                                         UA.versions.iPhone || UA.versions.iPad) {
                                         window.PSC_YX_API.addToast('成功加入购物车', 300);
+                                    }else{
+                                        window.PSC_YX_API.cartPcAnimate(img, 2000);
                                     }
                                 } else {
                                     if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||

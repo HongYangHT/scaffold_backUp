@@ -1,0 +1,12 @@
+ <div class="YX-S-M-EE29 m-section-module" data-h55970f92="bannerImage">
+    <div class="m-EE29-img-wrap">
+    	{{^contentInfo.link}}
+    		<img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload J_needImage"/>
+    	{{/contentInfo.link}}
+    	{{#contentInfo.link}}
+    		<a href="{{contentInfo.link}}" target="_blank">
+    			<img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload J_needImage"/>
+    		</a>
+    	{{/contentInfo.link}}	
+    </div>
+</div>

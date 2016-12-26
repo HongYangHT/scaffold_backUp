@@ -18,7 +18,8 @@ define(['jquery', 'model/base'], function($, BaseModel) {
 			if (options.compress == 'nos') {
 				options.url = 'http://pub.mail.163.com/uploader/ajax/uploadBinary2Nos.m';
 			} else {
-				options.url = !options.compress ? _baseURL + 'nodejs/uploadImg.do' : 'http://pub.mail.163.com/uploader/ajax/uploadBinary.m';
+				// options.url = !!options.compress ? _baseURL + 'nodejs/uploadImg.do' : 'http://pub.mail.163.com/uploader/ajax/uploadBinary.m';
+				options.url = !!options.compress ? 'http://pub.mail.163.com/uploader/ajax/uploadBinary.m':  _baseURL + 'nodejs/uploadImg.do';
 			}
 			return this.post(options);
 		}

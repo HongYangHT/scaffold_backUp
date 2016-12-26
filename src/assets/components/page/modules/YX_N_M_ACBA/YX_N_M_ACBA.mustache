@@ -1,0 +1,34 @@
+<div class="YX-N-M-ACBA">
+	<div class="J_module_info f-hide" style="display: none;">
+        <div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+    </div>
+	{{#contentInfo.title}}
+	<div class="m-ACBA-title">
+		<div class="u-ACBA-line"></div>
+		<div class="u-ACBA-title" data-h55970f92="title">{{contentInfo.title}}</div>
+		<div class="u-ACBA-line"></div>
+	</div>
+	{{/contentInfo.title}}
+	<div class="m-ACBA-goodsList">
+		{{#temp}}
+			<div class="u-ACBA-good">
+				<div class="u-ACBA-img">
+					<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">
+					{{#maker}}<div class="u-ACBA-maker">{{maker}}</div>{{/maker}}
+					<div class="m-ACBA-modal">
+						<div class="u-ACBA-modal"></div>
+						<div class="u-ACBA-opt">
+							<a target="_blank" href="http://you.163.com/item/detail?id={{id}}&_stat_subject=580" class="u-btn-check PSC_J_normal_statistics_Goods">查看详情</a>
+							<a href="javascript:;" class="u-btn-cart J_btn_cart PSC_J_normal_statistics_Goods" data-skuid="{{id}}" data-img="{{primaryPicUrl}}">加入购物车</a>
+						</div>
+					</div>
+				</div>
+				<div class="u-ACBA-intro">
+					<a target="_blank" href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" class="u-ACBA-name PSC_J_normal_statistics_Goods">{{title}}</a>
+					<p class="u-ACBA-info">{{simpleDesc}}</p>
+					<p class="u-ACBA-price">{{unitPrice}}</p>
+				</div>
+			</div>
+		{{/temp}}
+	</div>
+</div>

@@ -45,6 +45,55 @@ define([
 						banner:{
 							title:'Banner模块',
 							modules:[{
+								'img': 'https://mimg.127.net/hz/uploader/20161220/14822229722431545.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161220/14822229722431545.jpg',
+								'value': 'YX_S_M_A86B',
+								'type': 'YX_S_M_A86B',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161219/14821145858471145.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161219/14821145858471145.jpg',
+								'value': 'YX_S_M_EE29',
+								'type': 'YX_S_M_EE29',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161219/14821178216331156.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161219/14821178216331156.jpg',
+								'value': 'YX_S_M_4FDB',
+								'type': 'YX_S_M_4FDB',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161219/14821507028151318.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161219/14821507028151318.jpg',
+								'value': 'YX_S_M_07DA',
+								'type': 'YX_S_M_07DA',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161220/14822033145081424.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161220/14822033145081424.jpg',
+								'value': 'YX_S_M_BFA7',
+								'type': 'YX_S_M_BFA7',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161216/14818742150761006.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161216/14818742150761006.jpg',
+								'value': 'YX_S_M_51E1',
+								'type': 'YX_S_M_51E1',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
+								'value': 'YX_S_M_3DA7',
+								'type': 'YX_S_M_3DA7',
+								'suitWeb': true,
+								'suitH5': true
+							},{
 								'img': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
 								'value': 'YX_S_M_97D8',
@@ -60,8 +109,8 @@ define([
 								'suitWeb': true,
 								'suitH5': true
 							},{
-								'img': 'http://mimg.127.net/hz/uploader/20161129/14804085064791443.jpg',
-								'zoom': 'http://mimg.127.net/hz/uploader/20161129/14804085064791443.jpg',
+								'img': 'https://mimg.127.net/hz/uploader/20161226/14827198248232662.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161226/14827198248232662.jpg',
 								'value': 'YX_S_M_19AB',
 								'type': 'YX_S_M_19AB',
 								'suitWeb': true,
@@ -99,6 +148,41 @@ define([
 						GoodsModules:{
 							title:'商品位模块(接入goods系统)',
 							modules:[{
+								'img': 'https://mimg.127.net/hz/uploader/20161221/14823124571861834.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161221/14823124571861834.jpg',
+								'value': 'YX_N_M_B278',
+								'type': 'YX_N_M_B278',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161221/14823032926141800.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161221/14823032926141800.jpg',
+								'value': 'YX_N_M_C1C3',
+								'type': 'YX_N_M_C1C3',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161216/14818543574380739.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161216/14818543574380739.jpg',
+								'value': 'YX_N_M_FDC0',
+								'type': 'YX_N_M_FDC0',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161212/14815242485321232.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161212/14815242485321232.jpg',
+								'value': 'YX_N_M_EAB5',
+								'type': 'YX_N_M_EAB5',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20161209/14812666937120883.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161209/14812666937120883.jpg',
+								'value': 'YX_N_M_ACBA',
+								'type': 'YX_N_M_ACBA',
+								'suitWeb': true,
+								'suitH5': false
+							},{
 								'img': 'https://mimg.127.net/hz/uploader/20161205/14809274258960399.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809274258960399.jpg',
 								'value': 'YX_N_M_92C9',
@@ -173,65 +257,20 @@ define([
 								'suitWeb': true,
 								'suitH5': false
 							}]
+						},
+						rule:{
+							title:'活动规则模块',
+							modules:[{
+								'img': 'https://mimg.127.net/hz/uploader/20161221/14822859093801764.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20161221/14822859093801764.jpg',
+								'value': 'YX_S_M_20BC',
+								'type': 'YX_S_M_20BC',
+								'suitWeb': true,
+								'suitH5': true
+							}]
 						}
 					}
 				},
-				/*yanxuan: {
-					isYanxuan: true,
-					modules: [{
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714486151576.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485361568.jpg',
-						'value': 'yxhd',
-						'type': 'yxhd'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714486221577.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485441569.jpg',
-						'value': 'yxBanner',
-						'type': 'yxBanner'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714484941562.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485561570.jpg',
-						'value': 'yxBanner2',
-						'type': 'yxBanner2'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485001563.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485661571.jpg',
-						'value': 'yxBackModule',
-						'type': 'yxBackModule'
-					},
-					{
-						'img': 'http://mimg.127.net/hz/uploader/20161028/14776529914842415.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161028/14776529914842415.jpg',
-						'value': 'YX_N_M_9BBD',
-						'type': 'YX_N_M_9BBD'
-					},{
-						'img': 'http://mimg.127.net/hz/uploader/20161101/14779796005773817.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161101/14779796005773817.jpg',
-						'value': 'YX_N_M_2BE2',
-						'type': 'YX_N_M_2BE2'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485071564.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485771572.jpg',
-						'value': 'yxBackModule2',
-						'type': 'yxBackModule2'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485191566.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485981574.jpg',
-						'value': 'yxRule',
-						'type': 'yxRule'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714486091575.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485261567.jpg',
-						'value': 'yxTemp',
-						'type': 'yxTemp'
-					}, {
-						'img': 'http://mimg.127.net/hz/uploader/20161011/14761714485131565.jpg',
-						'zoom': 'http://mimg.127.net/hz/uploader/20161011/14761714485881573.jpg',
-						'value': 'yxft',
-						'type': 'yxft'
-					}],
-					units: []
-				},*/
 				youqian: {
 					isYouqian: false,
 					modules: [],

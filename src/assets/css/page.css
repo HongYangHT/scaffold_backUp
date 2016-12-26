@@ -132,7 +132,7 @@ body,
 .g-psc-bd .m-psc-oparate {
   position: absolute;
   height: 40px;
-  top: 30px;
+  top: 0;
   right: 10px;
   z-index: 9999;
 }
@@ -148,14 +148,6 @@ body,
   white-space: nowrap;
   line-height: 24px;
   cursor: pointer;
-  /* &:first-child {
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
-            &:last-child {
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
-            } */
 }
 .g-psc-bd .m-psc-oparate .u-btn-s:hover {
   color: #fff;
@@ -167,6 +159,9 @@ body,
 }
 .g-psc-bd .m-psc-oparate .u-btn-s.u-delete:hover {
   background-color: #d22c2d;
+}
+.g-psc-bd .g-doc .J_psc_wrap:nth-child(2) .m-psc-oparate {
+  top: 30px;
 }
 .g-psc-bd .m-psc-add-wrap {
   display: -webkit-flex;

@@ -25,7 +25,9 @@ define([
 			"unitPrice": "1673",
 			"offPrice": "299",
 			"sellVolume": 1,
-			"newItemFlag": false
+			"newItemFlag": false,
+			"flag1":false,
+			"flag2":false
 		},{
 			"id": "1006014",
 			"title": "双宫茧桑蚕丝被子母被",
@@ -36,7 +38,9 @@ define([
 			"unitPrice": "1199",
 			"offPrice": "1199",
 			"sellVolume": 1,
-			"newItemFlag": false
+			"newItemFlag": false,
+			"flag1":false,
+			"flag2":false
 		},{
 			"id": "1030001",
 			"title": "160*230羊毛手工地毯",
@@ -47,7 +51,9 @@ define([
 			"unitPrice": "1399",
 			"offPrice": "969",
 			"sellVolume": 1,
-			"newItemFlag": false
+			"newItemFlag": false,
+			"flag1":true,
+			"flag2":false
 		},{
 			"id": "1030021",
 			"title": "锅具组合",
@@ -58,7 +64,9 @@ define([
 			"unitPrice": "699",
 			"offPrice": "699",
 			"sellVolume": 1,
-			"newItemFlag": false
+			"newItemFlag": true,
+			"flag1":false,
+			"flag2":false
 		},{
 			"id": "1024002",
 			"title": "色织双层格子浴衣",
@@ -69,7 +77,9 @@ define([
 			"unitPrice": "799",
 			"offPrice": "199",
 			"sellVolume": 1,
-			"newItemFlag": false
+			"newItemFlag": true,
+			"flag1":false,
+			"flag2":false
 		},{
 			"id": "1030006",
 			"title": "日式纯棉色织AB格四件套",
@@ -80,7 +90,9 @@ define([
 			"unitPrice": "899",
 			"offPrice": "459",
 			"sellVolume": 1,
-			"newItemFlag": false
+			"newItemFlag": true,
+			"flag1":false,
+			"flag2":false
 		}]
 	};
 	var YX_N_M_881B = Vue.extend({
@@ -110,7 +122,8 @@ define([
 						}, function(res) {
 							var _goods = res.content.goodsList;
 							var _temp = $.map(_goods, function(v, k) {
-								return {
+								var extend = Tools.handleData(v.detail.extend);
+								return $.extend({},{
 									id: v.detail.id,
 									title: v.detail.title,
 									simpleDesc: v.detail.simpleDesc,
@@ -120,8 +133,10 @@ define([
 									unitPrice: v.detail.unitPrice,
 									offPrice: v.detail.offPrice,
 									sellVolume: v.detail.sellVolume,
-									newItemFlag: v.detail.newItemFlag
-								};
+									newItemFlag: v.detail.newItemFlag,
+									flag1:'',
+									flag2:''
+								},extend);
 							});
 							var tempData = $.extend({}, _that._data, new Data2Vue({
 								data: {

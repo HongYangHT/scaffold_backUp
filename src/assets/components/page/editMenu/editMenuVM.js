@@ -4,11 +4,12 @@ define([
 	'mustache',
 	'underscore',
 	'model/model',
+	'common/helper/cookie',
 	'colorpicker',
 	'common/filter/checkType',
 	'common/filter/checkGroup',
 	'notify'
-], function(Vue, tpl, mustache, _, Model) {
+], function(Vue, tpl, mustache, _, Model, cookie) {
 	var _model = new Model();
 	var EditMenu = Vue.extend({
 		name: 'edit',
@@ -276,6 +277,9 @@ define([
 					$target.parents('form').get(0).reset();
 					return;
 				}
+
+				var _backUrl = cookie.getCookie('backUrl');
+
 				var Filesdata = new FormData($target.parents('form')[0]),
 					_isCompress = $target.data('type');
 
@@ -292,7 +296,13 @@ define([
 				}
 				_model.uploadFiles({
 					data: Filesdata,
-					compress: _isCompress
+					compress: _isCompress,
+					error:function(){
+						/* 由于没有体图片上传不成功的情况下，需要先保存现在的数据 */
+						_that.$dispatch('savePageUpload');
+						cookie.setCookie('backUrl',location.href, 60*60);
+						location.href = "http://pub.mail.163.com/pscpub/admin/login.do";
+					}
 				}).done(function(_data) {
 					$target.parents('form').get(0).reset();
 					if (_data && _data.cdnURL) {
@@ -303,13 +313,18 @@ define([
 							_item.fileName = _data.cdnURL[i].filename;
 							upload.push(_item);
 						});
-						$target.closest('.u-psc-input-group').find('.u-psc-input').val(upload[0].src);
+						var src = upload[0].src;
+						$target.closest('.u-psc-input-group').find('.u-psc-input').val(src.replace(/^http/g,'https'));
 						// 这里需要直接修改数据，并执行vm.nextTick(callback)
 						for (var k in _that._data.properties[0]) {
 							if (k == key) {
-								_that._data.properties[0][k].value = upload[0].src;
+								_that._data.properties[0][k].value = src.replace(/^http/g,'https');
 							}
 						}
+						cookie.setCookie('backUrl','', 60*60);
+					}else{
+						cookie.setCookie('backUrl',location.href, 60*60);
+						window.location.href = decodeURIComponent(_backUrl);
 					}
 				});
 			},

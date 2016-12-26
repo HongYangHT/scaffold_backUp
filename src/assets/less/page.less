@@ -132,7 +132,7 @@ body,
     .m-psc-oparate {
         position: absolute;
         height: 40px;
-        top: 30px;
+        top: 0;
         right: 10px;
         z-index: 9999;
         .u-btn-s {
@@ -152,14 +152,6 @@ body,
                 background-color: #c8982a;
                 border-color: #b78b25;
             }
-            /* &:first-child {
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
-            &:last-child {
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
-            } */
             &.u-delete {
                 background-color: #c11f20;
                 &:hover {
@@ -167,6 +159,9 @@ body,
                 }
             }
         }
+    }
+    .g-doc .J_psc_wrap:nth-child(2) .m-psc-oparate{
+        top:30px;
     }
     .m-psc-add-wrap {
         display: -webkit-flex;

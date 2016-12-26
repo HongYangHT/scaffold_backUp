@@ -13,7 +13,12 @@ define([
 		contentInfo:{
 			title:'做一个有格调的上班族',
 			tip1:'上班族怎么穿才能绅士优雅？如何升级工位提升舒适感？有哪些好用的高颜值办公神器？',
-			tip2:'严选通勤好物，治愈周一综合症，让上班的每一秒都美好'
+			tip2:'严选通勤好物，治愈周一综合症，让上班的每一秒都美好',
+			tip3:'',
+			tip4:'',
+			tip5:'',
+			tip6:'',
+			tip7:''
 		}
 	};
 	var YX_S_M_0AA8 = Vue.extend({
@@ -63,6 +68,81 @@ define([
 						var data = {
 								'contentInfo': {
 									'tip2': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.tip3.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'tip3': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.tip4.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'tip4': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.tip5.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'tip5': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.tip6.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'tip6': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.tip7.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'tip7': {
 										'value': old
 									}
 								}

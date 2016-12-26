@@ -22,6 +22,8 @@ define(['jquery'], function($) {
 		error: function(xhr, textStatus) {
 			if (textStatus === 'timeout') {
 				console.log('请求超时，请稍后再试');
+			}else{
+				location.href = "http://pub.mail.163.com/pscpub/admin/login.do";
 			}
 		}
 	};

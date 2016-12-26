@@ -1,0 +1,43 @@
+<div class="YX-N-M-B278">
+	<div class="J_module_info f-hide" style="display: none;">
+		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+	</div>
+    <div class="m-B278-inner">
+       {{#contentInfo.titleImg}}
+		<div class="m-B278-title" data-h55970f92="titleImg">
+			<img src="{{contentInfo.titleImg}}" data-original="{{contentInfo.titleImg}}" class="J_lazyload"/>
+		</div>
+		{{/contentInfo.titleImg}}
+        <div class="m-B278-content">
+            <ul class="m-B278-list">
+            	{{#temp}}
+	            	<li class="u-B278-item">
+	                    <div class="m-B278-item-wrap">
+	                        <div class="u-B278-item-top">
+	                            <a href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" target="_blank">
+	                                <img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload" />
+	                                <i></i>
+	                            </a>
+	                            {{#newItemFlag}}<span class="u-B278-flag">新品</span>{{/newItemFlag}}
+	                            {{#flag1}}<span class="u-B278-flag">明星</span>{{/flag1}}
+	                            {{#flag2}}<span class="u-B278-flag">热销</span>{{/flag2}}
+	                        </div>
+	                        <div class="u-B278-item-bottom">
+	                            <p class="u-B278-item-t">{{title}}</p>
+	                            {{#maker}}<span class="u-B278-item-maker">{{maker}}</span>{{/maker}}
+	                            {{^maker}}<p class="u-B278-item-desc">{{simpleDesc}}</p>{{/maker}}
+	                            <div class="u-B278-item-price">
+	                                <span class="u-B278-item-offPrice">{{offPrice}}</span>
+	                                {{#unitPrice}}<span class="u-B278-item-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+	                            </div>
+	                            <div class="u-B278-btn">
+	                                <a href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" target="_self">立即购买</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </li>
+                {{/temp}}
+            </ul>
+        </div>
+    </div>    
+</div>      

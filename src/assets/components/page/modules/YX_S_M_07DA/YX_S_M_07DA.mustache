@@ -1,0 +1,29 @@
+<div class="YX-S-M-07DA">
+	<div class="m-07DA-inner">
+		<div class="m-07DA-title">
+			<p data-h55970f92="title">{{contentInfo.title}}</p>
+		</div>
+		<div class="m-07DA-content">
+			<div class="u-07DA-span">
+				<p class="u-07DA-p" data-h55970f92="type1">{{contentInfo.type1}}</p>
+				<p class="u-07DA-p" data-h55970f92="tip1">{{contentInfo.tip1}}</p>
+			</div>
+			<div class="u-07DA-span">
+				<p class="u-07DA-p" data-h55970f92="type2">{{contentInfo.type2}}</p>
+				<p class="u-07DA-p" data-h55970f92="tip2">{{contentInfo.tip2}}</p>
+			</div>
+			<div class="u-07DA-span">
+				<p class="u-07DA-p" data-h55970f92="type3">{{contentInfo.type3}}</p>
+				<p class="u-07DA-p" data-h55970f92="tip3">{{contentInfo.tip3}}</p>
+			</div>
+			<div class="u-07DA-btn" data-h55970f92="link">
+				{{#contentInfo.link}}
+					<a href="{{contentInfo.link}}" target="_blank" data-h55970f92="btnText">{{contentInfo.btnText}}</a>
+				{{/contentInfo.link}}
+				{{^contentInfo.link}}
+					<a href="javascript:;" target="_blank" data-h55970f92="btnText">{{contentInfo.btnText}}</a>
+				{{/contentInfo.link}}
+			</div>
+		</div>
+	</div>
+</div>

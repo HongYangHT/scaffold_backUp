@@ -10,6 +10,9 @@
     		<ul class="m-new-list">
     			{{#temp}}
     				<li class="m-new-item">
+                        {{#newItemFlag}}<span class="u-B278-flag">新品</span>{{/newItemFlag}}
+                        {{#flag1}}<span class="u-B278-flag">明星</span>{{/flag1}}
+                        {{#flag2}}<span class="u-B278-flag">热销</span>{{/flag2}}
         				<a href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" target="_blank" class="u-goods">
         					<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" title="{{title}}" class="J_lazyload">
         				</a>

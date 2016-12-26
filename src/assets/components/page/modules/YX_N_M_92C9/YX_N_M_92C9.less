@@ -39,6 +39,7 @@
     position: absolute;
     width: 60px;
     height: 3px;
+    top:0;
     left: -60px;
     background: #333;
     margin: 14px auto 0;
@@ -49,6 +50,7 @@
     position: absolute;
     width: 60px;
     height: 3px;
+    top:0;
     left: auto;
     right: -60px;
     background: #333;
@@ -383,12 +385,6 @@
     }
 }
 
-@media only screen and (min-device-width:960px) {
-    html {
-        font-size: 937.5%;
-    }
-}
-
 @media only screen and (device-width:320px) and (device-height:480px) and (-webkit-min-device-pixel-ratio:2) and (orientation:portrait) {
     html {
         font-size: 312.5%;
@@ -556,8 +552,7 @@
         -moz-transition: transform 1s;
         -o-transition: transform 1s;
         transition: -webkit-transform 1s;
-        transition: transform 1s;
-        transition: transform 1s, -webkit-transform 1s;
+        transition: none;
         background-color: #f4f4f4;
         color: #f4f4f4;
     }
@@ -646,6 +641,9 @@
         display: inline-block;
         width: 100%;
         color: #333;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     .YX-N-M-92C9 .u-92C9-product-bd .u-92C9-price {

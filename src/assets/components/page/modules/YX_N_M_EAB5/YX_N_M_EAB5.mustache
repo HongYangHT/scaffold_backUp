@@ -1,0 +1,36 @@
+<div class="YX-N-M-EAB5">
+    <div class="J_module_info f-hide" style="display: none;">
+        <div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+    </div>
+    <div class="m-EAB5-title">
+        <div class="u-EAB5-title-wrap" data-h55970f92="titleImage">
+            <img src="{{contentInfo.titleImage}}" data-original="{{contentInfo.titleImage}}" class="u-title-img J_lazyload">
+            <div class="u-EAB5-title-tip" data-h55970f92="tipImage">
+                <img src="{{contentInfo.tipImage}}" 
+                data-original="{{contentInfo.tipImage}}" class="J_lazyload">
+            </div>
+        </div>
+    </div>
+    <div class="m-EAB5-content">
+        <div class="m-EAB5-inner">
+            {{#temp}}
+                <div class="u-EAB5-goods">
+                    <a target="_blank" href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" class="u-EAB5-goods-img">
+                        <img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">
+                    </a>
+                    <div class="u-EAB5-goods-info">
+                        <p class="u-EAB5-goods-name">{{title}}</p>
+                        <p class="u-EAB5-goods-price">
+                            <span class="u-EAB5-offPrice">{{offPrice}}</span>
+                            {{#unitPrice}}<span class="u-EAB5-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+                        </p>
+                        <div class="m-EAB5-group-btn">
+                            <a target="_blank" href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" class="u-EAB5-btn">立即购买</a>
+                            <a href="javascript:;" class="u-EAB5-cart J_EAB5_cart"></a>
+                        </div>
+                    </div>
+                </div>
+            {{/temp}}    
+        </div>
+    </div>   
+</div>

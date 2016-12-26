@@ -91,7 +91,7 @@ define([
 									primaryPicUrl: v.detail.primaryPicUrl + '?imageView&quality=95&thumbnail=264x264',
 									primarySkuId: v.detail.primarySkuId,
 									retailPrice: v.detail.retailPrice,
-									unitPrice: v.detail.unitPrice,
+									unitPrice: parseFloat(v.detail.unitPrice) == parseFloat(v.detail.offPrice) ? '' : v.detail.unitPrice,
 									offPrice: v.detail.offPrice,
 									sellVolume: v.detail.sellVolume,
 									newItemFlag: v.detail.newItemFlag,

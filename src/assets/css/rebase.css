@@ -172,3 +172,9 @@ body {
   -webkit-text-size-adjust: 100%;
   font-family: "Microsoft YaHei", "Helvetica Neue", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
 }
+.f-fl {
+  float: left;
+}
+.f-fr {
+  float: right;
+}
