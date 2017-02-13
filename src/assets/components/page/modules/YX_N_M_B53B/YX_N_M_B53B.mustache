@@ -1,0 +1,56 @@
+<div class="YX-N-M-B53B m-section-module">
+	<div class="J_module_info f-hide" style="display: none;">
+		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+		<div class="needScenePicUrl" data-needScenePicUrl="{{contentInfo.needScenePicUrl}}"></div>
+	</div>
+	<div class="m-B53B-inner">
+		<div class="m-B53B-title">
+			<p class="u-B53B-title" data-h55970f92="title"><span>{{contentInfo.title}}</span></p>
+			<p class="u-B53B-tip" data-h55970f92="tip1">{{contentInfo.tip1}}</p>
+			<p class="u-B53B-tip" data-h55970f92="tip2">{{contentInfo.tip2}}</p>
+		</div>
+		<div class="m-B53B-goods" v-if="contentInfo.needScenePicUrl.value">
+			{{#temp}}
+				<div class="u-B53B-goods">
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-B53B-link">
+						<img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload">
+					</a>
+					<div class="m-B53B-goods-info">
+						<p class="u-B53B-goods-t"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank">{{title}}</a></p>
+						{{#maker}}<p class="u-B53B-goods-maker">{{maker}}</p>{{/maker}}
+						{{^maker}}<p class="u-B53B-goods-maker">{{simpleDesc}}</p>{{/maker}}
+						<p class="u-B53B-goods-price">
+							<span class="u-B53B-offPrice">{{offPrice}}</span>
+							{{#unitPrice}}<span class="u-B53B-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+						</p>
+						<div class="m-B53B-btn">
+							<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-B53B-btn">立即购买</a>
+							<a href="javascript:;" target="_self" class="u-B53B-cart J_B53B_cart"></a>
+						</div>
+					</div>
+				</div>
+			{{/temp}}
+		</div>
+		<div class="m-B53B-goods" v-if="!contentInfo.needScenePicUrl.value">
+			{{#temp}}
+				<div class="u-B53B-goods">
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-B53B-link">
+						<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">
+					</a>
+					<div class="m-B53B-goods-info">
+						<p class="u-B53B-goods-t"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank">{{title}}</a></p>
+						<p class="u-B53B-goods-maker">{{maker}}</p>
+						<p class="u-B53B-goods-price">
+							<span class="u-B53B-offPrice">{{offPrice}}</span>
+							<span class="u-B53B-unitPrice">{{unitPrice}}</span>
+						</p>
+						<div class="m-B53B-btn">
+							<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-B53B-btn">立即购买</a>
+							<a href="javascript:;" target="_self" class="u-B53B-cart J_B53B_cart"></a>
+						</div>
+					</div>
+				</div>
+			{{/temp}}
+		</div>
+	</div>
+</div>

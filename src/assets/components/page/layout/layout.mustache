@@ -1,8 +1,10 @@
-<div class="g-doc" v-bind:class="{'g-doc-pre': !showFlag}" data-title="{{title.value}}" data-description="{{description.value}}" data-keywords="{{keywords.value}}" data-id="{{id}}" v-on:dblclick="showModal" v-sort>
+<div class="g-doc" v-bind:class="{'g-doc-pre': !showFlag}" data-title="{{title.value}}" data-description="{{description.value}}" data-keywords="{{keywords.value}}" data-id="{{id}}" data-startTime="{{startTime.value}}" data-endTime="{{endTime.value}}" data-category="{{category.value}}" data-admin="{{admin.value}}" v-on:dblclick="showModal" v-sort>
+	<share-info-view v-bind:info="info"></share-info-view>
 	<div class="m-psc-oparate" data-oparate="{{id}}" v-show="showFlag">
 		<a href="javascript:;" target="_self" class="u-btn-s f-fr" v-on:click="operateEdit($event)">编辑</a>
 	</div>
 </div>
+<share-modal-view v-bind:info="info"></share-modal-view>
 <div class="m-psc-add-wrap" v-show="showFlag">
 	<a href="javascript:;" target="_self" class="u-add-btn" v-on:click="addShowPrevList">
 		<i class="fa fa-plus" aria-hidden="true"></i>

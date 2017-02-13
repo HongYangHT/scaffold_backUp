@@ -1,0 +1,51 @@
+<div class="YX-N-M-D45D m-section-module" style="background-color: {{contentInfo.bgColor}};"  data-h55970f92="bgColor">
+	<div class="J_module_info f-hide" style="display: none;">
+		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+		<div class="needScenePicUrl" data-needScenePicUrl="{{contentInfo.needScenePicUrl}}"></div>
+	</div>
+	<div class="m-D45D-inner">
+		<div class="m-D45D-left" data-h55970f92="sideImg">
+			<img src="{{contentInfo.sideImg}}" data-original="{{contentInfo.sideImg}}" class="J_lazyload">
+		</div>
+		<div class="m-D45D-right">
+			<div class="m-D45D-goods" v-if="contentInfo.needScenePicUrl.value">
+				{{#temp}}
+				<div class="u-D45D-goods">
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-D45D-img-link">
+						<img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload">
+					</a>
+					<p class="u-D45D-title"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-D45D-title-link">{{title}}</a></p>
+					<p class="u-D45D-desc">{{simpleDesc}}</p>
+					<p class="u-D45D-price">
+						<span class="u-D45D-offPrice">{{offPrice}}</span>
+						{{#unitPrice}}<span class="u-D45D-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+					</p>
+					<div class="m-D45D-btn">
+						<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-D45D-buy">立即购买</a>
+						<a href="javascript:;" target="_self" class="u-D45D-cart J_D45D_cart"></a>
+					</div>
+				</div>
+				{{/temp}}
+			</div>
+			<div class="m-D45D-goods" v-if="!contentInfo.needScenePicUrl.value">
+				{{#temp}}
+				<div class="u-D45D-goods">
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-D45D-img-link">
+						<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">
+					</a>
+					<p class="u-D45D-title"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-D45D-title-link">{{title}}</a></p>
+					<p class="u-D45D-desc">{{simpleDesc}}</p>
+					<p class="u-D45D-price">
+						<span class="u-D45D-offPrice">{{offPrice}}</span>
+						{{#unitPrice}}<span class="u-D45D-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+					</p>
+					<div class="m-D45D-btn">
+						<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-D45D-buy">立即购买</a>
+						<a href="javascript:;" target="_self" class="u-D45D-cart J_D45D_cart"></a>
+					</div>
+				</div>
+				{{/temp}}
+			</div>
+		</div>
+	</div>
+</div>

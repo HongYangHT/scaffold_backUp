@@ -1,8 +1,13 @@
 <div class="g-psc-bd">
-	<!-- <menu-view></menu-view> -->
 	<content-view></content-view>
 	<edit-Menu-view></edit-Menu-view>
 	<modal-view></modal-view>
 	<pre-modal></pre-modal>
 	<tip-view></tip-view>
+	<div class="g-psc-loading-wrap" v-show="showLoading">
+		<div class="loading-container">
+		    <div class="loading"></div>
+		    <div id="loading-text">{{showLoadingText}}</div>
+		</div>
+	</div>
 </div>

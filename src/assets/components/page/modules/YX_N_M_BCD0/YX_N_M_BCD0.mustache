@@ -1,0 +1,49 @@
+<div class="YX-N-M-BCD0 m-section-module" id="{{contentInfo.anchar}}" data-h55970f92="anchar" style="background-color: {{contentInfo.bgColor}}">
+    <div class="J_module_info f-hide" style="display: none;">
+        <div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+        <div class="needScenePicUrl" data-needScenePicUrl="{{contentInfo.needScenePicUrl}}"></div>
+    </div>
+	<div class="m-BCD0-inner" data-h55970f92="bgColor">
+		<div class="m-BCD0-title" data-h55970f92="titleImg">
+			<img src="{{contentInfo.titleImg}}" data-original="{{contentInfo.titleImg}}" class="J_lazyload">
+		</div>
+		<div class="m-BCD0-goods" v-if="contentInfo.needScenePicUrl.value">
+            {{#temp}}
+			<div class="u-BCD0-goods">
+				<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-BCD0-link">
+                    <img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload" />
+                    <i></i>
+                </a>
+                {{#maker}}<span class="u-BCD0-maker">{{maker}}</span>{{/maker}}
+                <div class="m-BCD0-info">
+                	<p class="u-BCD0-item-title"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank">{{title}}</a></p>
+                	<p class="u-BCD0-item-desc">{{simpleDesc}}</p>
+                	<div class="u-BCD0-btn">
+                		<span class="u-BCD0-item-offPrice">{{retailPrice}}</span>
+                		 <a href="http://you.163.com/item/detail?id={{id}}" target="_self" class="u-BCD0-buy">立即购买&nbsp;&gt;</a>
+                	</div>
+                </div>
+			</div>
+            {{/temp}}
+		</div>
+        <div class="m-BCD0-goods" v-if="!contentInfo.needScenePicUrl.value">
+            {{#temp}}
+            <div class="u-BCD0-goods">
+                <a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-BCD0-link">
+                    <img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload" />
+                    <i></i>
+                </a>
+                {{#maker}}<span class="u-BCD0-maker">{{maker}}</span>{{/maker}}
+                <div class="m-BCD0-info">
+                    <p class="u-BCD0-item-title"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank">{{title}}</a></p>
+                    <p class="u-BCD0-item-desc">{{simpleDesc}}</p>
+                    <div class="u-BCD0-btn">
+                        <span class="u-BCD0-item-offPrice">{{retailPrice}}</span>
+                         <a href="http://you.163.com/item/detail?id={{id}}" target="_self" class="u-BCD0-buy">立即购买&nbsp;&gt;</a>
+                    </div>
+                </div>
+            </div>
+            {{/temp}}
+        </div>
+	</div>
+</div>

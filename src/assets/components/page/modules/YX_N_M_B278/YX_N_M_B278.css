@@ -144,20 +144,17 @@
   margin-top: 15px;
   font-size: 0;
   text-align: center;
-  vertical-align: middle;
 }
 .YX-N-M-B278 .m-B278-list .u-B278-item-offPrice {
   display: inline-block;
   color: #9a3232;
   font-size: 40px;
   line-height: 40px;
-  vertical-align: middle;
 }
 .YX-N-M-B278 .m-B278-list .u-B278-item-offPrice:before {
   content: '￥';
   font-size: 18px;
   line-height: 40px;
-  vertical-align: middle;
 }
 .YX-N-M-B278 .m-B278-list .u-B278-item-unitPrice {
   display: inline-block;
@@ -166,21 +163,18 @@
   font-size: 18px;
   line-height: 40px;
   text-decoration: line-through;
-  vertical-align: middle;
 }
 .YX-N-M-B278 .m-B278-list .u-B278-item-unitPrice:before {
   content: '￥';
   color: #999;
   font-size: 18px;
   line-height: 40px;
-  vertical-align: middle;
 }
 .YX-N-M-B278 .m-B278-list .u-B278-item-unitPrice:after {
   content: '*';
   color: #999;
   font-size: 18px;
   line-height: 40px;
-  vertical-align: middle;
 }
 .YX-N-M-B278 .m-B278-list .u-B278-btn {
   height: 42px;
@@ -397,20 +391,17 @@
     margin-top: .15rem;
     font-size: 0;
     text-align: center;
-    vertical-align: middle;
   }
   .YX-N-M-B278 .m-B278-list .u-B278-item-offPrice {
     display: inline-block;
     color: #9a3232;
     font-size: .4rem;
     line-height: .4rem;
-    vertical-align: middle;
   }
   .YX-N-M-B278 .m-B278-list .u-B278-item-offPrice:before {
     content: '￥';
     font-size: .18rem;
     line-height: .4rem;
-    vertical-align: middle;
   }
   .YX-N-M-B278 .m-B278-list .u-B278-item-unitPrice {
     display: inline-block;
@@ -419,21 +410,18 @@
     font-size: .24rem;
     line-height: .4rem;
     text-decoration: line-through;
-    vertical-align: middle;
   }
   .YX-N-M-B278 .m-B278-list .u-B278-item-unitPrice:before {
     content: '￥';
     color: #999;
     font-size: .24rem;
     line-height: .4rem;
-    vertical-align: middle;
   }
   .YX-N-M-B278 .m-B278-list .u-B278-item-unitPrice:after {
     content: '*';
     color: #999;
     font-size: .24rem;
     line-height: .4rem;
-    vertical-align: middle;
   }
   .YX-N-M-B278 .m-B278-list .u-B278-btn {
     height: .42rem;

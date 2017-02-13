@@ -159,7 +159,7 @@
                 jsonp: "callback",
                 success: function(data) {
                     if (data && data.code && data.code == 200) {
-                        if (data.content) {
+                        if (data.content && data.content.uid) {
                             window.PSC_YX_API_UID = data.content.uid;
                             window.PSC_YX_API.addCart(skuId, img, 1, function(_res) {
                                 var _code = _res.code;

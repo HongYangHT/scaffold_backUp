@@ -4,6 +4,7 @@
 		<a href="javascript:;" target="_self" class="u-close fa fa-times" v-on:click="hideModal($event)"></a>
 		<div class="m-modal-flex" v-show="list" transition="slide-left">
 			<p class="u-t">选择模块</p>
+			<autocomplete-view></autocomplete-view>
 			<div class="m-collapse J_collapse">
 				<div class="u-h" v-for="prop in yanxuan.modules">
 					<div class="u-t">{{prop.title}} <i class="fa fa-chevron-down" aria-hidden="true"></i></div>

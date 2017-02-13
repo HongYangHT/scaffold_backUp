@@ -11,6 +11,7 @@ define([
 ],function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools){
 	var _default = {
 		contentInfo:{
+			height:640,
 			backgroundImage:'http://mimg.127.net/hz/uploader/20160927/14749481296920310.jpg',
 			titleImage:'http://mimg.127.net/hz/uploader/20160927/14749481297490316.png',
 			district1:'http://mimg.127.net/hz/uploader/20160927/14749481297070311.png',

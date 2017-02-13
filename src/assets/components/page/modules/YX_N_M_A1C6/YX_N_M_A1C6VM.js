@@ -17,7 +17,7 @@
 ], function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools) {
 	var _default = {
 		contentInfo: {
-			goodsId: '66',
+			goodsId: '',
 			titleImage: 'http://mimg.127.net/hz/uploader/20160823/14719320935940206.png',
 			tips:'*价格为市场同类商品的参考价'
 		},
@@ -185,7 +185,7 @@
 							}).getResult());
 
 							_that.$data = tempData;
-							_that.$dispatch('changeDataDefault', _that.id, tempData);
+							_that.$dispatch('changeDataDefault', _that.id, tempData,true);
 						});
 					}
 				}

@@ -53,7 +53,7 @@ define(['jquery'], function($) {
 			options = $.extend({
 				type: 'POST',
 				charset: 'utf8',
-				contentType: 'application/json'
+				contentType: 'application/x-www-form-urlencoded'
 			}, options)
 			options = $.extend({},
 				defaults, options);

@@ -1,11 +1,14 @@
 define([
 	'Vue',
 	'text!components/page/preModal/preModal.mustache',
-	'common/mixins/pageMixins'
-], function(Vue, tpl, pageMixins) {
+	'common/mixins/pageMixins',
+	'components/page/autocomplete/autocompleteVM'
+], function(Vue, tpl, pageMixins, autocompleteVM) {
 	var PreModal = Vue.extend({
 		name: 'preModal',
-		components: {},
+		components: {
+			'autocomplete-view':autocompleteVM
+		},
 		template: tpl,
 		mixins: [pageMixins],
 		data: function() {
@@ -44,7 +47,49 @@ define([
 						},
 						banner:{
 							title:'Banner模块',
-							modules:[{
+							modules:[/*{
+								'img': 'https://mimg.127.net/hz/uploader/20170112/14842229407800115.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170112/14842229407800115.jpg',
+								'value': 'YX_S_M_D500',
+								'type': 'YX_S_M_D500',
+								'suitWeb': true,
+								'suitH5': false
+							},*/{
+								'img': 'https://mimg.127.net/hz/uploader/20170112/14842229407800115.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170112/14842229407800115.jpg',
+								'value': 'YX_S_M_35FD',
+								'type': 'YX_S_M_35FD',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170112/14842028042970033.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170112/14842028042970033.jpg',
+								'value': 'YX_S_M_BF3A',
+								'type': 'YX_S_M_BF3A',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170112/14841931301530023.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170112/14841931301530023.jpg',
+								'value': 'YX_S_M_D9D0',
+								'type': 'YX_S_M_D9D0',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170109/14839664630630182.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170109/14839664630630182.jpg',
+								'value': 'YX_S_M_EA3D',
+								'type': 'YX_S_M_EA3D',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170109/14839647158100097.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170109/14839647158100097.jpg',
+								'value': 'YX_S_M_CE2D',
+								'type': 'YX_S_M_CE2D',
+								'suitWeb': true,
+								'suitH5': false
+							},{
 								'img': 'https://mimg.127.net/hz/uploader/20161220/14822229722431545.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161220/14822229722431545.jpg',
 								'value': 'YX_S_M_A86B',
@@ -59,8 +104,8 @@ define([
 								'suitWeb': false,
 								'suitH5': true
 							},{
-								'img': 'https://mimg.127.net/hz/uploader/20161219/14821178216331156.jpg',
-								'zoom': 'https://mimg.127.net/hz/uploader/20161219/14821178216331156.jpg',
+								'img': 'https://mimg.127.net/hz/uploader/20170120/14849011447760139.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170120/14849011447760139.jpg',
 								'value': 'YX_S_M_4FDB',
 								'type': 'YX_S_M_4FDB',
 								'suitWeb': false,
@@ -86,14 +131,14 @@ define([
 								'type': 'YX_S_M_51E1',
 								'suitWeb': true,
 								'suitH5': true
-							},{
+							}/*,{
 								'img': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
 								'value': 'YX_S_M_3DA7',
 								'type': 'YX_S_M_3DA7',
 								'suitWeb': true,
 								'suitH5': true
-							},{
+							}*/,{
 								'img': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
 								'value': 'YX_S_M_97D8',
@@ -115,21 +160,21 @@ define([
 								'type': 'YX_S_M_19AB',
 								'suitWeb': true,
 								'suitH5': true
-							},{
+							}/*,{
 								'img': 'http://mimg.127.net/hz/uploader/20161202/14806436916670873.jpg',
 								'zoom': 'http://mimg.127.net/hz/uploader/20161202/14806436916670873.jpg',
 								'value': 'YX_S_M_6D5E',
 								'type': 'YX_S_M_6D5E',
 								'suitWeb': true,
 								'suitH5': true
-							},{
+							}*//*,{
 								'img': 'http://mimg.127.net/hz/uploader/20161121/14797117654230219.jpg',
 								'zoom': 'http://mimg.127.net/hz/uploader/20161121/14797117654230219.jpg',
 								'value': 'YX_S_M_AFA4',
 								'type': 'YX_S_M_AFA4',
 								'suitWeb': true,
 								'suitH5': true
-							},{
+							}*/,{
 								'img': 'http://mimg.127.net/hz/uploader/20161117/14793539817441331.jpg',
 								'zoom': 'http://mimg.127.net/hz/uploader/20161117/14793539817441331.jpg',
 								'value': 'YX_S_M_73D7',
@@ -147,7 +192,84 @@ define([
 						},
 						GoodsModules:{
 							title:'商品位模块(接入goods系统)',
-							modules:[{
+							modules:[/*{
+								'img': 'https://mimg.127.net/hz/uploader/20170111/14841386508360004.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170111/14841386508360004.jpg',
+								'value': 'YX_N_M_417A',
+								'type': 'YX_N_M_417A',
+								'suitWeb': true,
+								'suitH5': false
+							},*/{
+								'img':'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
+								'value': 'YX_N_M_BCD0',
+								'type': 'YX_N_M_BCD0',
+								'suitWeb': false,
+								'suitH5': true
+							}/*,{
+								'img': 'https://mimg.127.net/hz/uploader/20170111/14841386508360004.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170111/14841386508360004.jpg',
+								'value': 'YX_N_M_4A12',
+								'type': 'YX_N_M_4A12',
+								'suitWeb': false,
+								'suitH5': true
+							}*/,{
+								'img': 'https://mimg.127.net/hz/uploader/20170110/14840499619080539.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170110/14840499619080539.jpg',
+								'value': 'YX_N_M_CB4D',
+								'type': 'YX_N_M_CB4D',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170110/14840499034700538.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170110/14840499034700538.jpg',
+								'value': 'YX_N_M_A4F1',
+								'type': 'YX_N_M_A4F1',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170110/14840370665660387.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170110/14840370665660387.jpg',
+								'value': 'YX_N_M_64E0',
+								'type': 'YX_N_M_64E0',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170110/14840370379940386.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170110/14840370379940386.jpg',
+								'value': 'YX_N_M_D45D',
+								'type': 'YX_N_M_D45D',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170109/14839609227630065.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170109/14839609227630065.jpg',
+								'value': 'YX_N_M_BE90',
+								'type': 'YX_N_M_BE90',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170109/14839540766420019.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170109/14839540766420019.jpg',
+								'value': 'YX_N_M_77DE',
+								'type': 'YX_N_M_77DE',
+								'suitWeb': true,
+								'suitH5': false
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170109/14839435087250039.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170109/14839435087250039.jpg',
+								'value': 'YX_N_M_94FE',
+								'type': 'YX_N_M_94FE',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img': 'https://mimg.127.net/hz/uploader/20170105/14836032681770101.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170105/14836032681770101.jpg',
+								'value': 'YX_N_M_B53B',
+								'type': 'YX_N_M_B53B',
+								'suitWeb': true,
+								'suitH5': false
+							},{
 								'img': 'https://mimg.127.net/hz/uploader/20161221/14823124571861834.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161221/14823124571861834.jpg',
 								'value': 'YX_N_M_B278',
@@ -309,8 +431,19 @@ define([
 		events: {
 			notifyShowPrevList: function() {
 				this.showFlag = true;
+			},
+			notifyChangeToView:function(zoom){
+				this.list = false;
+				this.prev = true;
+				this.prevItem = zoom;
+			},
+			notifyChangeToAdd:function(type){
+				var _data = {
+					type: type
+				};
+				this.$dispatch('NavToinsertComponent', _data);
+				this.showFlag = false;
 			}
-
 		}
 	});
 

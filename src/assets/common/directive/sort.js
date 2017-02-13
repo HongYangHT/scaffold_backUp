@@ -12,7 +12,7 @@ define(['Vue', 'sortable'], function(Vue, Sortable) {
 				handle: '.J_psc_wrap',
 				onEnd: function(result) {
 					var targetId = $(result.item).data('id'),
-						purposeId = $(result.from).find('.J_psc_wrap').eq(result.newIndex - 1).data('id');
+						purposeId = $(result.from).find('.J_psc_wrap').eq(result.newIndex - 2).data('id');
 					// 通知content 修改和保存数据	
 					that.vm.$dispatch('notifyDragLocation', {
 						newIndex: result.newIndex,
@@ -21,6 +21,10 @@ define(['Vue', 'sortable'], function(Vue, Sortable) {
 						targetId: targetId,
 						purposeId: purposeId
 					});
+					console.log(result);
+				},
+				onChoose:function(e){
+					// console.log(e);
 				}
 			}, options);
 			var sort = new Sortable(this.el, options);

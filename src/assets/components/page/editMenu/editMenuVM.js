@@ -8,7 +8,8 @@ define([
 	'colorpicker',
 	'common/filter/checkType',
 	'common/filter/checkGroup',
-	'notify'
+	'notify',
+	'libs/laydate'
 ], function(Vue, tpl, mustache, _, Model, cookie) {
 	var _model = new Model();
 	var EditMenu = Vue.extend({
@@ -96,12 +97,20 @@ define([
 										prop[i].textArea = true;
 									} else if (item.type == 'select') {
 										prop[i].select = true;
-										prop[i].options = [];
+										// prop[i].options = [];
 										// 适用于select选项的元素
 										// options {name value}
-										// switch(n.key){
-
-										// }
+										switch(item.key){
+											case 'needScenePicUrl':// 设置场景图
+												prop[i].options = [{
+													'name':'设置为png图片',
+													'value':''
+												},{
+													'name':'设置为场景图',
+													'value':'1'
+												}];
+												break;
+										}
 									}
 								});
 							} else if (_.isObject(prop)) {
@@ -117,12 +126,20 @@ define([
 											item.textarea = true;
 										} else if (item.type == 'select') {
 											item.select = true;
-											item.options = [];
+											// item.options = [];
 											// 适用于select选项的元素
 											// options {name value}
-											// switch(n.key){
-
-											// }
+											switch(item.key){
+												case 'needScenePicUrl':// 设置场景图
+													prop[i].options = [{
+														'name':'设置为png图片',
+														'value':''
+													},{
+														'name':'设置为场景图',
+														'value':'1'
+													}];
+													break;
+											}
 										}
 									}
 									if (_.isString(item)) {
@@ -132,12 +149,20 @@ define([
 											prop.textarea = true;
 										} else if (prop.type == 'select') {
 											prop.select = true;
-											prop.options = [];
+											// prop.options = [];
 											// 适用于select选项的元素
 											// options {name value}
-											// switch(n.key){
-
-											// }
+											switch(item.key){
+												case 'needScenePicUrl':// 设置场景图
+													prop[i].options = [{
+														'name':'设置为png图片',
+														'value':''
+													},{
+														'name':'设置为场景图',
+														'value':'1'
+													}];
+													break;
+											}
 										}
 									}
 								});
@@ -157,12 +182,20 @@ define([
 										prop[i].textArea = true;
 									} else if (item.type == 'select') {
 										prop[i].select = true;
-										prop[i].options = [];
+										// prop[i].options = [];
 										// 适用于select选项的元素
 										// options {name value}
-										// switch(n.key){
-
-										// }
+										switch(item.key){
+											case 'needScenePicUrl':// 设置场景图
+												prop[i].options = [{
+													'name':'设置为png图片',
+													'value':''
+												},{
+													'name':'设置为场景图',
+													'value':'1'
+												}];
+												break;
+										}
 									}
 								});
 							} else if (_.isObject(prop)) {
@@ -178,12 +211,20 @@ define([
 											item.textarea = true;
 										} else if (item.type == 'select') {
 											item.select = true;
-											item.options = [];
+											// item.options = [];
 											// 适用于select选项的元素
 											// options {name value}
-											// switch(n.key){
-
-											// }
+											switch(item.key){
+												case 'needScenePicUrl':// 设置场景图
+													prop[i].options = [{
+														'name':'设置为png图片',
+														'value':''
+													},{
+														'name':'设置为场景图',
+														'value':'1'
+													}];
+													break;
+											}
 										}
 									}
 									if (_.isString(item)) {
@@ -193,12 +234,20 @@ define([
 											prop.textarea = true;
 										} else if (prop.type == 'select') {
 											prop.select = true;
-											prop.options = [];
+											// prop.options = [];
 											// 适用于select选项的元素
 											// options {name value}
-											// switch(n.key){
-
-											// }
+											switch(item.key){
+												case 'needScenePicUrl':// 设置场景图
+													prop[i].options = [{
+														'name':'设置为png图片',
+														'value':''
+													},{
+														'name':'设置为场景图',
+														'value':'1'
+													}];
+													break;
+											}
 										}
 									}
 								});
@@ -222,12 +271,7 @@ define([
 									item[i].textArea = true;
 								} else if (n.type == 'select') {
 									item[i].select = true;
-									item[i].options = [];
-									// 适用于select选项的元素
-									// options {name value}
-									// switch(n.key){
-
-									// }
+									item.options = item.options || [];
 								}
 							});
 						} else if (_.isObject(item)) {
@@ -237,12 +281,7 @@ define([
 								item.textarea = true;
 							} else if (item.type == 'select') {
 								item.select = true;
-								item.options = [];
-								// 适用于select选项的元素
-								// options {name value}
-								// switch(n.key){
-
-								// }
+								item.options = item.options || [];
 							}
 						}
 						_layout.push(item);
@@ -254,12 +293,12 @@ define([
 		methods: {
 			hideMenu: function() {
 				this.showMenu = false;
-				if ($('.J_showMenu_left').hasClass('active')) {
+				if ($('.m-arrow-right').hasClass('active')) {
 					this.showMenu = false;
 				} else {
 					this.showMenu = true;
 				}
-				$('.J_showMenu_left').toggleClass('active').find('i').toggleClass('fa-angle-double-left').toggleClass('fa-angle-double-right');
+				$('.m-arrow-right').toggleClass('active');
 			},
 			// 上传图片
 			uploadImg: function($event) {
@@ -287,7 +326,7 @@ define([
 				var reader = new FileReader();
 				reader.readAsDataURL(file);
 				reader.onload = function(e) {
-					console.log(this.result);
+					// console.log(this.result);
 					_that.$dispatch('notifyRootPreviewSection', {
 						id: id,
 						key: key,
@@ -316,9 +355,10 @@ define([
 						var src = upload[0].src;
 						$target.closest('.u-psc-input-group').find('.u-psc-input').val(src.replace(/^http/g,'https'));
 						// 这里需要直接修改数据，并执行vm.nextTick(callback)
-						for (var k in _that._data.properties[0]) {
+						for (var k in _that._data.properties[0].contentInfo) {
 							if (k == key) {
-								_that._data.properties[0][k].value = src.replace(/^http/g,'https');
+								_that._data.properties[0].contentInfo[k].value = src.replace(/^http/g,'https');
+								_that.nextTick();
 							}
 						}
 						cookie.setCookie('backUrl','', 60*60);
@@ -354,20 +394,20 @@ define([
 		events: {
 			showEditMenu: function(flag) {
 				this.showMenu = flag;
-				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right').removeClass('fa-angle-double-left');
+				$('.m-arrow-right').addClass('active');
 			},
 			navToShowMenu: function(flag) {
 				this.showMenu = flag;
-				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right').removeClass('fa-angle-double-left');
+				$('.m-arrow-right').addClass('active');
 			},
 			// 显示或者隐藏编辑区
 			editShowOrHide: function(picked) {
 				if (picked == 0) {
 					this.showMenu = true;
-					$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right').removeClass('fa-angle-double-left');
+					$('.m-arrow-right').addClass('active');
 				} else if (picked == 1) {
 					this.showMenu = false;
-					$('.J_showMenu_left').removeClass('active').find('i').addClass('fa-angle-double-left').removeClass('fa-angle-double-right');
+					$('.m-arrow-right').removeClass('active');
 				}
 			},
 			// 数据驱动编辑区
@@ -436,7 +476,7 @@ define([
 					$('.m-arrow-right').find('[data-lable="' + info.keyInfo.location + '"]').addClass('active')
 						.closest('.m-group').siblings('.m-group').find('.active').removeClass('active');
 				}, 500);
-				$('.J_showMenu_left').addClass('active').find('i').addClass('fa-angle-double-right');
+				$('.m-arrow-right').addClass('active');
 			}
 		}
 	});

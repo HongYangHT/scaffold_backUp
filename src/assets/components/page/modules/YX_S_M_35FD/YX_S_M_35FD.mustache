@@ -1,0 +1,12 @@
+<div class="YX-S-M-35FD" data-h55970f92="bannerImage">
+	<div class="m-35FD-inner" data-h55970f92="link">
+		{{^contentInfo.link}}
+    		<img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload J_needImage"/>
+    	{{/contentInfo.link}}
+    	{{#contentInfo.link}}
+    		<a href="{{contentInfo.link}}" target="_blank">
+    			<img src="{{contentInfo.bannerImage}}" data-original="{{contentInfo.bannerImage}}" class="J_lazyload J_needImage"/>
+    		</a>
+    	{{/contentInfo.link}}	
+	</div>
+</div>

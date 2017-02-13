@@ -1,0 +1,53 @@
+<div class="YX-N-M-A4F1 m-section-module" style="background-color:{{contentInfo.bgColor}};" data-h55970f92="bgColor">
+	<div class="J_module_info f-hide" style="display: none;">
+		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+		<div class="needScenePicUrl" data-needScenePicUrl="{{contentInfo.needScenePicUrl}}"></div>
+	</div>
+	<div class="m-A4F1-inner">
+		<div class="m-A4F1-left" data-h55970f92="sideImg">
+			<img src="{{contentInfo.sideImg}}" data-original="{{contentInfo.sideImg}}" class="J_lazyload">
+		</div>
+		<div class="m-A4F1-right">
+			<div class="m-A4F1-goods" v-if="contentInfo.needScenePicUrl.value">
+				{{#temp}}
+				<div class="u-A4F1-goods">
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-A4F1-img-link">
+						<img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload">
+					</a>
+					<p class="u-A4F1-title"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-A4F1-title-link">{{title}}</a></p>
+					<p class="u-A4F1-desc">{{simpleDesc}}</p>
+					<div class="u-A4F1-border"></div>
+					<p class="u-A4F1-price">
+						<span class="u-A4F1-offPrice">{{offPrice}}</span>
+						{{#unitPrice}}<span class="u-A4F1-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+					</p>
+					<div class="m-A4F1-btn">
+						<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-A4F1-buy">立即购买</a>
+						<a href="javascript:;" target="_self" class="u-A4F1-cart J_A4F1_cart"></a>
+					</div>
+				</div>
+				{{/temp}}
+			</div>
+			<div class="m-A4F1-goods" v-if="!contentInfo.needScenePicUrl.value">
+				{{#temp}}
+				<div class="u-A4F1-goods">
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-A4F1-img-link">
+						<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">
+					</a>
+					<p class="u-A4F1-title"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-A4F1-title-link">{{title}}</a></p>
+					<p class="u-A4F1-desc">{{simpleDesc}}</p>
+					<div class="u-A4F1-border"></div>
+					<p class="u-A4F1-price">
+						<span class="u-A4F1-offPrice">{{offPrice}}</span>
+						{{#unitPrice}}<span class="u-A4F1-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+					</p>
+					<div class="m-A4F1-btn">
+						<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-A4F1-buy">立即购买</a>
+						<a href="javascript:;" target="_self" class="u-A4F1-cart J_A4F1_cart"></a>
+					</div>
+				</div>
+				{{/temp}}
+			</div>
+		</div>
+	</div>
+</div>					

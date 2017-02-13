@@ -21,7 +21,8 @@
     } else {
         $('.YX-S-M-3DA7 .J_lazyload').lazyload({
             threshold : 50,
-            effect : 'fadeIn'
+            effect : 'fadeIn',
+            opacity:true
         }); 
     }
 })();

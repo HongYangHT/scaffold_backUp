@@ -11,7 +11,7 @@ define([
 ], function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools) {
 	var _default = {
 		contentInfo: {
-			goodsId: '121',
+			goodsId: '',
 			title:'热销商品'
 		},
 		temp:[{

@@ -2,13 +2,12 @@
   width: 100%;
   background: #fafafa;
   overflow: hidden;
-  font-family: 'Hiragino Sans GB W3', 'Microsoft YaHei', Helvetica, Arial, sans-serif;
 }
 .YX-N-M-2BE2 .m-2BE2-goods {
   width: 995px;
-  height: 725px;
   padding: 75px 0;
   margin: 0 auto;
+  overflow: hidden;
 }
 .YX-N-M-2BE2 .m-2BE2-goods-left {
   display: inline-block;

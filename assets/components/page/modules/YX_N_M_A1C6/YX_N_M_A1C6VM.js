@@ -185,7 +185,7 @@
 							}).getResult());
 
 							_that.$data = tempData;
-							_that.$dispatch('changeDataDefault', _that.id, tempData);
+							_that.$dispatch('changeDataDefault', _that.id, tempData,true);
 						});
 					}
 				}

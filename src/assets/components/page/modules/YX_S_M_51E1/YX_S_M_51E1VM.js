@@ -12,7 +12,7 @@ define([
 	var _default = {
 		contentInfo:{
 			tip:'查看更多',
-			link:'http://you.163.com/'
+			link:''
 		}
 	};
 	var YX_S_M_51E1 = Vue.extend({

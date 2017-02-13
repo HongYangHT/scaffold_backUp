@@ -12,7 +12,7 @@ define([
 	var _default = {
 		contentInfo:{
 			bannerImage:'https://mimg.127.net/hz/uploader/20161214/14816993735750372.jpg',
-			link:'http://you.163.com/'
+			link:''
 		}
 	};
 	var YX_S_M_3DA7 = Vue.extend({

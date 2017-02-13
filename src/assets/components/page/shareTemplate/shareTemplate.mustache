@@ -1,0 +1,10 @@
+<div class="m-psc-shareTemplate" v-show="showFlag">
+	<div class="m-modal-bg"></div>
+	<div class="m-shareTemplate-content">
+		<a href="javascript:;" target="_self" class="u-close fa fa-times" v-on:click="hideModal"></a>
+		<div class="m-shareTemplate">
+			<input type="text" id="shareTemplateInput" class="u-shareTemplate" v-model="shareLink"/>
+			<button class="u-zeroClipboard" id="zeroClipboard" data-clipboard-action="copy" data-clipboard-target="#shareTemplateInput" v-clip>点击复制</button>
+		</div>
+	</div>
+</div>

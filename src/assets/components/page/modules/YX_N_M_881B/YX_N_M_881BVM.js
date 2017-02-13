@@ -11,7 +11,7 @@ define([
 ],function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools){
 	var _default = {
 		contentInfo: {
-			goodsId: '76',
+			goodsId: '',
 			titleImage:'http://mimg.127.net/hz/uploader/20160829/14724404035340166.png',
 			bgColor:'#f6f6f6'
 		},
@@ -146,7 +146,7 @@ define([
 							}).getResult());
 
 							_that.$data = tempData;
-							_that.$dispatch('changeDataDefault', _that.id, tempData);
+							_that.$dispatch('changeDataDefault', _that.id, tempData,true);
 						});
 					}
 				}

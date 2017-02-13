@@ -10,9 +10,7 @@ define([
 	'uuid'
 ], function(Vue, mustache, tpl, pageMixins, Tpl2Vue, Data2Vue) {
 	var _default = {
-		contentInfo:{
-			stat_subject:'643'
-		}
+
 	};
 	var Yxhd = Vue.extend({
 		name: 'yxhd',

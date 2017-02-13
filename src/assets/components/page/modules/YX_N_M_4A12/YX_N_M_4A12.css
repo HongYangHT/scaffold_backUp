@@ -1,0 +1,349 @@
+.YX-N-M-4A12 {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  background: #fdf9ee;
+  overflow: hidden;
+  zoom: 1;
+}
+.YX-N-M-4A12 .m-4A12-inner {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 0;
+}
+.YX-N-M-4A12 .m-4A12-title {
+  width: 100%;
+  min-height: 174px;
+}
+.YX-N-M-4A12 .m-4A12-goods {
+  position: relative;
+  width: 614px;
+  margin: 0 auto;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-goods {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  background: #fff;
+  margin-bottom: 14px;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-goods:nth-child(even) {
+  margin-left: 7px;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-goods:nth-child(odd) {
+  margin-right: 7px;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-link {
+  display: block;
+  width: 100%;
+  height: 280px;
+  vertical-align: middle;
+  text-align: center;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-link img {
+  display: inline-block;
+  width: 280px;
+  height: 280px;
+  vertical-align: middle;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-link i {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 280px;
+}
+.YX-N-M-4A12 .m-4A12-goods .m-4A12-info {
+  position: relative;
+  margin-bottom: 24px;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-item-title {
+  color: #333;
+  padding: 0 10px;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-item-title a {
+  color: #333;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-item-desc {
+  color: #999;
+  padding: 0 10px;
+  font-size: 20px;
+  line-height: 36px;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.YX-N-M-4A12 .m-4A12-goods .u-4A12-btn {
+  margin-top: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+.YX-N-M-4A12 .u-4A12-btn .u-4A12-item-offPrice {
+  display: inline-block;
+  color: #e44a54;
+  margin-right: 14px;
+  font-size: 26px;
+  line-height: 50px;
+  vertical-align: middle;
+}
+.YX-N-M-4A12 .u-4A12-btn .u-4A12-item-offPrice:before {
+  content: '￥';
+  font-size: 20px;
+}
+.YX-N-M-4A12 .u-4A12-btn .u-4A12-buy {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  color: #fff;
+  background: #e44a54;
+  border-radius: 4px;
+  font-size: 22px;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+}
+.YX-N-M-4A12 .u-4A12-maker {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  min-width: 95px;
+  padding: 0 15px;
+  height: 24px;
+  color: #b4a078;
+  background: #f5f3ef;
+  border: 1px solid #e2dbcc;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  vertical-align: middle;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 357px) {
+  html {
+    font-size: 312.5%;
+  }
+}
+@media only screen and (min-device-width: 357px) and (max-device-width: 375px) {
+  html {
+    font-size: 351.5625%;
+  }
+}
+@media only screen and (min-device-width: 375px) and (max-device-width: 400px) {
+  html {
+    font-size: 366.211%;
+  }
+}
+@media only screen and (min-device-width: 400px) and (max-device-width: 414px) {
+  html {
+    font-size: 390.625%;
+  }
+}
+@media only screen and (min-device-width: 414px) and (max-device-width: 440px) {
+  html {
+    font-size: 404.2969%;
+  }
+}
+@media only screen and (min-device-width: 440px) and (max-device-width: 480px) {
+  html {
+    font-size: 429.6875%;
+  }
+}
+@media only screen and (min-device-width: 480px) and (max-device-width: 520px) {
+  html {
+    font-size: 468.75%;
+  }
+}
+@media only screen and (min-device-width: 520px) and (max-device-width: 560px) {
+  html {
+    font-size: 507.8125%;
+  }
+}
+@media only screen and (min-device-width: 560px) and (max-device-width: 600px) {
+  html {
+    font-size: 546.875%;
+  }
+}
+@media only screen and (min-device-width: 600px) and (max-device-width: 640px) {
+  html {
+    font-size: 585.9375%;
+  }
+}
+@media only screen and (min-device-width: 640px) and (max-device-width: 680px) {
+  html {
+    font-size: 625%;
+  }
+}
+@media only screen and (min-device-width: 680px) and (max-device-width: 720px) {
+  html {
+    font-size: 664.0625%;
+  }
+}
+@media only screen and (min-device-width: 720px) and (max-device-width: 760px) {
+  html {
+    font-size: 703.125%;
+  }
+}
+@media only screen and (min-device-width: 760px) and (max-device-width: 800px) {
+  html {
+    font-size: 742.1875%;
+  }
+}
+@media only screen and (min-device-width: 800px) and (max-device-width: 960px) {
+  html {
+    font-size: 781.25%;
+  }
+}
+@media only screen and (device-width: 320px) and (device-height: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  html {
+    font-size: 312.5%;
+  }
+}
+@media only screen and (device-width: 320px) and (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  html {
+    font-size: 312.5%;
+  }
+}
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  html {
+    font-size: 366.211%;
+  }
+}
+@media only screen and (device-width: 414px) and (device-height: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  html {
+    font-size: 404.2969%;
+  }
+}
+@media (max-device-width: 960px) {
+  .YX-N-M-4A12 {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    background: #fdf9ee;
+    overflow: hidden;
+    zoom: 1;
+  }
+  .YX-N-M-4A12 .m-4A12-inner {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 0;
+  }
+  .YX-N-M-4A12 .m-4A12-title {
+    width: 100%;
+    min-height: 1.74rem;
+  }
+  .YX-N-M-4A12 .m-4A12-goods {
+    position: relative;
+    width: 6.14rem;
+    margin: 0 auto;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-goods {
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    background: #fff;
+    margin-bottom: .14rem;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-goods:nth-child(even) {
+    margin-left: .07rem;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-goods:nth-child(odd) {
+    margin-right: .07rem;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-link {
+    display: block;
+    width: 100%;
+    height: 2.8rem;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-link img {
+    display: inline-block;
+    width: 2.8rem;
+    height: 2.8rem;
+    vertical-align: middle;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-link i {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 2.8rem;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .m-4A12-info {
+    position: relative;
+    margin-bottom: .24rem;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-item-title {
+    color: #333;
+    padding: 0 .1rem;
+    font-size: .26rem;
+    line-height: .4rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-item-title a {
+    color: #333;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-item-desc {
+    color: #999;
+    padding: 0 .1rem;
+    font-size: .2rem;
+    line-height: .36rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .YX-N-M-4A12 .m-4A12-goods .u-4A12-btn {
+    margin-top: .1rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .YX-N-M-4A12 .u-4A12-btn .u-4A12-item-offPrice {
+    display: inline-block;
+    color: #e44a54;
+    margin-right: .14rem;
+    font-size: .26rem;
+    line-height: .5rem;
+    vertical-align: middle;
+  }
+  .YX-N-M-4A12 .u-4A12-btn .u-4A12-item-offPrice:before {
+    content: '￥';
+    font-size: .2rem;
+  }
+  .YX-N-M-4A12 .u-4A12-btn .u-4A12-buy {
+    display: inline-block;
+    width: 1.5rem;
+    height: .5rem;
+    color: #fff;
+    background: #e44a54;
+    border-radius: .04rem;
+    font-size: .22rem;
+    line-height: .5rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .YX-N-M-4A12 .u-4A12-maker {
+    position: absolute;
+    top: .12rem;
+    left: .12rem;
+    min-width: 0.95rem;
+    padding: 0 .15rem;
+    height: .24rem;
+    color: #b4a078;
+    background: #f5f3ef;
+    border: 1px solid #e2dbcc;
+    font-size: .22rem;
+    line-height: .24rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+}

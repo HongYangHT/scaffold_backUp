@@ -56,7 +56,7 @@
                     _subject = subject || $(element).find('.stat_subject').val();
                 $.each(_goods, function(k, v) {
                     var _detail = v.detail;
-                    if(!_detail.underShelf){
+                    if((_detail.status == 2) && !_detail.underShelf){
                         _html += [
                             '<li class="u-FDC0-goods">',
                                 '<div class="u-FDC0-product">',
@@ -115,23 +115,23 @@
             $('.m-FDC0-ul').show();
             var t = document.documentElement.scrollTop || document.body.scrollTop;
             var top = $('.m-FDC0-goods').offset().top - 80,
-                top1 = $('.m-FDC0-ul[data-target="1"]').offset().top - 55,
-                top2 = $('.m-FDC0-ul[data-target="2"]').offset().top - 120,
-                top3 = $('.m-FDC0-ul[data-target="3"]').offset().top - 140;
+                top1 = $('.m-FDC0-ul[data-target="1"]').offset().top - 80,
+                top2 = $('.m-FDC0-ul[data-target="2"]').offset().top - 80,
+                top3 = $('.m-FDC0-ul[data-target="3"]').offset().top - 80;
                 if(t >= top3){
-                    $('.m-FDC0-tab').addClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').addClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(2).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else if(t >=top2 && t<top3){
-                    $('.m-FDC0-tab').addClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').addClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(1).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else if(t >=top1 && t<top2){
-                    $('.m-FDC0-tab').addClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').addClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(0).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else if(t < top1){
-                    $('.m-FDC0-tab').removeClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').removeClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(0).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else{
-                    $('.m-FDC0-tab').removeClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').removeClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(0).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }  
         window.addEventListener('scroll',function(){
@@ -143,19 +143,19 @@
                     top2 = $('.m-FDC0-ul[data-target="2"]').offset().top - 120,
                     top3 = $('.m-FDC0-ul[data-target="3"]').offset().top - 140;
                 if(t >= top3){
-                    $('.m-FDC0-tab').addClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').addClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(2).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else if(t >=top2 && t<top3){
-                    $('.m-FDC0-tab').addClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').addClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(1).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else if(t >=top1 && t<top2){
-                    $('.m-FDC0-tab').addClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').addClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(0).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else if(t < top1){
-                    $('.m-FDC0-tab').removeClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').removeClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(0).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }else{
-                    $('.m-FDC0-tab').removeClass('f-FDC0-fixed');
+                    $('.m-FDC0-tabs').removeClass('f-FDC0-fixed');
                     $('.u-FDC0-tab').eq(0).addClass('active').siblings('.u-FDC0-tab').removeClass('active');
                 }   
             },50);

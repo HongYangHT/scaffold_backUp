@@ -11,7 +11,7 @@ define([
 ], function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools) {
 	var _default = {
 		contentInfo: {
-			goodsId: '121',
+			goodsId: '',
 			titleImage:'http://mimg.127.net/hz/uploader/20160923/14746060681870141.png',
 			tipImage:'http://mimg.127.net/hz/uploader/20160923/14746060678710105.png'
 		},

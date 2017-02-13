@@ -11,9 +11,9 @@ define([
 ],function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools){
 	var _default = {
 		contentInfo:{
-			goodsId1: '119',
-			goodsId2: '120',
-			goodsId3: '121',
+			goodsId1: '',
+			goodsId2: '',
+			goodsId3: '',
 			tip1:'0-49元',
 			tip2:'49-99元',
 			tip3:'99元以上',
@@ -205,7 +205,7 @@ define([
 							}).getResult());
 
 							_that.$data = tempData;
-							_that.$dispatch('changeDataDefault', _that.id, tempData);
+							_that.$dispatch('changeDataDefault', _that.id, tempData,true);
 						});
 					}
 				}

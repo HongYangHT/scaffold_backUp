@@ -252,6 +252,96 @@ module.exports = function(grunt) {
                     src: '*.less',
                     dest: 'src/assets/components/page/modules/YX_N_M_B278',
                     ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_B53B',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_B53B',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_94FE',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_94FE',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_77DE',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_77DE',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_BE90',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_BE90',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_CE2D',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_CE2D',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_EA3D',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_EA3D',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_D45D',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_D45D',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_64E0',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_64E0',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_A4F1',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_A4F1',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_CB4D',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_CB4D',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_4A12',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_4A12',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_D9D0',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_D9D0',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_BF3A',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_BF3A',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_S_M_35FD',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_S_M_35FD',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_BCD0',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_BCD0',
+                    ext: '.css'
                 }]
             }
         },
@@ -491,6 +581,12 @@ module.exports = function(grunt) {
                     cwd: 'src/assets/components/page/modules/YX_N_M_B278',
                     src: '*.less',
                     dest: 'assets/components/page/modules/YX_N_M_B278',
+                    ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_B53B',
+                    src: '*.less',
+                    dest: 'assets/components/page/modules/YX_N_M_B53B',
                     ext: '.css'
                 },{
                     expand: true,
@@ -752,9 +848,24 @@ module.exports = function(grunt) {
                         'colorpicker': 'libs/bootstrap-colorpicker',
                         'pnotify': 'libs/pnotify',
                         'notify': 'libs/notify',
-                        'sortable':'libs/sortable'
+                        'sortable':'libs/sortable',
+                        'laydate':'libs/laydate'
                     },
                     'optimize': 'uglify',
+                    error: function(done, err) {
+                        grunt.log.warn(err);
+                        done();
+                    },
+                    done: function(done, output) {
+                        var duplicates = require('rjs-build-analysis').duplicates(output);
+
+                        if (Object.keys(duplicates).length) {
+                          grunt.log.subhead('Duplicates found in requirejs build:');
+                          grunt.log.warn(duplicates);
+                          return done(new Error('r.js built duplicate modules, please check the excludes option.'));
+                        }
+                        done();
+                    },
                     'include': ['requirejs', 'underscore', 'jquery', 'text', 'Vue', 'mustache', 'collapse', 'uuid', 'FileSaver',
                         'Blob', 'colorpicker', 'pnotify', 'notify','sortable',
                         'components/page',

@@ -18,7 +18,7 @@ define([
 
 	var _default = {
 		contentInfo: {
-			goodsId: '66',
+			goodsId: '',
 			backgroundImage: 'http://mimg.127.net/hz/uploader/20160823/14719320935400200.jpg'
 		},
 		temp: [{
@@ -186,7 +186,7 @@ define([
 							}).getResult());
 
 							_that.$data = tempData;
-							_that.$dispatch('changeDataDefault', _that.id, tempData);
+							_that.$dispatch('changeDataDefault', _that.id, tempData,true);
 						});
 					}
 				}

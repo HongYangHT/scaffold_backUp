@@ -11,7 +11,7 @@ define([
 ], function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools) {
 	var _default = {
 		contentInfo: {
-			goodsId: '124',
+			goodsId: '',
 			title:'经典英伦风通勤穿搭',
 			tip:'（ Ralph Lauren制造商的优雅衬衫，外搭超轻保暖鸭绒服，经典永不过时 ）'
 		},

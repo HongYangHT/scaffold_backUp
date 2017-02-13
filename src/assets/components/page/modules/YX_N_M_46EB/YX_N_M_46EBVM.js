@@ -11,7 +11,7 @@ define([
 ], function(Vue, mustache, $, tpl, pageMixins, Tpl2Vue, Data2Vue, Tools) {
 	var _default = {
 		contentInfo: {
-			goodsId: '124',
+			goodsId: '',
 			title:'优雅男士皮具好物',
 			tip1:'来自Coach制造商的优雅精致皮具，品质典范象征。',
 			tip2:'对于男生来说手机、移动电源、数据线、耳机、钥匙都是出门必备，一个不同的钱包已经无法满足了。',

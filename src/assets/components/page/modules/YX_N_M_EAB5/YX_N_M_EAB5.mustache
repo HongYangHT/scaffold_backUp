@@ -1,4 +1,4 @@
-<div class="YX-N-M-EAB5">
+<div class="YX-N-M-EAB5 m-section-module">
     <div class="J_module_info f-hide" style="display: none;">
         <div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
     </div>
@@ -6,8 +6,9 @@
         <div class="u-EAB5-title-wrap" data-h55970f92="titleImage">
             <img src="{{contentInfo.titleImage}}" data-original="{{contentInfo.titleImage}}" class="u-title-img J_lazyload">
             <div class="u-EAB5-title-tip" data-h55970f92="tipImage">
-                <img src="{{contentInfo.tipImage}}" 
+                {{#contentInfo.tipImage}}<img src="{{contentInfo.tipImage}}" 
                 data-original="{{contentInfo.tipImage}}" class="J_lazyload">
+                {{/contentInfo.tipImage}}
             </div>
         </div>
     </div>

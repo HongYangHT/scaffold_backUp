@@ -27,11 +27,18 @@ define([
                 showEdit: false,
                 picked: 0,
                 loadStyle: [],
-                loadScript: [],
+                loadScript: [{
+                    id: Math.uuid(32, 16).toLowerCase(),
+                    key: "layout",
+                    value: "assets/components/page/layout/shareConfig.js"
+                }],
                 scriptLib: [],
                 styleLib: [],
                 needStyle: [],
-                needScript: [],
+                /* 这里需要加入设置分享的js进库里面 */
+                needScript: [
+                    'assets/components/page/layout/shareConfig.js'
+                ],
                 layout: {},
                 id: Math.uuid(32, 16).toLowerCase()
             };
@@ -72,7 +79,10 @@ define([
             },
             // 继续上次编辑组件
             notifyContinueEdit: function(item) {
+                // 清空数据
+                window.tplData = [];
                 // item id item(layout | pageData)
+
                 /* 判断object 是不是空的 */
                 function isEmpty(obj) {
                     for (var i in obj) {
@@ -98,6 +108,7 @@ define([
                     return _json[val] ? false : true;
                 }
                 this.id = item.id;
+                if (!item.item) return;
                 this.layout = item.item[0];
                 this.$broadcast('changeLayout', item.item[0]);
                 var dataTpl = item.item[1];
@@ -106,15 +117,19 @@ define([
                 var _that = this,
                     _throttle = '',
                     _tplThrottle = '';
-                function setThrottle(){
-                    _tplThrottle = setTimeout(function(){
+
+
+
+                function setThrottle() {
+                    _tplThrottle = setTimeout(function() {
                         continueEdit();
-                    },100);
-                }    
-                function continueEdit(){
+                    }, 1000);
+                }
+
+                function continueEdit() {
                     if (dataTpl && dataTpl.length) {
                         $.each(dataTpl, function(i, data) {
-                            if(_throttle) return;
+                            if (_throttle) return;
                             var vm = '',
                                 _id = '',
                                 _loadStyle = '',
@@ -208,7 +223,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -248,7 +263,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -313,7 +328,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -375,7 +390,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -440,7 +455,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -516,7 +531,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -582,7 +597,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -658,7 +673,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -742,7 +757,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -823,7 +838,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -904,7 +919,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -984,7 +999,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1064,7 +1079,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1107,7 +1122,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1141,7 +1156,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1156,10 +1171,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_S_M_19AB':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_19AB/YX_S_M_19ABVM'], function(YX_S_M_19ABVM) {
@@ -1190,7 +1205,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1205,7 +1220,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1239,7 +1254,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1254,7 +1269,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1295,7 +1310,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1329,7 +1344,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1343,7 +1358,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1377,7 +1392,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1391,7 +1406,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1425,7 +1440,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1439,7 +1454,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1473,7 +1488,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1487,10 +1502,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_S_M_0AA8':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8VM'], function(YX_S_M_0AA8VM) {
@@ -1529,10 +1544,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break;                                               
+                                    break;
                                 case 'YX_N_M_92C9':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_92C9/YX_N_M_92C9VM'], function(YX_N_M_92C9VM) {
@@ -1563,7 +1578,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1577,10 +1592,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_N_M_ACBA':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_ACBA/YX_N_M_ACBAVM'], function(YX_N_M_ACBAVM) {
@@ -1611,7 +1626,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1625,10 +1640,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break;  
+                                    break;
                                 case 'YX_N_M_EAB5':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_EAB5/YX_N_M_EAB5VM'], function(YX_N_M_EAB5VM) {
@@ -1659,7 +1674,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1673,7 +1688,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1707,7 +1722,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1721,7 +1736,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1755,7 +1770,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -1769,7 +1784,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1811,10 +1826,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_S_M_EE29':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_EE29/YX_S_M_EE29VM'], function(YX_S_M_EE29VM) {
@@ -1859,7 +1874,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1907,7 +1922,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1949,7 +1964,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -1991,7 +2006,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -2039,7 +2054,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -2073,7 +2088,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -2087,10 +2102,10 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_N_M_C1C3':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_C1C3/YX_N_M_C1C3VM'], function(YX_N_M_C1C3VM) {
@@ -2121,7 +2136,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -2135,7 +2150,7 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
                                     break;
@@ -2169,7 +2184,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -2183,21 +2198,833 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break;                                                         
+                                    break;
+                                case 'YX_N_M_B53B':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_B53B/YX_N_M_B53BVM'], function(YX_N_M_B53BVM) {
+                                        vm = new YX_N_M_B53BVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_94FE':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_94FE/YX_N_M_94FEVM'], function(YX_N_M_94FEVM) {
+                                        vm = new YX_N_M_94FEVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_77DE':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_77DE/YX_N_M_77DEVM'], function(YX_N_M_77DEVM) {
+                                        vm = new YX_N_M_77DEVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_BE90':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_BE90/YX_N_M_BE90VM'], function(YX_N_M_BE90VM) {
+                                        vm = new YX_N_M_BE90VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_S_M_CE2D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_CE2D/YX_S_M_CE2DVM'], function(YX_S_M_CE2DVM) {
+                                        vm = new YX_S_M_CE2DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_CE2D/YX_S_M_CE2D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_CE2D/YX_S_M_CE2D.css';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_S_M_EA3D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_EA3D/YX_S_M_EA3DVM'], function(YX_S_M_EA3DVM) {
+                                        vm = new YX_S_M_EA3DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_EA3D/YX_S_M_EA3D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_EA3D/YX_S_M_EA3D.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_EA3D/YX_S_M_EA3D.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_D45D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_D45D/YX_N_M_D45DVM'], function(YX_N_M_D45DVM) {
+                                        vm = new YX_N_M_D45DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_64E0':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_64E0/YX_N_M_64E0VM'], function(YX_N_M_64E0VM) {
+                                        vm = new YX_N_M_64E0VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_A4F1':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1VM'], function(YX_N_M_A4F1VM) {
+                                        vm = new YX_N_M_A4F1VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_CB4D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_CB4D/YX_N_M_CB4DVM'], function(YX_N_M_CB4DVM) {
+                                        vm = new YX_N_M_CB4DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_4A12':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_4A12/YX_N_M_4A12VM'], function(YX_N_M_4A12VM) {
+                                        vm = new YX_N_M_4A12VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_S_M_D9D0':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0VM'], function(YX_S_M_D9D0VM) {
+                                        vm = new YX_S_M_D9D0VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_S_M_BF3A':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_BF3A/YX_S_M_BF3AVM'], function(YX_S_M_BF3AVM) {
+                                        vm = new YX_S_M_BF3AVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_S_M_35FD':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_35FD/YX_S_M_35FDVM'], function(YX_S_M_35FDVM) {
+                                        vm = new YX_S_M_35FDVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_S_M_D500':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_D500/YX_S_M_D500VM'], function(YX_S_M_D500VM) {
+                                        vm = new YX_S_M_D500VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_417A':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_417A/YX_N_M_417AVM'], function(YX_N_M_417AVM) {
+                                        vm = new YX_N_M_417AVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
+                                case 'YX_N_M_BCD0':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0VM'], function(YX_N_M_BCD0VM) {
+                                        vm = new YX_N_M_BCD0VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;    
                             }
                         });
                     } else {
                         !!_tplThrottle && clearTimeout(_tplThrottle);
+                        _that.$dispatch('notifyRootReview', false);
                         _that.$dispatch('notifyRootChangeEdit', {
                             changeEditId: _that.layout.id,
                             oparate: 1
                         });
                     }
-                } 
-                setThrottle();   
+                }
+                this.$dispatch('notifyRootReview', true);
+                setThrottle();
             },
             /*
                 撤销功能的实现，就是将数据依次pop出来
@@ -2235,15 +3062,17 @@ define([
                 var _that = this,
                     _throttle = '',
                     _tplThrottle = '';
-                function setThrottle(){
-                    _tplThrottle = setTimeout(function(){
+
+                function setThrottle() {
+                    _tplThrottle = setTimeout(function() {
                         continueEdit();
-                    },100);
-                }    
-                function continueEdit(){
+                    }, 1000);
+                }
+
+                function continueEdit() {
                     if (dataTpl && dataTpl.length) {
                         $.each(dataTpl, function(i, data) {
-                            if(_throttle) return;
+                            if (_throttle) return;
                             var vm = '',
                                 _id = '',
                                 _loadStyle = '',
@@ -2337,9 +3166,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2383,9 +3212,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2454,9 +3283,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2522,9 +3351,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2593,9 +3422,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2675,9 +3504,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2747,9 +3576,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2829,9 +3658,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -2919,9 +3748,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3006,9 +3835,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3093,9 +3922,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3179,9 +4008,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3265,9 +4094,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3314,9 +4143,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3354,7 +4183,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3369,16 +4198,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_S_M_19AB':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_19AB/YX_S_M_19ABVM'], function(YX_S_M_19ABVM) {
@@ -3409,7 +4238,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3424,9 +4253,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3464,7 +4293,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3479,16 +4308,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;    
+                                    break;
                                 case 'YX_S_M_AFA4':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4VM'], function(YX_S_M_AFA4VM) {
@@ -3526,9 +4355,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3566,7 +4395,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3580,16 +4409,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;                               
+                                    break;
                                 case 'YX_N_M_C6E9':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9VM'], function(YX_N_M_C6E9VM) {
@@ -3620,7 +4449,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3634,9 +4463,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3674,7 +4503,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3688,9 +4517,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3728,7 +4557,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3742,16 +4571,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;  
+                                    break;
                                 case 'YX_S_M_0AA8':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8VM'], function(YX_S_M_0AA8VM) {
@@ -3790,16 +4619,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;                
+                                    break;
                                 case 'YX_N_M_92C9':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_92C9/YX_N_M_92C9VM'], function(YX_N_M_92C9VM) {
@@ -3830,7 +4659,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3844,16 +4673,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;  
+                                    break;
                                 case 'YX_N_M_ACBA':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_ACBA/YX_N_M_ACBAVM'], function(YX_N_M_ACBAVM) {
@@ -3884,7 +4713,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3898,16 +4727,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;      
+                                    break;
                                 case 'YX_N_M_EAB5':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_EAB5/YX_N_M_EAB5VM'], function(YX_N_M_EAB5VM) {
@@ -3938,7 +4767,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -3952,9 +4781,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -3992,7 +4821,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4006,9 +4835,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4046,7 +4875,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4060,9 +4889,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4108,9 +4937,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4118,7 +4947,7 @@ define([
                                         }
                                     });
                                     break;
-                                 case 'YX_S_M_EE29':
+                                case 'YX_S_M_EE29':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_EE29/YX_S_M_EE29VM'], function(YX_S_M_EE29VM) {
                                         vm = new YX_S_M_EE29VM({
@@ -4148,7 +4977,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4162,17 +4991,17 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;  
-                                 case 'YX_S_M_4FDB':
+                                    break;
+                                case 'YX_S_M_4FDB':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_4FDB/YX_S_M_4FDBVM'], function(YX_S_M_4FDBVM) {
                                         vm = new YX_S_M_4FDBVM({
@@ -4202,7 +5031,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4216,9 +5045,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4264,16 +5093,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_S_M_BFA7':
                                     _throttle = true;
                                     require(['components/page/modules/YX_S_M_BFA7/YX_S_M_BFA7VM'], function(YX_S_M_BFA7VM) {
@@ -4312,9 +5141,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4352,7 +5181,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4366,9 +5195,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4406,7 +5235,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4420,9 +5249,9 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
@@ -4460,7 +5289,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4474,16 +5303,16 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break; 
+                                    break;
                                 case 'YX_N_M_B278':
                                     _throttle = true;
                                     require(['components/page/modules/YX_N_M_B278/YX_N_M_B278VM'], function(YX_N_M_B278VM) {
@@ -4514,7 +5343,7 @@ define([
                                             key: data.type,
                                             value: _loadStyle
                                         });
-                                         _that.loadScript.push({
+                                        _that.loadScript.push({
                                             id: vm.id,
                                             key: data.type,
                                             value: _loadScript
@@ -4528,16 +5357,928 @@ define([
                                         window.tplData.push($.extend({}, vm._data, _options));
                                         !!_tplThrottle && clearTimeout(_tplThrottle);
                                         _throttle = false;
-                                        dataTpl.splice(i,1);
+                                        dataTpl.splice(i, 1);
                                         setThrottle();
-                                        if(!dataTpl || !dataTpl.length){
+                                        if (!dataTpl || !dataTpl.length) {
                                             $.notify({
                                                 title: '撤销成功！',
                                                 type: 'success'
                                             });
                                         }
                                     });
-                                    break;                                                 
+                                    break;
+                                case 'YX_N_M_B53B':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_B53B/YX_N_M_B53BVM'], function(YX_N_M_B53BVM) {
+                                        vm = new YX_N_M_B53BVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_94FE':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_94FE/YX_N_M_94FEVM'], function(YX_N_M_94FEVM) {
+                                        vm = new YX_N_M_94FEVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_77DE':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_77DE/YX_N_M_77DEVM'], function(YX_N_M_77DEVM) {
+                                        vm = new YX_N_M_77DEVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_BE90':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_BE90/YX_N_M_BE90VM'], function(YX_N_M_BE90VM) {
+                                        vm = new YX_N_M_BE90VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_S_M_CE2D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_CE2D/YX_S_M_CE2DVM'], function(YX_S_M_CE2DVM) {
+                                        vm = new YX_S_M_CE2DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_CE2D/YX_S_M_CE2D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_CE2D/YX_S_M_CE2D.css';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_EA3D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_EA3D/YX_N_M_EA3DVM'], function(YX_N_M_EA3DVM) {
+                                        vm = new YX_N_M_EA3DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_EA3D/YX_N_M_EA3D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_EA3D/YX_N_M_EA3D.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_EA3D/YX_N_M_EA3D.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_D45D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_D45D/YX_N_M_D45DVM'], function(YX_N_M_D45DVM) {
+                                        vm = new YX_N_M_D45DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_64E0':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_64E0/YX_N_M_64E0VM'], function(YX_N_M_64E0VM) {
+                                        vm = new YX_N_M_64E0VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_A4F1':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1VM'], function(YX_N_M_A4F1VM) {
+                                        vm = new YX_N_M_A4F1VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_CB4D':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_CB4D/YX_N_M_CB4DVM'], function(YX_N_M_CB4DVM) {
+                                        vm = new YX_N_M_CB4DVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_4A12':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_4A12/YX_N_M_4A12VM'], function(YX_N_M_4A12VM) {
+                                        vm = new YX_N_M_4A12VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_S_M_D9D0':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0VM'], function(YX_S_M_D9D0VM) {
+                                        vm = new YX_S_M_D9D0VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_S_M_BF3A':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_BF3A/YX_S_M_BF3AVM'], function(YX_S_M_BF3AVM) {
+                                        vm = new YX_S_M_BF3AVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_S_M_35FD':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_35FD/YX_S_M_35FDVM'], function(YX_S_M_35FDVM) {
+                                        vm = new YX_S_M_35FDVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_S_M_D500':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_S_M_D500/YX_S_M_D500VM'], function(YX_S_M_D500VM) {
+                                        vm = new YX_S_M_D500VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.css';
+                                        _loadScript = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_417A':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_417A/YX_N_M_417AVM'], function(YX_N_M_417AVM) {
+                                        vm = new YX_N_M_417AVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
+                                case 'YX_N_M_BCD0':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0VM'], function(YX_N_M_BCD0VM) {
+                                        vm = new YX_N_M_BCD0VM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        loadCss = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;    
                             }
                         });
                         /*if(!dataTpl || !dataTpl.length){
@@ -4548,18 +6289,20 @@ define([
                         }*/
                     } else {
                         !!_tplThrottle && clearTimeout(_tplThrottle);
-                        if((!window.pageData || !window.pageData.length) && !window.tplData.length){
+                        if ((!window.pageData || !window.pageData.length) && !window.tplData.length) {
                             $.notify({
                                 title: '没有更多的修改记录',
                                 type: 'error'
                             });
                         }
+                        _that.$dispatch('notifyRootReview', false);
                         _that.$dispatch('notifyRootChangeEdit', {
                             changeEditId: _that.layout.id,
                             oparate: 1
                         });
                     }
-                } 
+                }
+                this.$dispatch('notifyRootReview', true);
                 setThrottle();
             },
             /*
@@ -4582,14 +6325,14 @@ define([
                 (window.saveData = []) && (window.saveData.push(JSON.parse(JSON.stringify(this.layout))));
                 window.saveData.push(JSON.parse(JSON.stringify(window.tplData)));
                 var data = window.saveData;
-                localStorage.set(this.id, data);
+                localStorage.set((window.id || this.id), data);
             },
             /* 由于上传不成功跳转到其他位置后需要保现在的数据*/
-            notifySavePageUpload:function(){
+            notifySavePageUpload: function() {
                 (window.saveData = []) && (window.saveData.push(JSON.parse(JSON.stringify(this.layout))));
                 window.saveData.push(JSON.parse(JSON.stringify(window.tplData)));
                 var data = window.saveData;
-                localStorage.set(this.id, data);
+                localStorage.set((window.id || this.id), data);
             },
             /*
                 预览功能
@@ -4599,7 +6342,7 @@ define([
                 (window.saveData = []) && (window.saveData.push(JSON.parse(JSON.stringify(this.layout))));
                 window.saveData.push(JSON.parse(JSON.stringify(window.tplData)));
                 var data = window.saveData;
-                localStorage.set(this.id, data);
+                localStorage.set((window.id || this.id), data);
             },
             /*
                 发布功能
@@ -4609,7 +6352,7 @@ define([
                 (window.saveData = []) && (window.saveData.push(JSON.parse(JSON.stringify(this.layout))));
                 window.saveData.push(JSON.parse(JSON.stringify(window.tplData)));
                 var data = window.saveData;
-                localStorage.set(this.id, data);
+                localStorage.set((window.id || this.id), data);
             },
             // 插入组件
             insertComponent: function(data) {
@@ -4624,6 +6367,7 @@ define([
                         pid: _that.insertId,
                         type: data.type
                     };
+
                 /* 判断object 是不是空的 */
                 function isEmpty(obj) {
                     for (var i in obj) {
@@ -4648,6 +6392,7 @@ define([
 
                     return _json[val] ? false : true;
                 }
+
 
                 switch (data.type) {
                     case 'yxhd':
@@ -5244,79 +6989,79 @@ define([
                         break;
                     case 'YX_N_M_2BE2':
                         require(['components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2VM'], function(YX_N_M_2BE2VM) {
-                                vm = new YX_N_M_2BE2VM();
-                                _id = vm._data.id;
-                                _that.content['d_' + _id] = $.extend({}, vm._data, _options);
-                                vm.$parent = _that;
-                                if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
-                                    vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
-                                } else {
-                                    vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            vm = new YX_N_M_2BE2VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+                            /* js lib */
+                            var libJ = [
+                                'http://mimg.127.net/pub/common/js/jquery.lazyload.js',
+                                'http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js',
+                                'http://mimg.127.net/pub/common/js/PSC_C_statistics.js'
+                            ];
+                            $.each(libJ, function(i, n) {
+                                if (distinct(_that.scriptLib, n)) {
+                                    _that.scriptLib.push(n);
+                                    /*load.loadScript(n);*/
                                 }
-                                /* js lib */
-                                var libJ = [
-                                    'http://mimg.127.net/pub/common/js/jquery.lazyload.js',
-                                    'http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js',
-                                    'http://mimg.127.net/pub/common/js/PSC_C_statistics.js'
-                                ];
-                                $.each(libJ, function(i, n) {
-                                    if (distinct(_that.scriptLib, n)) {
-                                        _that.scriptLib.push(n);
-                                        /*load.loadScript(n);*/
-                                    }
-                                });
-                                // 这一份是逻辑js
-                                loadJs = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.js';
-                                if (distinct(_that.needScript, loadJs)) {
-                                    _that.needScript.push(loadJs);
-                                    // 这一份是保存的基本js
-                                }
-
-                                /* css lib */
-                                var libC = ['http://mimg.127.net/pub/common/css/PSC_YX_PC_reset.css'];
-                                $.each(libC, function(i, n) {
-                                    if (distinct(_that.styleLib, n)) {
-                                        _that.styleLib.push(n);
-                                        load.loadStyle(n);
-                                    }
-                                });
-
-                                _that.$dispatch('saveLibLink', {
-                                    scriptLib: _that.scriptLib,
-                                    styleLib: _that.styleLib
-                                });
-
-                                loadCss = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.css';
-                                if (distinct(_that.needStyle, loadCss)) {
-                                    _that.needStyle.push(loadCss);
-                                    load.loadStyle(loadCss);
-                                }
-
-                                _loadStyle = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.css';
-                                _loadScript = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.js';
-                                _that.loadStyle.push({
-                                    id: vm.id,
-                                    key: data.type,
-                                    value: _loadStyle
-                                });
-                                _that.loadScript.push({
-                                    id: vm.id,
-                                    key: data.type,
-                                    value: _loadScript
-                                });
-
-                                _that.$dispatch('saveLink', {
-                                    loadStyle: _that.loadStyle,
-                                    loadScript: _that.loadScript
-                                });
-
-                                _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
-                                var tplData = window.tplData;
-                                if (tplData && !isEmpty(tplData)) {
-                                    window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
-                                }
-                                window.tplData.push($.extend({}, vm._data, _options));
                             });
+                            // 这一份是逻辑js
+                            loadJs = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.js';
+                            if (distinct(_that.needScript, loadJs)) {
+                                _that.needScript.push(loadJs);
+                                // 这一份是保存的基本js
+                            }
+
+                            /* css lib */
+                            var libC = ['http://mimg.127.net/pub/common/css/PSC_YX_PC_reset.css'];
+                            $.each(libC, function(i, n) {
+                                if (distinct(_that.styleLib, n)) {
+                                    _that.styleLib.push(n);
+                                    load.loadStyle(n);
+                                }
+                            });
+
+                            _that.$dispatch('saveLibLink', {
+                                scriptLib: _that.scriptLib,
+                                styleLib: _that.styleLib
+                            });
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_2BE2/YX_N_M_2BE2.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
                         break;
                     case 'YX_N_M_7A5D':
                         require(['components/page/modules/YX_N_M_7A5D/YX_N_M_7A5DVM'], function(YX_N_M_7A5DVM) {
@@ -5392,7 +7137,7 @@ define([
                                 window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
-                            });
+                        });
                         break;
                     case 'YX_N_M_A1C6':
                         require(['components/page/modules/YX_N_M_A1C6/YX_N_M_A1C6VM'], function(YX_N_M_A1C6VM) {
@@ -5570,7 +7315,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5655,7 +7400,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5697,7 +7442,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5713,7 +7458,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;    
+                        break;
                     case 'YX_S_M_AFA4':
                         require(['components/page/modules/YX_S_M_AFA4/YX_S_M_AFA4VM'], function(YX_S_M_AFA4VM) {
                             vm = new YX_S_M_AFA4VM();
@@ -5775,7 +7520,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5791,7 +7536,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;    
+                        break;
                     case 'YX_N_M_C6E9':
                         require(['components/page/modules/YX_N_M_C6E9/YX_N_M_C6E9VM'], function(YX_N_M_C6E9VM) {
                             vm = new YX_N_M_C6E9VM();
@@ -5817,7 +7562,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5833,7 +7578,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break; 
+                        break;
                     case 'YX_N_M_DB08':
                         require(['components/page/modules/YX_N_M_DB08/YX_N_M_DB08VM'], function(YX_N_M_DB08VM) {
                             vm = new YX_N_M_DB08VM();
@@ -5859,7 +7604,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5901,7 +7646,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5917,7 +7662,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;  
+                        break;
                     case 'YX_S_M_0AA8':
                         require(['components/page/modules/YX_S_M_0AA8/YX_S_M_0AA8VM'], function(YX_S_M_0AA8VM) {
                             vm = new YX_S_M_0AA8VM();
@@ -5953,7 +7698,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;                 
+                        break;
                     case 'YX_N_M_92C9':
                         require(['components/page/modules/YX_N_M_92C9/YX_N_M_92C9VM'], function(YX_N_M_92C9VM) {
                             vm = new YX_N_M_92C9VM();
@@ -5979,7 +7724,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -5995,7 +7740,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;    
+                        break;
                     case 'YX_N_M_ACBA':
                         require(['components/page/modules/YX_N_M_ACBA/YX_N_M_ACBAVM'], function(YX_N_M_ACBAVM) {
                             vm = new YX_N_M_ACBAVM();
@@ -6021,7 +7766,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6063,7 +7808,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6105,7 +7850,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6121,7 +7866,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;            
+                        break;
                     case 'YX_N_M_FDC0':
                         require(['components/page/modules/YX_N_M_FDC0/YX_N_M_FDC0VM'], function(YX_N_M_FDC0VM) {
                             vm = new YX_N_M_FDC0VM();
@@ -6147,7 +7892,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6163,7 +7908,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;            
+                        break;
                     case 'YX_S_M_51E1':
                         require(['components/page/modules/YX_S_M_51E1/YX_S_M_51E1VM'], function(YX_S_M_51E1VM) {
                             vm = new YX_S_M_51E1VM();
@@ -6199,7 +7944,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;                
+                        break;
                     case 'YX_S_M_EE29':
                         require(['components/page/modules/YX_S_M_EE29/YX_S_M_EE29VM'], function(YX_S_M_EE29VM) {
                             vm = new YX_S_M_EE29VM();
@@ -6225,7 +7970,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6241,7 +7986,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break; 
+                        break;
                     case 'YX_S_M_4FDB':
                         require(['components/page/modules/YX_S_M_4FDB/YX_S_M_4FDBVM'], function(YX_S_M_4FDBVM) {
                             vm = new YX_S_M_4FDBVM();
@@ -6267,7 +8012,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6319,7 +8064,7 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break; 
+                        break;
                     case 'YX_S_M_BFA7':
                         require(['components/page/modules/YX_S_M_BFA7/YX_S_M_BFA7VM'], function(YX_S_M_BFA7VM) {
                             vm = new YX_S_M_BFA7VM();
@@ -6381,7 +8126,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6423,7 +8168,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6465,7 +8210,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6507,7 +8252,7 @@ define([
                                 key: data.type,
                                 value: _loadStyle
                             });
-                             _that.loadScript.push({
+                            _that.loadScript.push({
                                 id: vm.id,
                                 key: data.type,
                                 value: _loadScript
@@ -6523,7 +8268,715 @@ define([
                             }
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
-                        break;                                                 
+                        break;
+                    case 'YX_N_M_B53B':
+                        require(['components/page/modules/YX_N_M_B53B/YX_N_M_B53BVM'], function(YX_N_M_B53BVM) {
+                            vm = new YX_N_M_B53BVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_B53B/YX_N_M_B53B.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_94FE':
+                        require(['components/page/modules/YX_N_M_94FE/YX_N_M_94FEVM'], function(YX_N_M_94FEVM) {
+                            vm = new YX_N_M_94FEVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_94FE/YX_N_M_94FE.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_77DE':
+                        require(['components/page/modules/YX_N_M_77DE/YX_N_M_77DEVM'], function(YX_N_M_77DEVM) {
+                            vm = new YX_N_M_77DEVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_77DE/YX_N_M_77DE.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_BE90':
+                        require(['components/page/modules/YX_N_M_BE90/YX_N_M_BE90VM'], function(YX_N_M_BE90VM) {
+                            vm = new YX_N_M_BE90VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_BE90/YX_N_M_BE90.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_S_M_CE2D':
+                        require(['components/page/modules/YX_S_M_CE2D/YX_S_M_CE2DVM'], function(YX_S_M_CE2DVM) {
+                            vm = new YX_S_M_CE2DVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_S_M_CE2D/YX_S_M_CE2D.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_S_M_CE2D/YX_S_M_CE2D.css';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_S_M_EA3D':
+                        require(['components/page/modules/YX_S_M_EA3D/YX_S_M_EA3DVM'], function(YX_S_M_EA3DVM) {
+                            vm = new YX_S_M_EA3DVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_S_M_EA3D/YX_S_M_EA3D.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_S_M_EA3D/YX_S_M_EA3D.css';
+                            _loadScript = 'assets/components/page/modules/YX_S_M_EA3D/YX_S_M_EA3D.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_64E0':
+                        require(['components/page/modules/YX_N_M_64E0/YX_N_M_64E0VM'], function(YX_N_M_64E0VM) {
+                            vm = new YX_N_M_64E0VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_64E0/YX_N_M_64E0.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_D45D':
+                        require(['components/page/modules/YX_N_M_D45D/YX_N_M_D45DVM'], function(YX_N_M_D45DVM) {
+                            vm = new YX_N_M_D45DVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_D45D/YX_N_M_D45D.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_A4F1':
+                        require(['components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1VM'], function(YX_N_M_A4F1VM) {
+                            vm = new YX_N_M_A4F1VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_A4F1/YX_N_M_A4F1.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_CB4D':
+                        require(['components/page/modules/YX_N_M_CB4D/YX_N_M_CB4DVM'], function(YX_N_M_CB4DVM) {
+                            vm = new YX_N_M_CB4DVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_CB4D/YX_N_M_CB4D.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_4A12':
+                        require(['components/page/modules/YX_N_M_4A12/YX_N_M_4A12VM'], function(YX_N_M_4A12VM) {
+                            vm = new YX_N_M_4A12VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_4A12/YX_N_M_4A12.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_S_M_D9D0':
+                        require(['components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0VM'], function(YX_S_M_D9D0VM) {
+                            vm = new YX_S_M_D9D0VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.css';
+                            _loadScript = 'assets/components/page/modules/YX_S_M_D9D0/YX_S_M_D9D0.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_S_M_BF3A':
+                        require(['components/page/modules/YX_S_M_BF3A/YX_S_M_BF3AVM'], function(YX_S_M_BF3AVM) {
+                            vm = new YX_S_M_BF3AVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.css';
+                            _loadScript = 'assets/components/page/modules/YX_S_M_BF3A/YX_S_M_BF3A.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_S_M_35FD':
+                        require(['components/page/modules/YX_S_M_35FD/YX_S_M_35FDVM'], function(YX_S_M_35FDVM) {
+                            vm = new YX_S_M_35FDVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.css';
+                            _loadScript = 'assets/components/page/modules/YX_S_M_35FD/YX_S_M_35FD.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_S_M_D500':
+                        require(['components/page/modules/YX_S_M_D500/YX_S_M_D500VM'], function(YX_S_M_D500VM) {
+                            vm = new YX_S_M_D500VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.css';
+                            _loadScript = 'assets/components/page/modules/YX_S_M_D500/YX_S_M_D500.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_417A':
+                        require(['components/page/modules/YX_N_M_417A/YX_N_M_417AVM'], function(YX_N_M_417AVM) {
+                            vm = new YX_N_M_417AVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_417A/YX_N_M_417A.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
+                    case 'YX_N_M_BCD0':
+                        require(['components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0VM'], function(YX_N_M_BCD0VM) {
+                            vm = new YX_N_M_BCD0VM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+
+                            loadCss = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_BCD0/YX_N_M_BCD0.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
                 }
             },
             // 删除组件
@@ -6532,21 +8985,21 @@ define([
                 delete this.content['d_' + data.removeId];
                 $('.g-doc [data-id="' + data.removeId + '"]').remove();
 
-                if(this.loadStyle && this.loadStyle.length){
+                if (this.loadStyle && this.loadStyle.length) {
                     $.each(this.loadStyle, function(i, n) {
                         if (n && n.id && data.removeId == n.id) {
                             _that.loadStyle.splice(i, 1);
                         }
                     });
                 }
-                if(this.loadScript && this.loadScript.length){
+                if (this.loadScript && this.loadScript.length) {
                     $.each(this.loadScript, function(i, n) {
                         if (n && n.id && data.removeId == n.id) {
                             _that.loadScript.splice(i, 1);
                         }
                     });
                 }
-                if(window.tplData && window.tplData.length){
+                if (window.tplData && window.tplData.length) {
                     $.each(window.tplData, function(i, item) {
                         if (item && item.id && item.id == data.removeId) {
                             window.tplData.splice(i, 1);
@@ -6565,7 +9018,7 @@ define([
                     }
                 });
                 // 在某些需要手动更新的情况下，更新window.tplData
-                $.each(JSON.parse(JSON.stringify(window.tplData)),function(i,item){
+                $.each(JSON.parse(JSON.stringify(window.tplData)), function(i, item) {
                     if (item.id == id && newFlag) {
                         window.tplData[i] = $.extend(true, item, JSON.parse(JSON.stringify(data)));
                     }
@@ -6579,33 +9032,34 @@ define([
                     _width = $target.width(),
                     _height = $target.height(),
                     _w = $('.g-doc').width();
-                    function getImgOriginalSize(){
-                        _width = this.width;
-                        _height = this.height;
-                    }
+
+                function getImgOriginalSize() {
+                    _width = this.width;
+                    _height = this.height;
+                }
                 if (reg.test(sectionInfo.val)) {
                     var src = $target.children().attr('src') || $target.find('img.J_needImage').attr('src') || $target.css('background-image'),
                         reg = /^url/;
-                    if(reg.test(src)){
+                    if (reg.test(src)) {
                         if (_width >= _w) {
-                        $target.attr('aria-label', '图片大小：' + '100%(Web|1920)' + ' x ' + _height);
+                            $target.attr('aria-label', '图片大小：' + '100%(Web|1920)' + ' x ' + _height);
                         } else {
                             $target.attr('aria-label', '图片大小：' + _width + ' x ' + _height);
                         }
-                    }else{
+                    } else {
                         var img = new Image();
                         img.src = src;
-                        if(img.complete){
+                        if (img.complete) {
                             getImgOriginalSize.call(img);
                             img = null;
-                        }else{
-                            img.onload=function(){
+                        } else {
+                            img.onload = function() {
                                 getImgOriginalSize.call(img);
                                 img = null;
                             };
                         }
                         $target.attr('aria-label', '图片大小：' + _width + ' x ' + _height);
-                    }    
+                    }
                 }
                 $target.addClass('u-psc-mask-scaffold');
             },
@@ -6623,9 +9077,11 @@ define([
                  * 一种是在g-doc 下面的模块
                  * 一种是不在根目录下的模块
                  */
+                if(info.newIndex == info.oldIndex) return;
                 // 先存储上一次的结果
                 window.pageData.unshift(JSON.parse(JSON.stringify(window.tplData)));
-                var len = window.tplData.length;
+                var len = window.tplData.length,
+                    flag = false;
                 $.each(window.tplData, function(i, n) {
                     /* 
                      *  判断条件 newIndex < oldIndex  
@@ -6635,26 +9091,59 @@ define([
                      *  如果newIndex == len 这种情况splice(i,1) push(item)
                      *  如果newIndex != len 先插入splice(newIndex-1,0,item) splice(i,1)
                      */
-                    if (info.targetId == n.id && $(info.from).hasClass('g-doc')) {
-                        var item = window.tplData[i];
+                    /*
+                     * 判断条件 newIndex oldIndex
+                     * if newIndex > oldIndex 向下移动
+                     * 是否移动到了最后一个，newIndex-2 == len,那么现在最后的位置插入数据，然后删除以前位置的数据
+                     * 不是移动到最后一个位置，那么先插入到newIndex-2的位置，再删除以前的位置
+                     * if newIndex < oldIndex 向上移动
+                     * 是否移动到第一个，newIndex == 2，首先删除以前位置的数据，然后在第一个位置插入
+                     * 不是移动到第一个，那么首先也是要删掉以前位置的数据，然后新位置newIndex-2的位置插入
+                    */ 
+                    if(info.targetId == n.id && $(info.from).hasClass('g-doc')){
+                       var item = window.tplData[i];
                         if (info.newIndex < info.oldIndex) {
-                            if (info.newIndex == 1) {
+                            if (info.newIndex == 2) {
                                 window.tplData.splice(i, 1);
                                 window.tplData.unshift(item);
                             } else {
                                 window.tplData.splice(i, 1);
-                                window.tplData.splice(info.newIndex - 1, 0, item);
+                                window.tplData.splice(info.newIndex - 2, 0, item);
                             }
                         } else {
-                            if (info.newIndex == len) {
+                            if(!flag){                                
+                                if ((info.newIndex-1) == len) {
+                                    window.tplData.push(item);
+                                    window.tplData.splice(i, 1);
+                                    flag = true;
+                                }else{
+                                    window.tplData.splice((info.newIndex - 1), 0, item);
+                                    window.tplData.splice(i, 1);
+                                    flag = true;
+                                }
+                            }
+                        } 
+                    }
+                    /*if (info.targetId == n.id && $(info.from).hasClass('g-doc')) {
+                        var item = window.tplData[i];
+                        if (info.newIndex < info.oldIndex) {
+                            if (info.newIndex == 2) {
+                                window.tplData.splice(i, 1);
+                                window.tplData.unshift(item);
+                            } else {
+                                window.tplData.splice(i, 1);
+                                window.tplData.splice(info.newIndex - 2, 0, item);
+                            }
+                        } else {
+                            if ((info.newIndex-2) == len) {
                                 window.tplData.splice(i, 1);
                                 window.tplData.push(item);
                             } else {
-                                window.tplData.splice(info.newIndex - 1, 0, item);
+                                window.tplData.splice(info.newIndex - 2, 0, item);
                                 window.tplData.splice(i, 1);
                             }
                         }
-                    }
+                    }*/
                 });
             },
             // 显示某个区域

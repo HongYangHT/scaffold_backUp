@@ -18,6 +18,11 @@
             inViewTreshhold: 100,
             opacity: true
         });
+        $('.YX-S-M-97D8').each(function(i, n) {
+            var $n = $(n),
+                height = $n.data('height');
+            $n.css('height', height / 100 + 'rem');
+        });
     } else {
         $('.YX-S-M-97D8 .J_lazyload').lazyload({
 	        threshold : 50,
@@ -26,6 +31,7 @@
     }
     $('.YX-S-M-97D8 .J_lazyload').lazyload({
         threshold : 50,
-        effect : 'fadeIn'
+        effect : 'fadeIn',
+        opacity:true
     }); 
 })();

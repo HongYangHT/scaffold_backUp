@@ -14,7 +14,10 @@ require.config({
         'colorpicker': 'libs/bootstrap-colorpicker',
         'pnotify': 'libs/pnotify',
         'notify': 'libs/notify',
-        'sortable':'libs/sortable'
+        'sortable':'libs/sortable',
+        'laydate':'libs/laydate',
+        'autocomplete':'libs/jquery.autocomplete',
+        'clipboard':'libs/clipboard'
     },
     shim: {
         'underscore': {
@@ -50,6 +53,18 @@ require.config({
         },
         'sortable':{
             exports:'sortable'
+        },
+        'laydate':{
+            deps:['jquery'],
+            exports:'laydate'
+        },
+        'autocomplete':{
+            deps:['jquery'],
+            exports:'autocomplete'
+        },
+        'clipboard':{
+            deps:['jquery'],
+            exports:'clipboard'
         }
     }
 });

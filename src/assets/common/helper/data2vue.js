@@ -15,6 +15,7 @@ define(['jquery', 'model/base', 'uuid'], function($, BaseModel) {
 
 	Data2Vue.prototype.init = function() {
 		this.changeData();
+		this.setAnchar();
 		this.setId();
 	};
 
@@ -24,6 +25,23 @@ define(['jquery', 'model/base', 'uuid'], function($, BaseModel) {
 
 	Data2Vue.prototype.setId = function() {
 		this.options.id ? (this.result.id = this.options.id) : (this.result.id = Math.uuid(32, 16).toLowerCase());
+	};
+
+	//设置模块与模块之间的anchar链接
+	Data2Vue.prototype.setAnchar = function(){
+		var contentInfo = {
+			anchar:{
+				type:'input',
+				name:'模块与模块之间的锚点',
+				key:'anchar',
+				value:'H5597' + Math.uuid(4, 16).toUpperCase()
+			}
+		};
+		if(this.result.content){
+			!this.options.id && (this.result.content = $.extend({},this.result.content,contentInfo));
+		}else{
+			!this.options.id && (this.result.contentInfo = $.extend({},this.result.contentInfo,contentInfo));
+		}
 	};
 
 	Data2Vue.prototype.getType = function(obj) {
@@ -94,7 +112,27 @@ define(['jquery', 'model/base', 'uuid'], function($, BaseModel) {
 				if (_that.colorReg.test(value)) {
 					_data.changeColor = true;
 				}
-				if (key == 'needTextarea') {
+				switch(key){
+					case 'needTextarea':
+						_data.key = key;
+						_data.value = value;
+						_data.name = key + '的值';
+						_data.type = 'textarea';
+						break;
+					case 'needScenePicUrl':
+						_data.key = key;
+						_data.value = value;
+						_data.name = key + '的值';
+						_data.type = 'select';
+						break;
+					default:
+						_data.key = key;
+						_data.value = value;
+						_data.name = key + '的值';
+						_data.type = 'input';
+						break;		
+				}
+				/*if (key == 'needTextarea') {
 					_data.key = key;
 					_data.value = value;
 					_data.name = key + '的值';
@@ -104,7 +142,7 @@ define(['jquery', 'model/base', 'uuid'], function($, BaseModel) {
 					_data.value = value;
 					_data.name = key + '的值';
 					_data.type = 'input';
-				}
+				}*/
 				break;
 		}
 		return _data;

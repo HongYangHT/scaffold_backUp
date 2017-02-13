@@ -1,0 +1,24 @@
+<div class="m-psc-shareTemplate" v-show="showFlag">
+	<div class="m-modal-bg"></div>
+	<div class="m-shareTemplate-content">
+		<a href="javascript:;" target="_self" class="u-close fa fa-times" v-on:click="hideModal"></a>
+		<div class="m-shareTemplate">
+			<p class="u-shareTemplate-title">使用或者分享上线模板</p>
+			<div class="m-shareTemplate-group">
+				<label>请填入活动ID或者活动链接：</label>
+				<input type="text" class="u-shareTemplate" v-model="hdLinkOrId" v-on:change="changeShareLink">
+			</div>
+			<div class="u-shareTemplate-thread"></div>
+			<div class="m-shareTemplate-group">
+				<button class="u-zeroClipboard u-zeroClipboard-1" v-on:click="setShareLink">生成分享链接</button>
+				<button class="u-zeroClipboard" v-on:click="rePaintTemplate">继续使用该模板</button>
+			</div>
+			<div class="u-shareTemplate-thread"></div>
+			<div class="m-shareTemplate-group" v-show="setShareLinkFlag">
+				<label>分享链接：</label>
+				<input type="text" id="shareTemplateInput2" class="u-shareTemplate" v-model="shareLink"/>
+				<button class="u-zeroClipboard" id="zeroClipboard2" data-clipboard-action="copy" data-clipboard-target="#shareTemplateInput2" v-clip>点击复制</button>
+			</div>
+		</div>
+	</div>
+</div>

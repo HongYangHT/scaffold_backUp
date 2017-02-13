@@ -34,54 +34,5 @@
         } else {
             $('.J_iframeHD').attr('src', _host + '/activity/hd');
         }
-    }
-
-    var log = {
-        getType: function() {
-            var type = 'web';
-            if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
-                UA.versions.iPhone || UA.versions.iPad) { // 移动端
-                type = 'h5';
-            } else {
-                type = 'web';
-            }
-            return type;
-        },
-        getStatSubject: function() {
-            var stat_subject = $('.J_psc_hd_info').find('.stat_subject').data('stat_subject');
-            return stat_subject ? stat_subject : window.psc_act_id;
-        },
-        log: function(data) {
-            var params = [],
-                that = this,
-                type = that.getType();
-            params.push('activity=' + that.getStatSubject());
-            for (var p in data) {
-                if (data.hasOwnProperty(p)) {
-                    params.push('' + p + '=' + data[p]);
-                }
-            }
-            params.push('type=' + type);
-            params.push('rid=' + new Date().getTime());
-            var url = '//stat.mail.163.com/activity/a.js' + '?' + params.join('&');
-            url = encodeURI(url);
-            $.getScript(url);
-        },
-        bindLog: function() {
-            var that = this;
-            // 时间代理到body上面
-            $('body').on('click', '.J_log', function(e) {
-                var $target = $(e.target),
-                    logName = $target.data('logname') ? $target.data('logname') : $(e.currentTarget).data('logname');
-                if (logName) {
-                    that.log({
-                        key: logName
-                    });
-                }
-            });
-        }
-    };
-    log.log({
-        key:'活动落地页总'
-    });
+    }    
 })();
