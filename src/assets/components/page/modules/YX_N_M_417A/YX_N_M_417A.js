@@ -40,19 +40,19 @@
                         hasUsed++;
                         _html += [
                             (hasUsed % 3 ? '<div class="u-417A-goods">' : '<div class="u-417A-goods u-417A-goods-s" style="margin-right:0;">'),
-                            '<a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-417A-link">',
+                            '<a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-417A-link PSC_J_normal_statistics_Goods">',
                             (needScenePicUrl ? '<img data-original="' + v.scenePicUrl + '?imageView&thumbnail=260x260&quality=95" class="J_lazyload">' : '<img data-original="' + v.primaryPicUrl + '?imageView&thumbnail=260x260&quality=95" class="J_lazyload">'),
                             '</a>',
                             '<div class="m-417A-goods-info">',
-                            '<p class="u-417A-goods-t"><a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '" target="_blank">' + v.title + '</a></p>',
+                            '<p class="u-417A-goods-t"><a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '" target="_blank" class="PSC_J_normal_statistics_Goods">' + v.title + '</a></p>',
                             (extend.maker ? '<p class="u-417A-goods-maker">' + extend.maker + '</p>' : '<p class="u-417A-goods-maker">' + v.simpleDesc + '</p>'),
                             '<p class="u-417A-goods-price">',
                             '<span class="u-417A-offPrice">' + v.offPrice + '</span>',
                             (parseFloat(v.offPrice) == parseFloat(v.unitPrice) ? '' : '<span class="u-417A-unitPrice">' + v.unitPrice + '</span>'),
                             '</p>',
                             '<div class="m-417A-btn">',
-                            '<a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-417A-btn">立即购买</a>',
-                            '<a href="javascript:;" target="_self" class="u-417A-cart J_417A_cart" data-skuId="' + sellVolumeId + '" data-img="' + v.primaryPicUrl + '"></a>',
+                            '<a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-417A-btn PSC_J_normal_statistics_Goods">立即购买</a>',
+                            '<a href="javascript:;" target="_self" class="u-417A-cart J_417A_cart PSC_J_normal_statistics_Goods psc_static_'+ sellVolumeId +'" data-skuId="' + sellVolumeId + '" data-img="' + v.primaryPicUrl + '"></a>',
                             '</div>',
                             '</div>',
                             '</div>'
@@ -119,5 +119,9 @@
                 }
             });
         }
+    });
+
+    $('body').on('click', '.YX-N-M-417A .PSC_J_normal_statistics_Goods', function(e) {
+        PSC_C_statistics.normalGoods(this);
     });
 })();

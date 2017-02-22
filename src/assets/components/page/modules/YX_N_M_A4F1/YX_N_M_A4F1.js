@@ -58,10 +58,10 @@
                          hasUsed++;
                         _html += [
                         	(hasUsed>3 ? '<div class="u-A4F1-goods u-A4F1-goods-s">' : '<div class="u-A4F1-goods">'),
-								'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-A4F1-img-link">',
+								'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-A4F1-img-link PSC_J_normal_statistics_Goods">',
 									(needScenePicUrl ? '<img data-original="'+_detail.scenePicUrl+'?imageView&thumbnail=210x210&quality=95" class="J_lazyload">':'<img data-original="'+_detail.primaryPicUrl+'?imageView&thumbnail=210x210&quality=95" class="J_lazyload">'),
 								'</a>',
-								'<p class="u-A4F1-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-A4F1-title-link">'+_detail.title+'</a></p>',
+								'<p class="u-A4F1-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-A4F1-title-link PSC_J_normal_statistics_Goods">'+_detail.title+'</a></p>',
                                 '<p class="u-A4F1-desc">'+_detail.simpleDesc+'</p>',
                                 '<div class="u-A4F1-border"></div>',
                                 '<p class="u-A4F1-price">',
@@ -69,8 +69,8 @@
                                 (parseFloat(_detail.offPrice) == parseFloat(_detail.unitPrice) ? '' : '<span class="u-A4F1-unitPrice">'+_detail.unitPrice+'</span>'),
                                 '</p>',
                                 '<div class="m-A4F1-btn">',
-                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-A4F1-buy">立即购买</a>',
-                                '<a href="javascript:;" target="_self" class="u-A4F1-cart J_A4F1_cart"  data-skuId="'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'?imageView&thumbnail=210x210&quality=95"></a>',
+                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-A4F1-buy PSC_J_normal_statistics_Goods">立即购买</a>',
+                                '<a href="javascript:;" target="_self" class="u-A4F1-cart J_A4F1_cart PSC_J_normal_statistics_Goods psc_static_'+sellVolumeId+'"  data-skuId="'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'?imageView&thumbnail=210x210&quality=95"></a>',
                                 '</div>',
 							'</div>'
                         ].join('').trim();

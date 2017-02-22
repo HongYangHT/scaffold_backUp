@@ -15,7 +15,8 @@ define([
 			needScenePicUrl:1,
 			title:'一口足以爱不释手',
 			tip1:'一口足以爱不释手',
-			tip2:'一口足以爱不释手'
+			tip2:'一口足以爱不释手',
+			bgColor:'#fff'
 		},
 		temp:[
 			{
@@ -172,6 +173,21 @@ define([
 						var data = {
 								'contentInfo': {
 									'tip2': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);		
+					}
+				}
+			},
+			'contentInfo.bgColor.value':{
+				'handler':function(value,old){
+					if (value) {
+						var data = {
+								'contentInfo': {
+									'bgColor': {
 										'value': old
 									}
 								}

@@ -7,7 +7,7 @@
 		<div class="u-77DE-img" data-h55970f92="leftImg">
 			<img src="{{contentInfo.leftImg}}" data-original="{{contentInfo.leftImg}}" class="J_lazyload">
 		</div>
-		<div class="m-77DE-goods" v-if="contentInfo.needScenePicUrl.value">
+		<div class="m-77DE-goods" v-if="contentInfo.needScenePicUrl.value" style="background-color: {{contentInfo.bgColor}};">
 			{{#temp}}
 			<div class="u-77DE-goods">
 				<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-77DE-img-link">
@@ -26,7 +26,7 @@
 			</div>
 			{{/temp}}
 		</div>
-		<div class="m-77DE-goods" v-if="!contentInfo.needScenePicUrl.value">
+		<div class="m-77DE-goods" v-if="!contentInfo.needScenePicUrl.value" style="background-color: {{contentInfo.bgColor}};">
 			{{#temp}}
 			<div class="u-77DE-goods">
 				<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-77DE-img-link">

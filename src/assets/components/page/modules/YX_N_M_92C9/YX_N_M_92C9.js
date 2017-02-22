@@ -112,13 +112,13 @@
                             '</a>',
                             (_detail.newItemFlag ? '<span class="u-92C9-flag">新品</span>' : ''),
                             '<div class="u-92C9-operate">',
-                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn u-92C9-buy J_92C9_buy">立即购买</a>',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn u-92C9-buy J_92C9_buy PSC_J_normal_statistics_Goods">立即购买</a>',
                             '<a href="javascript:;" target="_self" class="u-92C9-btn u-92C9-cart J_92C9_cart" data-skuid="' + sellVolumeId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
                             '</div>',
                             '</div>',
                             '<div class="u-92C9-product-bd">',
                             '<h4 class="u-92C9-name">',
-                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" title="' + _detail.title + '" target="_blank">' + _detail.title + '</a>',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" title="' + _detail.title + '" target="_blank" class="PSC_J_normal_statistics_Goods">' + _detail.title + '</a>',
                             '</h4>',
                             (extend.maker ? '<p class="m-92C9-marker"><span class="u-92C9-marker">' + extend.maker + '</span><p>' : '<p class="m-92C9-simpleDesc"><span class="u-92C9-simpleDesc">' + _detail.simpleDesc + '</span></p>'),
                             '<p class="u-92C9-price">',
@@ -127,8 +127,8 @@
                             (parseFloat(_detail.offPrice) == parseFloat(_detail.unitPrice) ? '':'<span class="u-92C9-unitPrice">' + _detail.unitPrice + '</span>'),
                             '</p>',
                             '<div class="m-92C9-btn-group">',
-                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn-group u-92C9-btn-buy J_92C9_btn_buy">立即购买</a>',
-                            '<a href="javascript:;" target="_self" class="u-92C9-btn-group u-92C9-btn-cart J_92C9_btn_cart" data-skuid="' + sellVolumeId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
+                            '<a href="http://you.163.com/item/detail?id=' + _detail.id + '&_stat_subject=' + _subject + '" target="_blank" class="u-92C9-btn-group u-92C9-btn-buy J_92C9_btn_buy PSC_J_normal_statistics_Goods">立即购买</a>',
+                            '<a href="javascript:;" target="_self" class="u-92C9-btn-group u-92C9-btn-cart J_92C9_btn_cart PSC_J_normal_statistics_Goods psc_static_'+sellVolumeId+'" data-skuid="' + sellVolumeId + '" data-img="' + _detail.primaryPicUrl + '?imageView&thumbnail=245x245&quality=95"></a>',
                             '</div>',
                             '</div>',
                             '</div>',
@@ -269,53 +269,8 @@
         }
     });
 
-    $('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+    $('body').on('click', '.YX-N-M-92C9 .PSC_J_normal_statistics_Goods', function(e) {
         PSC_C_statistics.normalGoods(this);
     });
 
-    var log = {
-        getType: function() {
-            var type = 'web';
-            if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
-                UA.versions.iPhone || UA.versions.iPad) { // 移动端
-                type = 'h5';
-            } else {
-                type = 'web';
-            }
-            return type;
-        },
-        getStatSubject: function() {
-            return window.psc_act_id;
-        },
-        log: function(data) {
-            var params = [],
-                that = this,
-                type = that.getType();
-            params.push('activity=' + that.getStatSubject());
-            for (var p in data) {
-                if (data.hasOwnProperty(p)) {
-                    params.push('' + p + '=' + data[p]);
-                }
-            }
-            params.push('type=' + type);
-            params.push('rid=' + new Date().getTime());
-            var url = '//stat.mail.163.com/activity/a.js' + '?' + params.join('&');
-            url = encodeURI(url);
-            $.getScript(url);
-        },
-        bindLog: function() {
-            var that = this;
-            // 时间代理到body上面
-            $('body').on('click', '.YX-N-M-92C9 .J_log', function(e) {
-                var $target = $(e.target),
-                    logName = $target.data('logname') ? $target.data('logname') : $(e.currentTarget).data('logname');
-                if (logName) {
-                    that.log({
-                        key: logName
-                    });
-                }
-            });
-        }
-    };
-    log.bindLog();
 })();

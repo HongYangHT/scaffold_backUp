@@ -417,6 +417,32 @@ body,
   color: #000;
   border: 1px solid #ccc;
 }
+.m-psc-pre-modal .u-psc-autocomplete .u-psc-filter {
+  display: inline-block;
+  height: 36px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  line-height: 36px;
+  vertical-align: middle;
+  text-align: center;
+}
+.m-psc-pre-modal .u-psc-autocomplete .u-psc-filter span {
+  display: inline-block;
+  width: 80px;
+  height: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.m-psc-pre-modal .u-psc-autocomplete .u-psc-filter .fa {
+  float: right;
+  color: #6a6a6a;
+  margin: 10px 5px 0 0;
+  cursor: pointer;
+}
+.m-psc-pre-modal .u-psc-autocomplete .u-psc-filter .fa:hover {
+  color: #333;
+}
 .m-psc-pre-modal .m-modal-flex,
 .m-psc-pre-modal .m-modal-pre {
   width: 100%;
@@ -969,6 +995,22 @@ body,
 }
 .m-psc-shareModal .m-psc-shareModal-group .u-upload-tip i {
   margin: 0 4px;
+}
+.u-shareTemplate-thread {
+  border: 1px dashed #ccc;
+  transform: scale(1, 0.5);
+}
+.u-psc-group-s {
+  margin: 10px 0;
+}
+.u-psc-radio-check:checked + .u-psc-radio {
+  border-color: #e44a54;
+  color: #e44a54;
+}
+.u-psc-radio {
+  padding: 0 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
 /* 模块的样式 */
 .m-psc-shareTemplate {

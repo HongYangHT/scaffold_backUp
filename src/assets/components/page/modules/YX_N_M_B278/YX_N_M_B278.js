@@ -107,7 +107,7 @@
                             '<li class="u-B278-item">',
                                 '<div class="m-B278-item-wrap">',
                                     '<div class="u-B278-item-top">',
-                                        '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank">',
+                                        '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods">',
                                             '<img data-original="'+_detail.primaryPicUrl+'?imageView&quality=95&thumbnail=285x285" class="J_lazyload" />',
                                             '<i></i>',
                                         '</a>',
@@ -121,7 +121,7 @@
                                             (parseFloat(_detail.offPrice) == parseFloat(_detail.unitPrice) ? '':'<span class="u-B278-item-unitPrice">'+_detail.unitPrice+'</span>'),
                                         '</div>',
                                         '<div class="u-B278-btn">',
-                                            '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank">立即购买</a>',
+                                            '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods">立即购买</a>',
                                         '</div>',
                                     '</div>',
                                 '</div>',
@@ -262,53 +262,8 @@
         }
     });
 
-    $('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+    $('body').on('click', '.YX-N-M-B278 .PSC_J_normal_statistics_Goods', function(e) {
         PSC_C_statistics.normalGoods(this);
     });
 
-    var log = {
-        getType: function() {
-            var type = 'web';
-            if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
-                UA.versions.iPhone || UA.versions.iPad) { // 移动端
-                type = 'h5';
-            } else {
-                type = 'web';
-            }
-            return type;
-        },
-        getStatSubject: function() {
-            return window.psc_act_id;
-        },
-        log: function(data) {
-            var params = [],
-                that = this,
-                type = that.getType();
-            params.push('activity=' + that.getStatSubject());
-            for (var p in data) {
-                if (data.hasOwnProperty(p)) {
-                    params.push('' + p + '=' + data[p]);
-                }
-            }
-            params.push('type=' + type);
-            params.push('rid=' + new Date().getTime());
-            var url = '//stat.mail.163.com/activity/a.js' + '?' + params.join('&');
-            url = encodeURI(url);
-            $.getScript(url);
-        },
-        bindLog: function() {
-            var that = this;
-            // 时间代理到body上面
-            $('body').on('click', '.YX-N-M-B278 .J_log', function(e) {
-                var $target = $(e.target),
-                    logName = $target.data('logname') ? $target.data('logname') : $(e.currentTarget).data('logname');
-                if (logName) {
-                    that.log({
-                        key: logName
-                    });
-                }
-            });
-        }
-    };
-    log.bindLog();
 })();

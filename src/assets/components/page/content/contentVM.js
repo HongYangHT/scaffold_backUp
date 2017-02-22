@@ -118,8 +118,6 @@ define([
                     _throttle = '',
                     _tplThrottle = '';
 
-
-
                 function setThrottle() {
                     _tplThrottle = setTimeout(function() {
                         continueEdit();

@@ -12,7 +12,7 @@
 		<div class="m-94FE-goods" v-if="contentInfo.needScenePicUrl.value">
 			{{#temp}}
 			<div class="u-94FE-goods">
-				{{#maker}}<div class="u-94FE-maker">{{maker}}</div>{{/maker}}
+				{{#maker}}<div class="u-94FE-maker"><span>{{maker}}</span></div>{{/maker}}
 				{{^maker}}<div class="u-94FE-maker"></div>{{/maker}}
 				<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-94FE-link">
 					<img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload">
@@ -34,7 +34,7 @@
 		<div class="m-94FE-goods" v-if="!contentInfo.needScenePicUrl.value">
 			{{#temp}}
 			<div class="u-94FE-goods">
-				{{#maker}}<div class="u-94FE-maker">{{maker}}</div>{{/maker}}
+				{{#maker}}<div class="u-94FE-maker"><span>{{maker}}</span></div>{{/maker}}
 				{{^maker}}<div class="u-94FE-maker"></div>{{/maker}}
 				<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-94FE-link">
 					<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">

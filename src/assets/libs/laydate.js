@@ -221,7 +221,9 @@ function(a) {
   }, c.creation = function(a, b) {
     var e = (c.query, c.hmsin),
         f = typeof a == 'string' ? a : c.parse(a, [e[0].value, e[1].value, e[2].value]);
-    c.elem[h.elemv] = f, b || (c.close(), "function" == typeof c.options.choose && c.options.choose(f))
+    var target = c.elem;
+    c.elem[h.elemv] = f, b || (c.close(), "function" == typeof c.options.choose && c.options.choose(f));
+    $(target).focus();
   }, c.events = function() {
     var b = c.query,
         e = {

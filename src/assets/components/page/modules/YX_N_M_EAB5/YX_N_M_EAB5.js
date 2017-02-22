@@ -45,7 +45,7 @@
                 var _detail = n.detail;
                 _html += [
                     '<div class="u-EAB5-goods">',
-                        '<a target="_blank" href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+subject+'" class="u-EAB5-goods-img">',
+                        '<a target="_blank" href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+subject+'" class="u-EAB5-goods-img PSC_J_normal_statistics_Goods">',
                             '<img data-original="'+_detail.primaryPicUrl+'?imageView&thumbnail=265x265&quality=95" class="J_lazyload">',
                         '</a>',
                         '<div class="u-EAB5-goods-info">',
@@ -55,8 +55,8 @@
                                 (parseFloat(_detail.unitPrice) == parseFloat(_detail.offPrice) ? '' :'<span class="u-EAB5-unitPrice">'+_detail.unitPrice+'</span>'),
                             '</p>',
                             '<div class="m-EAB5-group-btn">',
-                                '<a target="_blank" href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+subject+'" class="u-EAB5-btn">立即购买</a>',
-                                '<a href="javascript:;" class="u-EAB5-cart J_EAB5_cart" data-skuid="'+_detail.id+'" data-img="'+_detail.primaryPicUrl+'?imageView&thumbnail=265x265&quality=95"></a>',
+                                '<a target="_blank" href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+subject+'" class="u-EAB5-btn PSC_J_normal_statistics_Goods">立即购买</a>',
+                                '<a href="javascript:;" class="u-EAB5-cart J_EAB5_cart PSC_J_normal_statistics_Goods psc_static_'+_detail.primarySkuId+'" data-skuid="'+_detail.primarySkuId+'" data-img="'+_detail.primaryPicUrl+'?imageView&thumbnail=265x265&quality=95"></a>',
                             '</div>',
                         '</div>',
                     '</div>'
@@ -144,7 +144,7 @@
             });
         }
     });
-    $('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+    $('body').on('click', '.YX-N-M-EAB5 .PSC_J_normal_statistics_Goods', function(e) {
         PSC_C_statistics.normalGoods(this);
     });
 })();

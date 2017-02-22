@@ -88,53 +88,8 @@
         var _id = $(n).data('goodsid');
         myModule.getGoodsRender($(n).closest('.YX-N-M-46EB'), _id, window.psc_act_id);
     });
-    $('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+    $('body').on('click', '.YX-N-M-46EB .PSC_J_normal_statistics_Goods', function(e) {
         PSC_C_statistics.normalGoods(this);
     });
 
-    var log = {
-        getType: function() {
-            var type = 'web';
-            if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
-                UA.versions.iPhone || UA.versions.iPad) { // 移动端
-                type = 'h5';
-            } else {
-                type = 'web';
-            }
-            return type;
-        },
-        getStatSubject: function() {
-            return window.psc_act_id;
-        },
-        log: function(data) {
-            var params = [],
-                that = this,
-                type = that.getType();
-            params.push('activity=' + that.getStatSubject());
-            for (var p in data) {
-                if (data.hasOwnProperty(p)) {
-                    params.push('' + p + '=' + data[p]);
-                }
-            }
-            params.push('type=' + type);
-            params.push('rid=' + new Date().getTime());
-            var url = '//stat.mail.163.com/activity/a.js' + '?' + params.join('&');
-            url = encodeURI(url);
-            $.getScript(url);
-        },
-        bindLog: function() {
-            var that = this;
-            // 时间代理到body上面
-            $('body').on('click', '.YX-N-M-46EB .J_log', function(e) {
-                var $target = $(e.target),
-                    logName = $target.data('logname') ? $target.data('logname') : $(e.currentTarget).data('logname');
-                if (logName) {
-                    that.log({
-                        key: logName
-                    });
-                }
-            });
-        }
-    };
-    log.bindLog();
 })();

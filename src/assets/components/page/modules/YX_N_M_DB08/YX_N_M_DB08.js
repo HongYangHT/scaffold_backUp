@@ -37,7 +37,7 @@
 				if ((i + 1) % 2 == 0) {
 					_html += [
 						'<li class="m-new-item m-new-even">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods">',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods PSC_J_normal_statistics_Goods">',
 						'<img data-original="' + n.detail.primaryPicUrl + '?imageView&thumbnail=264x264&quality=95" title="' + n.detail.title + '" class="J_lazyload">',
 						'</a>',
 						'<div class="m-new-desc">',
@@ -48,15 +48,15 @@
 						'</p>',
 						'</div>',
 						'<div class="m-new-operate">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
-						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink" data-skuid="' + n.detail.primarySkuId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=264x264&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink PSC_J_normal_statistics_Goods"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
+						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink PSC_J_normal_statistics_Goods psc_static_'+ n.detail.primarySkuId +'" data-skuid="' + n.detail.primarySkuId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=264x264&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
 						'</div>',
 						'</li>'
 					].join('');
 				} else {
 					_html += [
 						'<li class="m-new-item">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods">',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods PSC_J_normal_statistics_Goods">',
 						'<img data-original="' + n.detail.primaryPicUrl + '?imageView&thumbnail=264x264&quality=95" title="' + n.detail.title + '" class="J_lazyload">',
 						'</a>',
 						'<div class="m-new-desc">',
@@ -67,8 +67,8 @@
 						'</p>',
 						'</div>',
 						'<div class="m-new-operate">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
-						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink" data-skuid="' + n.detail.primarySkuId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=264x264&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink PSC_J_normal_statistics_Goods"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
+						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink PSC_J_normal_statistics_Goods psc_static_' + n.detail.primarySkuId +'" data-skuid="' + n.detail.primarySkuId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=264x264&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
 						'</div>',
 						'</li>'
 					].join('');
@@ -81,53 +81,8 @@
 		var _id = $(n).data('goodsid');
 		myModule.fRenderGoods(_id, $(n).closest('.YX-N-M-DB08'), window.psc_act_id);
 	});
-	$('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+	$('body').on('click', '.YX-N-M-DB08 .PSC_J_normal_statistics_Goods', function(e) {
 		PSC_C_statistics.normalGoods(this);
 	});
 
-	var log = {
-        getType: function() {
-            var type = 'web';
-            if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
-                UA.versions.iPhone || UA.versions.iPad) { // 移动端
-                type = 'h5';
-            } else {
-                type = 'web';
-            }
-            return type;
-        },
-        getStatSubject: function() {
-            return window.psc_act_id;
-        },
-        log: function(data) {
-            var params = [],
-                that = this,
-                type = that.getType();
-            params.push('activity=' + that.getStatSubject());
-            for (var p in data) {
-                if (data.hasOwnProperty(p)) {
-                    params.push('' + p + '=' + data[p]);
-                }
-            }
-            params.push('type=' + type);
-            params.push('rid=' + new Date().getTime());
-            var url = '//stat.mail.163.com/activity/a.js' + '?' + params.join('&');
-            url = encodeURI(url);
-            $.getScript(url);
-        },
-        bindLog: function() {
-            var that = this;
-            // 时间代理到body上面
-            $('body').on('click', '.YX-N-M-46EB .J_log', function(e) {
-                var $target = $(e.target),
-                    logName = $target.data('logname') ? $target.data('logname') : $(e.currentTarget).data('logname');
-                if (logName) {
-                    that.log({
-                        key: logName
-                    });
-                }
-            });
-        }
-    };
-    log.bindLog();
 })();

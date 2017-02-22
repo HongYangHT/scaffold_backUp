@@ -58,18 +58,18 @@
                          hasUsed++;
                         _html += [
                         	(hasUsed>3 ? '<div class="u-D45D-goods u-D45D-goods-s">' : '<div class="u-D45D-goods">'),
-								'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-D45D-img-link">',
+								'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-D45D-img-link PSC_J_normal_statistics_Goods">',
 									(needScenePicUrl ? '<img data-original="'+_detail.scenePicUrl+'?imageView&thumbnail=250x250&quality=95" class="J_lazyload">':'<img data-original="'+_detail.primaryPicUrl+'?imageView&thumbnail=250x250&quality=95" class="J_lazyload">'),
 								'</a>',
-								'<p class="u-D45D-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-D45D-title-link">'+_detail.title+'</a></p>',
+								'<p class="u-D45D-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-D45D-title-link PSC_J_normal_statistics_Goods">'+_detail.title+'</a></p>',
                                 '<p class="u-D45D-desc">'+_detail.simpleDesc+'</p>',
                                 '<p class="u-D45D-price">',
                                 '<span class="u-D45D-offPrice">'+_detail.offPrice+'</span>',
                                 (parseFloat(_detail.offPrice) == parseFloat(_detail.unitPrice) ? '' : '<span class="u-D45D-unitPrice">'+_detail.unitPrice+'</span>'),
                                 '</p>',
                                 '<div class="m-D45D-btn">',
-                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-D45D-buy">立即购买</a>',
-                                '<a href="javascript:;" target="_self" class="u-D45D-cart J_D45D_cart"  data-skuId="'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'?imageView&thumbnail=250x250&quality=95"></a>',
+                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-D45D-buy PSC_J_normal_statistics_Goods">立即购买</a>',
+                                '<a href="javascript:;" target="_self" class="u-D45D-cart J_D45D_cart PSC_J_normal_statistics_Goods psc_static_'+sellVolumeId+'"  data-skuId="'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'?imageView&thumbnail=250x250&quality=95"></a>',
                                 '</div>',
 							'</div>'
                         ].join('').trim();
@@ -135,5 +135,8 @@
                 }
             });
         }
+    });
+    $('body').on('click', '.YX-N-M-D45D .PSC_J_normal_statistics_Goods', function(e) {
+        PSC_C_statistics.normalGoods(this);
     });
 })();

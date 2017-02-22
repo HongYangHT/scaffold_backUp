@@ -131,14 +131,14 @@ define([
 								'type': 'YX_S_M_51E1',
 								'suitWeb': true,
 								'suitH5': true
-							}/*,{
+							},{
 								'img': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
 								'value': 'YX_S_M_3DA7',
 								'type': 'YX_S_M_3DA7',
 								'suitWeb': true,
 								'suitH5': true
-							}*/,{
+							},{
 								'img': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20161205/14809066191120355.jpg',
 								'value': 'YX_S_M_97D8',

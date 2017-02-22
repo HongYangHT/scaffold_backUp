@@ -106,7 +106,7 @@
                         _html += [
                             '<div class="u-C1C3-item">',
 								'<div class="u-C1C3-item-title">',
-									'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank"><img data-original="'+_detail.primaryPicUrl+'" class="J_lazyload"/></a>',
+									'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods"><img data-original="'+_detail.primaryPicUrl+'" class="J_lazyload"/></a>',
 									(_detail.newItemFlag ? '<div class="u-C1C3-item-tip">新品</div>':(extend.couponType == 1 ? '<div class="u-C1C3-item-tip">限时买一赠一</div>' : (extend.couponType === 0 ?'<div class="u-C1C3-item-tip">直降'+(parseFloat(_detail.unitPrice) - parseFloat(_detail.offPrice))+'元</div>':''))),
 								'</div>',
 								'<div class="u-C1C3-item-content">',
@@ -114,7 +114,7 @@
 									'<p class="u-C1C3-item-desc">'+ (extend.maker ? extend.maker : _detail.simpleDesc)+'</p>',
 									'<div class="u-C1C3-item-price">',
 										'<span class="u-C1C3-item-offPrice">'+_detail.offPrice+'</span>',
-										'<a href="javascript:;" target="_self" class="u-C1C3-item-cart J_cart" data-img="'+_detail.primaryPicUrl+'" data-skuId="'+sellVolumeId+'"><span></span></a>',
+										'<a href="javascript:;" target="_self" class="u-C1C3-item-cart J_cart PSC_J_normal_statistics_Goods psc_static_'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'" data-skuId="'+sellVolumeId+'"><span></span></a>',
 									'</div>',
 								'</div>',
 							'</div>'
@@ -254,53 +254,8 @@
         }
     });
 
-    $('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+    $('body').on('click', '.YX-N-M-C1C3 .PSC_J_normal_statistics_Goods', function(e) {
         PSC_C_statistics.normalGoods(this);
     });
 
-    var log = {
-        getType: function() {
-            var type = 'web';
-            if (UA.versions.mobile || UA.versions.ios || UA.versions.android ||
-                UA.versions.iPhone || UA.versions.iPad) { // 移动端
-                type = 'h5';
-            } else {
-                type = 'web';
-            }
-            return type;
-        },
-        getStatSubject: function() {
-            return window.psc_act_id;
-        },
-        log: function(data) {
-            var params = [],
-                that = this,
-                type = that.getType();
-            params.push('activity=' + that.getStatSubject());
-            for (var p in data) {
-                if (data.hasOwnProperty(p)) {
-                    params.push('' + p + '=' + data[p]);
-                }
-            }
-            params.push('type=' + type);
-            params.push('rid=' + new Date().getTime());
-            var url = '//stat.mail.163.com/activity/a.js' + '?' + params.join('&');
-            url = encodeURI(url);
-            $.getScript(url);
-        },
-        bindLog: function() {
-            var that = this;
-            // 时间代理到body上面
-            $('body').on('click', '.YX-N-M-C1C3 .J_log', function(e) {
-                var $target = $(e.target),
-                    logName = $target.data('logname') ? $target.data('logname') : $(e.currentTarget).data('logname');
-                if (logName) {
-                    that.log({
-                        key: logName
-                    });
-                }
-            });
-        }
-    };
-    log.bindLog();
 })();

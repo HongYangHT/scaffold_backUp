@@ -88,7 +88,7 @@
 								'<div class="u-ACBA-modal"></div>',
 								'<div class="u-ACBA-opt">',
 									'<a target="_blank" href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+subject+'" class="u-btn-check PSC_J_normal_statistics_Goods">查看详情</a>',
-									'<a href="javascript:;" class="u-btn-cart J_btn_cart PSC_J_normal_statistics_Goods" data-skuid="'+_detail.id+'" data-img="'+_detail.primaryPicUrl+'?imageView&quality=60&thumbnail=330x330">加入购物车</a>',
+									'<a href="javascript:;" class="u-btn-cart J_btn_cart PSC_J_normal_statistics_Goods psc_static_'+_detail.primarySkuId+'" data-skuid="'+_detail.primarySkuId+'" data-img="'+_detail.primaryPicUrl+'?imageView&quality=60&thumbnail=330x330">加入购物车</a>',
 								'</div>',
 							'</div>',
 						'</div>',
@@ -184,7 +184,7 @@
             });
         }
     });
-	$('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+	$('body').on('click', '.YX-N-M-ACBA .PSC_J_normal_statistics_Goods', function(e) {
 		PSC_C_statistics.normalGoods(this);
 	});
 })();

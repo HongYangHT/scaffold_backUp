@@ -158,9 +158,9 @@ define(function(){
 				'suitWeb': true,
 				'suitH5': true
 			}
-		}/*,
+		},
 		'YX_S_M_3DA7':{
-			keywords:'3DA7 3da7 YX_S_M_3DA7 yx_s_m_3da7 banner Banner 移动端 pc端 pc端banner 移动端banner 可适配banner',
+			keywords:'3DA7 3da7 YX_S_M_3DA7 yx_s_m_3da7 banner Banner 移动端 pc端 pc端banner 移动端banner 可适配banner 云音乐',
 			shortCut:'可适配banner',
 			data:{
 				'img': 'https://mimg.127.net/hz/uploader/20161226/14827198248382663.jpg',
@@ -170,7 +170,7 @@ define(function(){
 				'suitWeb': true,
 				'suitH5': true
 			}
-		}*/,
+		},
 		'YX_S_M_97D8':{
 			keywords:'97D8 97d8 YX_S_M_97D8 yx_s_m_97d8 banner Banner 移动端 pc端 pc端banner 移动端banner 空白栏 pc端空白栏 移动端空白栏',
 			shortCut:'pc端空白栏',

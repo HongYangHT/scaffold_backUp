@@ -87,7 +87,7 @@
 					_html += [
 						'<li class="m-new-item m-new-even">',
 						(_detail.newItemFlag ? '<span class="u-881B-flag">新品</span>' : (extend.flag == 1 ? '<span class="u-881B-flag">明星</span>' : (extend.flag == 2 ? '<span class="u-881B-flag">热销</span>':''))),
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods">',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods PSC_J_normal_statistics_Goods">',
 						'<img data-original="' + n.detail.primaryPicUrl + '?imageView&thumbnail=360x360&quality=95" title="' + n.detail.title + '" class="J_lazyload">',
 						'</a>',
 						'<div class="m-new-desc">',
@@ -98,15 +98,15 @@
 						'</p>',
 						'</div>',
 						'<div class="m-new-operate">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
-						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink" data-skuid="' + sellVolumeId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=140x140&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink PSC_J_normal_statistics_Goods"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
+						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink PSC_J_normal_statistics_Goods psc_static_'+ sellVolumeId +'" data-skuid="' + sellVolumeId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=140x140&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
 						'</div>',
 						'</li>'
 					].join('');
 				} else {
 					_html += [
 						'<li class="m-new-item">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods">',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-goods PSC_J_normal_statistics_Goods">',
 						'<img data-original="' + n.detail.primaryPicUrl + '?imageView&thumbnail=360x360&quality=95" title="' + n.detail.title + '" class="J_lazyload">',
 						'</a>',
 						'<div class="m-new-desc">',
@@ -117,8 +117,8 @@
 						'</p>',
 						'</div>',
 						'<div class="m-new-operate">',
-						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
-						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink" data-skuid="' + sellVolumeId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=140x140&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
+						'<a href="http://you.163.com/item/detail?id=' + n.detail.id + '&_stat_subject=' + subject + '" target="_blank" class="u-btn u-btn-detail f-blink PSC_J_normal_statistics_Goods"><i class="u-icon"></i><span class="u-txt">查看详情</span></a>',
+						'<a href="javascript:;" class="u-btn u-btn-cart J_btn_cart f-blink PSC_J_normal_statistics_Goods psc_static_'+sellVolumeId+'" data-skuid="' + sellVolumeId + '" data-img="' + n.detail.primaryPicUrl + '?imageView&thumbnail=140x140&quality=95"><i class="u-icon"></i><span class="u-txt">加入购物车</span></a>',
 						'</div>',
 						'</li>'
 					].join('');
@@ -132,7 +132,7 @@
 		var _id = $(n).data('goodsid');
 		myModule.fRenderGoods(_id, $(n).closest('.YX-N-M-881B'), window.psc_act_id);
 	});
-	$('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+	$('body').on('click', '.YX-N-M-881B .PSC_J_normal_statistics_Goods', function(e) {
 		PSC_C_statistics.normalGoods(this);
 	});
 

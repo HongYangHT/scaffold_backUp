@@ -12,7 +12,8 @@ define([
 	var _default = {
 		contentInfo:{
 			tip:'查看更多',
-			link:''
+			link:'',
+			bgColor:'#f5f5f5'
 		}
 	};
 	var YX_S_M_51E1 = Vue.extend({
@@ -47,6 +48,21 @@ define([
 						var data = {
 								'contentInfo': {
 									'link': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.bgColor.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'bgColor': {
 										'value': old
 									}
 								}

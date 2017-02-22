@@ -77,18 +77,18 @@
                         _html += [
                         	'<div class="u-94FE-goods">',
                                 (extend.maker ? '<div class="u-94FE-maker"><span>'+extend.maker+'</span></div>' : '<div class="u-94FE-maker"></div>'),
-								'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-94FE-link">',
+								'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-94FE-link PSC_J_normal_statistics_Goods">',
 									(needScenePicUrl ? '<img data-original="'+_detail.scenePicUrl+'?imageView&thumbnail=260x260&quality=95" class="J_lazyload">':'<img data-original="'+_detail.primaryPicUrl+'?imageView&thumbnail=260x260&quality=95" class="J_lazyload">'),
 								'</a>',
 								'<div class="m-94FE-goods-info">',
-									'<p class="u-94FE-goods-t"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank">'+_detail.title+'</a></p>',
+									'<p class="u-94FE-goods-t"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods">'+_detail.title+'</a></p>',
 									'<p class="u-94FE-goods-price">',
 										'<span class="u-94FE-offPrice">'+_detail.offPrice+'</span>',
 										(parseFloat(_detail.offPrice) == parseFloat(_detail.unitPrice) ? '' : '<span class="u-94FE-unitPrice">'+_detail.unitPrice+'</span>'),
 									'</p>',
 									'<div class="m-94FE-btn">',
-										'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-94FE-btn">立即购买</a>',
-										'<a href="javascript:;" target="_self" class="u-94FE-cart J_94FE_cart" data-skuId="'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'"></a>',
+										'<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-94FE-btn PSC_J_normal_statistics_Goods">立即购买</a>',
+										'<a href="javascript:;" target="_self" class="u-94FE-cart J_94FE_cart PSC_J_normal_statistics_Goods psc_static_'+sellVolumeId+'" data-skuId="'+sellVolumeId+'" data-img="'+_detail.primaryPicUrl+'"></a>',
 									'</div>',
 								'</div>',
 							'</div>'
@@ -177,5 +177,8 @@
                 }
             });
         }
+    });
+    $('body').on('click', '.YX-N-M-94FE .PSC_J_normal_statistics_Goods', function(e) {
+        PSC_C_statistics.normalGoods(this);
     });
 })();

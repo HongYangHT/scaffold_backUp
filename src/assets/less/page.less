@@ -427,6 +427,32 @@ body,
             color: #000;
             border: 1px solid #ccc;
         }
+        .u-psc-filter{
+            display: inline-block;
+            height: 36px;
+            margin:0 5px;
+            border: 1px solid #ccc;
+            line-height: 36px;
+            vertical-align: middle;
+            text-align: center;
+            span{
+                display: inline-block;
+                width: 80px;
+                height: 100%;                
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+            .fa{
+                float: right;
+                color: #6a6a6a;
+                margin: 10px 5px 0 0;
+                cursor: pointer;
+                &:hover{
+                   color:#333; 
+                }
+            }
+        }
     }
     .m-modal-flex,
     .m-modal-pre {
@@ -997,7 +1023,22 @@ body,
         }
     }
 }
-
+.u-shareTemplate-thread{
+    border:1px dashed #ccc;
+    transform: scale(1,.5);
+}
+.u-psc-group-s{
+    margin: 10px 0;
+}
+.u-psc-radio-check:checked + .u-psc-radio{
+    border-color: #e44a54;
+    color: #e44a54;
+}
+.u-psc-radio{
+    padding:0 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
 /* 模块的样式 */
 .m-psc-shareTemplate{
     position: fixed;

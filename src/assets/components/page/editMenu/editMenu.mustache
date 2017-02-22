@@ -9,7 +9,7 @@
 						<input type="text" class="u-psc-input" v-model="item.value" />
 					</div>
 					<div class="u-psc-input-group" v-if="item.key == 'startTime' || item.key == 'endTime'">
-						<input type="text" class="u-psc-input" v-model="item.value" onclick="laydate({format: 'YYYY/MM/DD hh:mm:ss'})"/>
+						<input type="text" class="u-psc-input" v-model="item.value" onclick="laydate({format: 'YYYY/MM/DD hh:mm:ss'})" v-on:focus="changeItemDate($event,item.key)"/>
 					</div>
 					<div class="u-psc-input-group" v-if="item.type == 'textarea'">
 						<textarea v-model="item.value" class="u-psc-textarea">{{item.value}}</textarea>

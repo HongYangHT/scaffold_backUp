@@ -79,7 +79,7 @@
                     	            		'<i class="u-yen">'+ _detail.retailPrice +'</i>',
                     	            		'<i class="u-del">' + _unit + '</i>',
                     	            	'</span>',
-                    	            	'<button type="button" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '" class="u-btn J-addCart PSC_J_normal_statistics_Goods">加入购物车</button>',	
+                    	            	'<button type="button" data-skuid="' + _detail.primarySkuId + '" data-img="' + _detail.primaryPicUrl + '" class="u-btn J-addCart PSC_J_normal_statistics_Goods psc_static_'+ _detail.primarySkuId+'">加入购物车</button>',	
                     	            '</div>',
                     	       '</div>',
                     	   '</li>'
@@ -101,7 +101,7 @@
 		var _id = $(n).data('goodsid');
 		myModule.goodsList($(n).closest('.YX-N-M-A1C6'), _id, window.psc_act_id);
 	});
-	$('body').on('click', '.PSC_J_normal_statistics_Goods', function(e) {
+	$('body').on('click', '.YX-N-M-A1C6 .PSC_J_normal_statistics_Goods', function(e) {
 		PSC_C_statistics.normalGoods(this);
 	});
 })();

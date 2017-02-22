@@ -61,13 +61,13 @@
                             '<li class="u-FDC0-goods">',
                                 '<div class="u-FDC0-product">',
                                     '<div class="u-FDC0-product-hd">',
-                                        '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-FDC0-link">',
+                                        '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-FDC0-link PSC_J_normal_statistics_Goods">',
                                             '<img class="u-FDC0-img J_lazyload" data-original="'+_detail.primaryPicUrl+'?imageView&quality=95&thumbnail=260x260" alt="'+_detail.title+'"><i></i>',
                                         '</a>',
                                         (_detail.newItemFlag ?'<span class="u-FDC0-flag">新品</span>':''),
                                     '</div>',
                                     '<div class="u-FDC0-product-bd">',
-                                        '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank">'+_detail.title+'</a>',
+                                        '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods">'+_detail.title+'</a>',
                                         '<p><span class="u-FDC0-unitPrice">'+_detail.offPrice+'</span></p>',
                                     '</div>',
                                 '</div>',
@@ -161,4 +161,8 @@
             },50);
         });
     }
+
+    $('body').on('click', '.YX-N-M-FDC0 .PSC_J_normal_statistics_Goods', function(e) {
+        PSC_C_statistics.normalGoods(this);
+    });
 })();

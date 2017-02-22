@@ -69,17 +69,17 @@
                     if((_detail.status == 2) && !_detail.underShelf){
                         _html += [
                             '<div class="u-BCD0-goods">',
-                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-BCD0-link">',
+                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-BCD0-link PSC_J_normal_statistics_Goods">',
                                     (needScenePicUrl ? '<img data-original="'+_detail.scenePicUrl+'?imageView&thumbnail=280x280&quality=95" class="J_lazyload">':'<img data-original="'+_detail.primaryPicUrl+'?imageView&thumbnail=280x280&quality=95" class="J_lazyload">'),
                                     '<i></i>',
                                 '</a>',
                                 (_detail.extend.maker ? '<span class="u-BCD0-maker">'+_detail.extend.maker+'</span>':''),
                                 '<div class="m-BCD0-info">',
-                                    '<p class="u-BCD0-item-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank">'+_detail.title+'</a></p>',
+                                    '<p class="u-BCD0-item-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods">'+_detail.title+'</a></p>',
                                     '<p class="u-BCD0-item-desc">'+_detail.simpleDesc+'</p>',
                                     '<div class="u-BCD0-btn">',
                                         '<span class="u-BCD0-item-offPrice">'+_detail.retailPrice+'</span>',
-                                         '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-BCD0-buy">立即购买&nbsp;&gt;</a>',
+                                         '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-BCD0-buy PSC_J_normal_statistics_Goods">立即购买&nbsp;&gt;</a>',
                                     '</div>',
                                 '</div>',
                             '</div>'
@@ -103,4 +103,8 @@
     }else{
         $('.YX-N-M-BCD0').removeClass('YX-N-M-BCD0-m');
     }
+
+    $('body').on('click', '.YX-N-M-BCD0 .PSC_J_normal_statistics_Goods', function(e) {
+        PSC_C_statistics.normalGoods(this);
+    });
 })();

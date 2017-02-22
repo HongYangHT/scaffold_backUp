@@ -57,17 +57,17 @@
                     if((_detail.status == 2) && !_detail.underShelf){
                         _html += [
                             '<div class="u-4A12-goods">',
-                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-4A12-link">',
+                                '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-4A12-link PSC_J_normal_statistics_Goods">',
                                     (needScenePicUrl ? '<img data-original="'+_detail.scenePicUrl+'?imageView&thumbnail=280x280&quality=95" class="J_lazyload">':'<img data-original="'+_detail.primaryPicUrl+'?imageView&thumbnail=280x280&quality=95" class="J_lazyload">'),
                                     '<i></i>',
                                 '</a>',
                                 (_detail.extend.maker ? '<span class="u-4A12-maker">'+_detail.extend.maker+'</span>':''),
                                 '<div class="m-4A12-info">',
-                                    '<p class="u-4A12-item-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank">'+_detail.title+'</a></p>',
+                                    '<p class="u-4A12-item-title"><a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="PSC_J_normal_statistics_Goods">'+_detail.title+'</a></p>',
                                     '<p class="u-4A12-item-desc">'+_detail.simpleDesc+'</p>',
                                     '<div class="u-4A12-btn">',
                                         '<span class="u-4A12-item-offPrice">'+_detail.retailPrice+'</span>',
-                                         '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-4A12-buy">立即购买&nbsp;&gt;</a>',
+                                         '<a href="http://you.163.com/item/detail?id='+_detail.id+'&_stat_subject='+_subject+'" target="_blank" class="u-4A12-buy PSC_J_normal_statistics_Goods">立即购买&nbsp;&gt;</a>',
                                     '</div>',
                                 '</div>',
                             '</div>'
@@ -85,5 +85,8 @@
         var _id = $(n).find('.goodsId').data('goodsid'),
             needScenePicUrl = $(n).find('.needScenePicUrl').data('needscenepicurl');
         myModule.getGoodsRender($(n).closest('.YX-N-M-4A12'), _id, window.psc_act_id, needScenePicUrl);
+    });
+    $('body').on('click', '.YX-N-M-4A12 .PSC_J_normal_statistics_Goods', function(e) {
+        PSC_C_statistics.normalGoods(this);
     });
 })();

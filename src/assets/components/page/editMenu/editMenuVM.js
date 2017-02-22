@@ -361,6 +361,7 @@ define([
 								_that.nextTick();
 							}
 						}
+						$target.focus(); // 手动去触发focus事件，使得vuejs检测到数据的变化
 						cookie.setCookie('backUrl','', 60*60);
 					}else{
 						cookie.setCookie('backUrl',location.href, 60*60);
@@ -389,6 +390,11 @@ define([
 					id: id
 				});
 				$($event.target).removeClass('active');
+			},
+			changeItemDate:function($event,type){
+				var val = $($event.target).val();
+				this.layout.layout[type].value = val;
+				this.nextTick();
 			}
 		},
 		events: {
