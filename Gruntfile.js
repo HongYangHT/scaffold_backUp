@@ -342,6 +342,12 @@ module.exports = function(grunt) {
                     src: '*.less',
                     dest: 'src/assets/components/page/modules/YX_N_M_BCD0',
                     ext: '.css'
+                },{
+                    expand: true,
+                    cwd: 'src/assets/components/page/modules/YX_N_M_C88F',
+                    src: '*.less',
+                    dest: 'src/assets/components/page/modules/YX_N_M_C88F',
+                    ext: '.css'
                 }]
             }
         },

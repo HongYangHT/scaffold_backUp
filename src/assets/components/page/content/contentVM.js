@@ -3009,7 +3009,67 @@ define([
                                         dataTpl.splice(i, 1);
                                         setThrottle();
                                     });
-                                    break;    
+                                    break;
+                                case 'YX_N_M_C88F':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_C88F/YX_N_M_C88FVM'], function(YX_N_M_C88FVM) {
+                                        vm = new YX_N_M_C88FVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+                                        var libJ = [
+                                            'http://mimg.127.net/pub/common/js/swiper.min.js'
+                                        ];
+                                        $.each(libJ, function(i, n) {
+                                            if (distinct(_that.scriptLib, n)) {
+                                                _that.scriptLib.push(n);
+                                                /*load.loadScript(n);*/
+                                            }
+                                        });
+                                        _that.$dispatch('saveLibLink', {
+                                            scriptLib: _that.scriptLib,
+                                            styleLib: _that.styleLib
+                                        });
+                                        loadCss = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                    });
+                                    break;
                             }
                         });
                     } else {
@@ -6276,7 +6336,74 @@ define([
                                             });
                                         }
                                     });
-                                    break;    
+                                    break;
+                                case 'YX_N_M_C88F':
+                                    _throttle = true;
+                                    require(['components/page/modules/YX_N_M_C88F/YX_N_M_C88FVM'], function(YX_N_M_C88FVM) {
+                                        vm = new YX_N_M_C88FVM({
+                                            data: function() {
+                                                return data;
+                                            }
+                                        });
+                                        _id = vm._data.id;
+                                        _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                                        vm.$parent = _that;
+                                        if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                                        } else {
+                                            vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                                        }
+
+                                        var libJ = [
+                                            'http://mimg.127.net/pub/common/js/swiper.min.js'
+                                        ];
+                                        $.each(libJ, function(i, n) {
+                                            if (distinct(_that.scriptLib, n)) {
+                                                _that.scriptLib.push(n);
+                                                /*load.loadScript(n);*/
+                                            }
+                                        });
+                                        _that.$dispatch('saveLibLink', {
+                                            scriptLib: _that.scriptLib,
+                                            styleLib: _that.styleLib
+                                        });
+                                        loadCss = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.css';
+                                        if (distinct(_that.needStyle, loadCss)) {
+                                            _that.needStyle.push(loadCss);
+                                            load.loadStyle(loadCss);
+                                        }
+
+                                        _loadStyle = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.css';
+                                        _loadScript = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.js';
+                                        _that.loadStyle.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadStyle
+                                        });
+                                        _that.loadScript.push({
+                                            id: vm.id,
+                                            key: data.type,
+                                            value: _loadScript
+                                        });
+                                        _that.$dispatch('saveLink', {
+                                            loadStyle: _that.loadStyle,
+                                            loadScript: _that.loadScript
+                                        });
+                                        _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                                        var tplData = window.tplData;
+                                        window.tplData.push($.extend({}, vm._data, _options));
+                                        !!_tplThrottle && clearTimeout(_tplThrottle);
+                                        _throttle = false;
+                                        dataTpl.splice(i, 1);
+                                        setThrottle();
+                                        if (!dataTpl || !dataTpl.length) {
+                                            $.notify({
+                                                title: '撤销成功！',
+                                                type: 'success'
+                                            });
+                                        }
+                                    });
+                                    break;
                             }
                         });
                         /*if(!dataTpl || !dataTpl.length){
@@ -8975,6 +9102,60 @@ define([
                             window.tplData.push($.extend({}, vm._data, _options));
                         });
                         break;
+                    case 'YX_N_M_C88F':
+                        require(['components/page/modules/YX_N_M_C88F/YX_N_M_C88FVM'], function(YX_N_M_C88FVM) {
+                            vm = new YX_N_M_C88FVM();
+                            _id = vm._data.id;
+                            _that.content['d_' + _id] = $.extend({}, vm._data, _options);
+                            vm.$parent = _that;
+                            if (_that.insertId && $('.g-doc .J_insert[data-id="' + _that.insertId + '"]').size()) {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc .J_insert[data-id="' + _that.insertId + '"]')[0]);
+                            } else {
+                                vm.$mount().$appendTo($(_that.$parent.$el).find('.g-doc')[0]);
+                            }
+                            var libJ = [
+                                'http://mimg.127.net/pub/common/js/swiper.min.js'
+                            ];
+                            $.each(libJ, function(i, n) {
+                                if (distinct(_that.scriptLib, n)) {
+                                    _that.scriptLib.push(n);
+                                    /*load.loadScript(n);*/
+                                }
+                            });
+                            _that.$dispatch('saveLibLink', {
+                                            scriptLib: _that.scriptLib,
+                                            styleLib: _that.styleLib
+                                        });
+                            loadCss = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.css';
+                            if (distinct(_that.needStyle, loadCss)) {
+                                _that.needStyle.push(loadCss);
+                                load.loadStyle(loadCss);
+                            }
+
+                            _loadStyle = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.css';
+                            _loadScript = 'assets/components/page/modules/YX_N_M_C88F/YX_N_M_C88F.js';
+                            _that.loadStyle.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadStyle
+                            });
+                            _that.loadScript.push({
+                                id: vm.id,
+                                key: data.type,
+                                value: _loadScript
+                            });
+                            _that.$dispatch('saveLink', {
+                                loadStyle: _that.loadStyle,
+                                loadScript: _that.loadScript
+                            });
+                            _that.$dispatch('notifyRoot', $.extend({}, vm._data, _options));
+                            var tplData = window.tplData;
+                            if (tplData && !isEmpty(tplData)) {
+                                window.pageData.unshift(JSON.parse(JSON.stringify(tplData)));
+                            }
+                            window.tplData.push($.extend({}, vm._data, _options));
+                        });
+                        break;
                 }
             },
             // 删除组件
@@ -9075,7 +9256,7 @@ define([
                  * 一种是在g-doc 下面的模块
                  * 一种是不在根目录下的模块
                  */
-                if(info.newIndex == info.oldIndex) return;
+                if (info.newIndex == info.oldIndex) return;
                 // 先存储上一次的结果
                 window.pageData.unshift(JSON.parse(JSON.stringify(window.tplData)));
                 var len = window.tplData.length,
@@ -9097,9 +9278,9 @@ define([
                      * if newIndex < oldIndex 向上移动
                      * 是否移动到第一个，newIndex == 2，首先删除以前位置的数据，然后在第一个位置插入
                      * 不是移动到第一个，那么首先也是要删掉以前位置的数据，然后新位置newIndex-2的位置插入
-                    */ 
-                    if(info.targetId == n.id && $(info.from).hasClass('g-doc')){
-                       var item = window.tplData[i];
+                     */
+                    if (info.targetId == n.id && $(info.from).hasClass('g-doc')) {
+                        var item = window.tplData[i];
                         if (info.newIndex < info.oldIndex) {
                             if (info.newIndex == 2) {
                                 window.tplData.splice(i, 1);
@@ -9109,18 +9290,18 @@ define([
                                 window.tplData.splice(info.newIndex - 2, 0, item);
                             }
                         } else {
-                            if(!flag){                                
-                                if ((info.newIndex-1) == len) {
+                            if (!flag) {
+                                if ((info.newIndex - 1) == len) {
                                     window.tplData.push(item);
                                     window.tplData.splice(i, 1);
                                     flag = true;
-                                }else{
+                                } else {
                                     window.tplData.splice((info.newIndex - 1), 0, item);
                                     window.tplData.splice(i, 1);
                                     flag = true;
                                 }
                             }
-                        } 
+                        }
                     }
                     /*if (info.targetId == n.id && $(info.from).hasClass('g-doc')) {
                         var item = window.tplData[i];

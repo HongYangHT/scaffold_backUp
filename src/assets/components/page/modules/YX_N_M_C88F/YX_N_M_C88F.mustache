@@ -1,0 +1,73 @@
+<div class="YX-N-M-C88F">
+	<div class="J_module_info f-hide" style="display: none;">
+        <div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+        <div class="needScenePicUrl" data-needScenePicUrl="{{contentInfo.needScenePicUrl}}"></div>
+    </div>
+	<div class="m-C88F-title">
+		<div class="u-C88F-title" data-h55970f92="titleImg">
+			<img src="{{contentInfo.titleImg}}" data-original="{{contentInfo.titleImg}}" class="J_lazyload"/>	
+		</div>
+	</div>
+	<div class="m-C88F-goods" v-if="contentInfo.needScenePicUrl.value">
+		{{#temp}}
+		<div class="u-C88F-goods">
+			<i class="i-C88F-num"></i>
+			<span class="u-C88F-goods-title">{{title}}</span>
+			<img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload u-C88F-goods-img">
+		</div>
+		{{/temp}}
+	</div>
+	<div class="m-C88F-goods" v-if="!contentInfo.needScenePicUrl.value">
+		{{#temp}}
+		<div class="u-C88F-goods">
+			<i class="i-C88F-num"></i>
+			<span class="u-C88F-goods-title">{{title}}</span>
+			<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload u-C88F-goods-img">
+		</div>
+		{{/temp}}
+	</div>
+	<div class="m-C88F-swiper swiper-container" id="m-C88F-swiper-{{contentInfo.goodsId}}"  v-if="contentInfo.needScenePicUrl.value">
+		<div class="m-C88F-swiper-wrapper swiper-wrapper">
+			{{#temp}}
+			<div class="u-C88F-goods-swiper swiper-slide">
+				<div class="u-C88F-goods-swiper-info">
+					<p class="u-C88F-goods-swiper-title" data-label="01.">{{title}}</p>
+					{{#maker}}<p class="u-C88F-goods-swiper-desc">{{maker}}</p>{{/maker}}
+					{{^maker}}<p class="u-C88F-goods-swiper-desc">{{simpleDesc}}</p>{{/maker}}
+					<p class="u-C88F-goods-swiper-price">
+						<span class="u-C88F-goods-swiper-retailPrice">&yen;<span class="u-C88F-goods-swiper-retailPrice-val">{{retailPrice}}</span></span>
+						<a href="javascript:;" target="_self" class="u-C88F-goods-swiper-cart J_C88F_cart PSC_J_normal_statistics_Goods" data-img="" data-skuId=""></a>
+					</p>
+				</div>				
+				<div class="u-C88F-goods-swiper-img">
+					<img src="{{scenePicUrl}}" class="J_lazyload">
+				</div>
+			</div>
+			{{/temp}}
+		</div>
+		<a herf="javascript:;" class="u-C88F-arrow swiper-button-prev J_prev_{{contentInfo.goodsId}}"></a>
+		<a herf="javascript:;" class="u-C88F-arrow swiper-button-next J_next_{{contentInfo.goodsId}}"></a>
+	</div>
+	<div class="m-C88F-swiper swiper-container" id="m-C88F-swiper-{{contentInfo.goodsId}}"  v-if="!contentInfo.needScenePicUrl.value">
+		<div class="m-C88F-swiper-wrapper swiper-wrapper">
+		{{#temp}}
+			<div class="u-C88F-goods-swiper swiper-slide">
+				<div class="u-C88F-goods-swiper-info">
+					<p class="u-C88F-goods-swiper-title" data-label="01.">{{title}}</p>
+					{{#maker}}<p class="u-C88F-goods-swiper-desc">{{maker}}</p>{{/maker}}
+					{{^maker}}<p class="u-C88F-goods-swiper-desc">{{simpleDesc}}</p>{{/maker}}
+					<p class="u-C88F-goods-swiper-price">
+						<span class="u-C88F-goods-swiper-retailPrice">&yen;<span class="u-C88F-goods-swiper-retailPrice-val">{{retailPrice}}</span></span>
+						<a href="javascript:;" target="_self" class="u-C88F-goods-swiper-cart J_C88F_cart PSC_J_normal_statistics_Goods" data-img="" data-skuId=""></a>
+					</p>
+				</div>				
+				<div class="u-C88F-goods-swiper-img">
+					<img src="{{primaryPicUrl}}" class="">
+				</div>
+			</div>
+		{{/temp}}
+		</div>
+		<a herf="javascript:;" class="u-C88F-arrow swiper-button-prev J_prev_{{contentInfo.goodsId}}"></a>
+		<a herf="javascript:;" class="u-C88F-arrow swiper-button-next J_next_{{contentInfo.goodsId}}"></a>
+	</div>
+</div>

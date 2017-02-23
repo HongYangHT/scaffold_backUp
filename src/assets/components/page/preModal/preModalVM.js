@@ -202,6 +202,13 @@ define([
 							},*/{
 								'img':'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
+								'value': 'YX_N_M_C88F',
+								'type': 'YX_N_M_C88F',
+								'suitWeb': false,
+								'suitH5': true
+							},{
+								'img':'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
 								'value': 'YX_N_M_BCD0',
 								'type': 'YX_N_M_BCD0',
 								'suitWeb': false,
