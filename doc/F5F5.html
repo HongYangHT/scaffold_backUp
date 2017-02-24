@@ -3,6 +3,67 @@
 
 <head>
     <title>F5F5</title>
+    <style>
+        .m-dialog{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            z-index: 100;
+        }
+        .m-dialog-bg{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            background: rgba(0,0,0,3);
+            opacity: .3;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(Opacity=30);
+            -moz-opacity: .3;
+            -khtml-opacity: .3;
+            text-align: center;
+        }
+        .m-dialog-content{
+            position: absolute;
+            width: 390px;
+            height: 310px;
+            top:50%;
+            left: 50%;
+            margin: -250px 0 0 -195px;
+            background: #fff;
+            -webkit-box-shadow:0 0 2px #ddd;
+            box-shadow: 0 0 2px #ddd;
+            z-index: 2;
+        }
+        .m-dialog-coupon{
+            margin:80px auto 30px;
+        }
+        .m-dialog-text p{
+            color: #333;
+            font-size: 20px;
+            line-height: 30px;
+            margin:0;
+            padding: 0;
+        }
+        .m-dialog-link{
+            margin:15px auto 0;
+        }
+        .m-dialog-close{
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 16px;
+            height: 15px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAPCAMAAADarb8dAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6N0Q4Rjg0N0MyOEFDMTFFNjg0MDNCRjk4NDY5Q0JEQ0MiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6N0Q4Rjg0N0QyOEFDMTFFNjg0MDNCRjk4NDY5Q0JEQ0MiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3RDhGODQ3QTI4QUMxMUU2ODQwM0JGOTg0NjlDQkRDQyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3RDhGODQ3QjI4QUMxMUU2ODQwM0JGOTg0NjlDQkRDQyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PrlmynwAAAAPUExURc7Ozvj4+J6dnbq5uf///0TEAQsAAAAFdFJOU/////8A+7YOUwAAAEZJREFUeNp8j0sSACAIQl/J/c/cZ6wcFrlQBlERQiUCFIWZGBVmIfSYXbkoM7eXOo76zCXRem/6KXyHX3Ef7tR/8W+HAAMAuFUDczbR2FIAAAAASUVORK5CYII=) center no-repeat;
+            background-size: 16px 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -11,12 +72,54 @@
             <img src="35Fd.jpg" class="J_lazyload" />
         </a>
     </div>
+    <div class="m-dialog" style="display: none;">
+        <div class="m-dialog-bg"></div>
+        <div class="m-dialog-content">
+            <a href="javascript:;" target="_self" class="m-dialog-close"></a>
+            <div class="m-dialog-coupon">
+                <img src="https://mimg.127.net/hz/uploader/20170224/14879206484560411.png">
+            </div>
+            <div class="m-dialog-text">
+                <p>此优惠券为新用户专享！</p>
+            </div>
+            <div class="m-dialog-link">
+                <a href="http://you.163.com/coupon" target="_blank">
+                    <img src="https://mimg.127.net/hz/uploader/20170224/14879206484690413.png">
+                </a>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="http://mimg.127.net/pub/common/js/jquery.min.js"></script>
-    <script type="text/javascript" src="http://mimg.127.net/pub/common/js/PSC_YX_C_normal.js"></script>
+    <script type="text/javascript" src="http://mimg.127.net/pub/common/js/PSC_YX_C_normal2.js"></script>
     <script type="text/javascript">
 	    $('.J_getCoupon').on('click', function() {
-	        PSC_YX_API.YX_exchangeCoupon('wyyx10142', _model.activationCodeCallback2);
+            PSC_YX_API.YX_exchangeCoupon('wyyx10142');
+            $.ajax({
+                url:'https://you.163.com/act/hdapi/commonapi/ajax/getUid.do',
+                type:'GET',
+                dataType:'jsonp',
+                success:function(result){
+                    if(result.code == 200 && result.content.uid){
+                        window.PSC_SCAFFOLD_UID = result.content.uid;
+	                    PSC_YX_API.YX_exchangeCoupon('wyyx10142');
+                    }else{
+                        window.PSC_YX_API.login();
+                    }
+                },
+                error:function(result){
+
+                }
+            });
 	    });
+        /* 显示账号用正则显示 var reg = /(\w{1,2})(\w+)(\w{1,2})(@\w+)/;*/
+        function showDialog(result){
+
+        }
+        /**
+         * 1.先判断登录
+         * 2.登录完了之后就领券
+         * 3.做领券相关的模板
+        */
     </script>
 </body>
 
