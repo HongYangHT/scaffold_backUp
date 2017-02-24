@@ -17,6 +17,7 @@ define([
     'notify'
 ], function(Vue, tpl, ContentVM, EditMenuVM, MenuVM, ModalVM, PreModalVM, TipVM, localStorage, Model, cookie, Url) {
     var _model = new Model();
+    var nodiv = false;
     var Body = Vue.extend({
         name: 'body',
         components: {
@@ -56,6 +57,9 @@ define([
                     category = $(this.$el).find('.g-doc').attr('data-category'),
                     admin = $(this.$el).find('.g-doc').attr('data-admin'),
                     _that = this;
+                if(title == 'yxmail'){
+                    nodiv = true
+                }
                 if (!title) {
                     $.notify({
                         title: '请先填入页面标题',
@@ -222,7 +226,44 @@ define([
                         }));
                     });
                 }
-                if (ajaxDeferredArr && ajaxDeferredArr.length) {
+                if(nodiv){
+                    $.when.apply($, ajaxDeferredArr).then(function() {
+                        var html = innerHtml;
+                        // 匹配图片的相对路径，过滤绝对路径
+                        // var reg = /src=(?=\"(?!http|https[\w\d_\/-]+\.(gif|jpg|jpeg|png|bmp)))\"/g;
+                        // 去除预览图片的base64 图片
+                        var reg2 = /background-image:\s?url\(\S+base64\S+\)/g;
+                        // 正则去除操作栏
+                        var reg3 = /<div\s+\S*class=\"m-psc-oparate\"\s*(.|\n)+?<\/div>/g;
+                        // 正则去除添加模块的dom
+                        var reg4 = /<div\s+\S*class=\"m-psc-add-wrap\"\s*(.|\n)+?<\/div>/g;
+                        // 正则去除J_psc_wrap 模块
+                        var reg5 = /<div\s+\S*class=\"J_psc_wrap\"\s*(.|\n)+?>{1}/g;
+                        // 过滤掉lazyload的src属性
+                        // var reg6 = /(\<img\s*.+)(src=["'].+?['"])(.+)/g;
+                        // var reg6 = /(\<img\s*[^\>]*(class=["'].+J_lazyload.+['"])*[^\>]+)(src=["'].+?['"])([^\>]*(class=["'].+J_lazyload.+['"])*[^\>]*?\>)/g;
+                        var reg6 = /(\<img\s*[^\>]*(J_lazyload){1,}[^\>]*)(src=["'].+?['"])([^\>]*?\>)/g;
+                        // 过滤掉iframe的src 值
+                        var reg7 = /(\<iframe\s*.+)(src=["'].+?['"])(.+)/g;
+                        // html = html.replace(reg, 'src="' + imgRoot + '$1');
+                        // 过滤掉分享配置的modal
+
+                        // 过滤掉layout的信息
+                        var reg8 = /<div\s+\S*class=\"g-doc.*\".+?>{1}/g;
+
+                        html = html.replace(reg2, '');
+                        html = html.replace(reg3, '');
+                        html = html.replace(reg4, '');
+                        html = html.replace(reg5, '<div>');
+                        html = html.replace(reg6, '$1' + '$4');
+                        html = html.replace(reg7, '$1' + '$3');
+                        html = html.replace(reg8, '<div class="g-doc">');
+                        var blob = new Blob([html], {
+                            type: "text/html;charset=utf-8"
+                        });
+                        saveAs(blob, 'page_' + Math.uuid(32, 16).toLowerCase() + '.html');
+                    });
+                }else if (ajaxDeferredArr && ajaxDeferredArr.length) {
                     $.when.apply($, ajaxDeferredArr).then(function() {
                         var html = '<!DOCTYPE html>' +
                             '<head>' +

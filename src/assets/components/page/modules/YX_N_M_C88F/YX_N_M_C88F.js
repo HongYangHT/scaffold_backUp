@@ -98,7 +98,7 @@
                         '<div class="u-C88F-goods-swiper swiper-slide">',
                         '<div class="u-C88F-goods-swiper-info">',
                         '<p class="u-C88F-goods-swiper-title" data-label="'+'0'+ (k + 1) + '."><a href="http://you.163.com/item/detail?id=' + v.id + '&_stat_subject=' + _subject + '">' + v.title + '</a></p>',
-                        '<p class="u-C88F-goods-swiper-desc">' + v.extend.maker + '</p>',
+                        '<p class="u-C88F-goods-swiper-desc">' + (v.extend.maker? v.extend.maker:v.simpleDesc ) + '</p>',
                         '<p class="u-C88F-goods-swiper-price">',
                         '<span class="u-C88F-goods-swiper-retailPrice">&yen;<span class="u-C88F-goods-swiper-retailPrice-val">' + v.notSoldOutGoods.price + '</span></span>',
                         '<a href="javascript:;" target="_self" class="u-C88F-goods-swiper-cart J_C88F_cart PSC_J_normal_statistics_Goods PSC_C_statistics_' + v.id + '" data-img="' + v.notSoldOutGoods.imgUrl + '?imageView&thumbnail=78x78&quality=95" data-skuId="' + v.notSoldOutGoods.skuId + '"></a>',

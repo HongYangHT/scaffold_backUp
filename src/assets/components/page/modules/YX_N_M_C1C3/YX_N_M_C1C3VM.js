@@ -12,7 +12,8 @@ define([
 	var _default = {
 		contentInfo:{
 			goodsId: '',
-			titleImg: 'https://mimg.127.net/hz/uploader/20161221/14822893950961767.png'
+			titleImg: 'https://mimg.127.net/hz/uploader/20161221/14822893950961767.png',
+			needScenePicUrl:1
 		},
 		temp:[{
 			"id": "1042007",
@@ -103,6 +104,21 @@ define([
 						var data = {
 								'contentInfo': {
 									'titleImg': {
+										'value': old
+									}
+								}
+							},
+							_that = this;
+						this.$dispatch('changeDataDefault', this.id, data);	
+					}
+				}
+			},
+			'contentInfo.needScenePicUrl.value':{
+				'handler':function(value,old){
+					if(value){
+						var data = {
+								'contentInfo': {
+									'needScenePicUrl': {
 										'value': old
 									}
 								}

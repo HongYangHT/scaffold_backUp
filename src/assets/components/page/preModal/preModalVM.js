@@ -200,13 +200,20 @@ define([
 								'suitWeb': true,
 								'suitH5': false
 							},*/{
-								'img':'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
-								'zoom': 'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
+								'img':'https://mimg.127.net/hz/uploader/20170223/14878481252450059.jpg',
+								'zoom': 'https://mimg.127.net/hz/uploader/20170223/14878481252450059.jpg',
 								'value': 'YX_N_M_C88F',
 								'type': 'YX_N_M_C88F',
 								'suitWeb': false,
 								'suitH5': true
 							},{
+                                'img': 'http://mimg.127.net/hz/uploader/20170221/14876640375800035.jpg',
+                                'zoom': 'http://mimg.127.net/hz/uploader/20170221/14876640375800035.jpg',
+                                'value': 'YX_S_M_866E',
+                                'type': 'YX_S_M_866E',
+                                'suitWeb': true,
+                                'suitH5': false
+                            },{
 								'img':'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
 								'zoom': 'https://mimg.127.net/hz/uploader/20170209/14866118621490036.jpg',
 								'value': 'YX_N_M_BCD0',
@@ -374,7 +381,21 @@ define([
 								'type': 'YX_N_M_DB08',
 								'suitWeb': true,
 								'suitH5': false
-							}]
+							},{
+                                'img': ' http://mimg.127.net/hz/uploader/20170220/14875878094910081.jpg',
+                                'zoom': 'http://mimg.127.net/hz/uploader/20170220/14875878094910081.jpg',
+                                'value': 'YX_N_M_C1C5',
+                                'type': 'YX_N_M_C1C5',
+                                'suitWeb': false,
+                                'suitH5': true
+                            },{
+                                'img': 'http://mimg.127.net/hz/uploader/20170221/14876658842720067.jpg',
+                                'zoom': 'http://mimg.127.net/hz/uploader/20170221/14876658842720067.jpg',
+                                'value': 'YX_N_M_C1C6',
+                                'type': 'YX_N_M_C1C6',
+                                'suitWeb': false,
+                                'suitH5': true
+                            }]
 						},
 						NoneGoodsModules:{
 							title:'商品位模块（未接入goods系统）',
@@ -394,6 +415,52 @@ define([
 								'zoom': 'https://mimg.127.net/hz/uploader/20161221/14822859093801764.jpg',
 								'value': 'YX_S_M_20BC',
 								'type': 'YX_S_M_20BC',
+								'suitWeb': true,
+								'suitH5': true
+							}]
+						},
+						mail:{
+							title:'直邮模块',
+							modules:[{
+								'img': 'https://nos.netease.com/masteruser1/14877506250800039.png',
+								'zoom': 'https://nos.netease.com/masteruser1/14877506250800039.png',
+								'value': 'YX_N_M_9E50',
+								'type': 'YX_N_M_9E50',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://nos.netease.com/masteruser1/14877506255490040.png',
+								'zoom': 'https://nos.netease.com/masteruser1/14877506255490040.png',
+								'value': 'YX_N_M_9E51',
+								'type': 'YX_N_M_9E51',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://nos.netease.com/masteruser1/14877506257960041.png',
+								'zoom': 'https://nos.netease.com/masteruser1/14877506257960041.png',
+								'value': 'YX_N_M_9E52',
+								'type': 'YX_N_M_9E52',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://nos.netease.com/masteruser1/14877506260790042.png',
+								'zoom': 'https://nos.netease.com/masteruser1/14877506260790042.png',
+								'value': 'YX_N_M_9E53',
+								'type': 'YX_N_M_9E53',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://nos.netease.com/masteruser1/14877506261640043.png',
+								'zoom': 'https://nos.netease.com/masteruser1/14877506261640043.png',
+								'value': 'YX_N_M_9E54',
+								'type': 'YX_N_M_9E54',
+								'suitWeb': true,
+								'suitH5': true
+							},{
+								'img': 'https://nos.netease.com/masteruser1/14877506262270044.png',
+								'zoom': 'https://nos.netease.com/masteruser1/14877506262270044.png',
+								'value': 'YX_N_M_9E55',
+								'type': 'YX_N_M_9E55',
 								'suitWeb': true,
 								'suitH5': true
 							}]

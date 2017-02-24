@@ -5,6 +5,8 @@ html {
     font-family: "Microsoft YaHei", "Helvetica Neue", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
     -ms-text-size-adjust: none;
     -webkit-text-size-adjust: none;
+    -webkit-user-select:none;
+    user-select:none;
 }
 
 body {
@@ -367,4 +369,31 @@ table {
 ::-webkit-file-upload-button {
     -webkit-appearance: button;
     font: inherit;
+}
+
+.m-toast {
+    position: fixed;
+    width: 2.4rem;
+    height: .4rem;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    line-height: .4rem;
+    border-radius: .08rem;
+    z-index: 100;
+    background: rgba(0, 0, 0, .6);
+    text-align: center;
+    white-space: pre;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.u-toast {
+    color: #fff;
+    text-align: center;
+}
+.f-hide{
+    display: none;
 }

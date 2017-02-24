@@ -1,6 +1,7 @@
 <div class="YX-N-M-C1C3 m-section-module">
 	<div class="J_module_info f-hide" style="display: none;">
 		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+		<div class="needScenePicUrl" data-needScenePicUrl="{{contentInfo.needScenePicUrl}}"></div>
 	</div>
 	<div class="m-C1C3-inner">
 		{{#contentInfo.titleImg}}
@@ -8,7 +9,34 @@
 			<img src="{{contentInfo.titleImg}}" data-original="{{contentInfo.titleImg}}" class="J_lazyload"/>
 		</div>
 		{{/contentInfo.titleImg}}
-		<div class="m-C1C3-content">
+		<div class="m-C1C3-content" v-if="contentInfo.needScenePicUrl.value">
+			{{#temp}}
+				<div class="u-C1C3-item">
+					<div class="u-C1C3-item-title">
+						<a href="http://you.163.com/item/detail?id={{id}}&_stat_subject=" target="_blank">
+							<img src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload"/>
+						</a>
+						{{#couponType}}
+							<div class="u-C1C3-item-tip">限时买一赠一</div>
+						{{/couponType}}
+						{{^couponType}}
+							<div class="u-C1C3-item-tip">直降{{lowCoupon}}元</div>
+						{{/couponType}}	
+					</div>
+					<div class="u-C1C3-item-content">
+						<p class="u-C1C3-item-t">{{title}}</p>
+						{{#maker}}<p class="u-C1C3-item-desc">{{maker}}</p>{{/maker}}
+						{{^maker}}<p class="u-C1C3-item-desc">{{simpleDesc}}</p>{{/maker}}
+						<div class="u-C1C3-item-price">
+							<span class="u-C1C3-item-offPrice">{{offPrice}}</span>
+							<a href="javascript:;" target="_self" class="u-C1C3-item-cart J_cart" data-skuId="{{id}}" data-img="{{primaryPicUrl}}">
+								<span></span></a>
+						</div>
+					</div>
+				</div>
+			{{/temp}}
+		</div>
+		<div class="m-C1C3-content" v-if="!contentInfo.needScenePicUrl.value">
 			{{#temp}}
 				<div class="u-C1C3-item">
 					<div class="u-C1C3-item-title">

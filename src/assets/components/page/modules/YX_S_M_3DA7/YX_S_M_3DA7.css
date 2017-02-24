@@ -121,14 +121,13 @@
     position: relative;
     width: 100%;
     height: auto;
-    min-height: 3rem;
     overflow: hidden;
   }
   .YX-S-M-3DA7 .m-3DA7-img-wrap {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: auto;
-    left: 50%;
+    left: 0;
   }
   .YX-S-M-3DA7 .m-3DA7-img-wrap img,
   .YX-S-M-3DA7 .m-3DA7-img-wrap a {
@@ -137,7 +136,7 @@
     width: 100%;
     max-width: none;
     height: auto;
-    left: -50%;
+    left: 0;
     background-repeat: no-repeat;
   }
   .YX-S-M-3DA7 .m-3DA7-img-wrap a img {

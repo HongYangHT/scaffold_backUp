@@ -1,0 +1,57 @@
+<!-- <div class="YX-S-M-866E m-section-module" style="background-image:url({{contentInfo.backgroundImage}})" data-h55970f92="backgroundImage"> -->
+<div class="YX-S-M-866E m-section-module">
+	<div class="u-866E-wrap"> 
+		<img class="u-866E-bgImg" src="{{contentInfo.backgroundImage}}"  data-h55970f92="backgroundImage">
+	</div>
+	
+	<div class="J_module_info f-hide" style="display: none;">
+		<div class="goodsId" data-goodsId="{{contentInfo.goodsId}}"></div>
+	</div>
+	<div class="m-866E-inner">
+		<div class="u-866E-header">Top<div class="u-866E-itemNum" data-h55970f92="itemNum">{{contentInfo.itemNum}}</div><span class="slash">/</span><div class="u-866E-title" data-h55970f92="title">{{contentInfo.title}}</div>
+		</div>
+		<div class="m-866E-left">
+			<div class="m-866E-goodsTitle">
+				{{#temp}}
+				<div class="u-866E-goodsTitle">
+					<span class="u-866E-sprite u-866E-num4"></span>
+					<span class="u-866E-goodsName">{{title}}</span>
+					<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-866E-goodsImglink">
+                       <img class="u-866E-goodsImg" src="{{primaryPicUrl}}" data-original="{{primaryPicUrl}}" class="J_lazyload">
+                    </a>
+				</div>
+				{{/temp}}
+			</div>
+		</div>
+		<div class="m-866E-right">
+			<div class="swiper-container">
+		        <div class="swiper-wrapper">
+			       {{#temp}}
+			           <div class="swiper-slide">
+				           	<div class="u-866E-goods">
+								<a href="http://you.163.com/item/detail?id={{id}}" target="_blank" class="u-866E-link">
+									<img src="{{scenePicUrl}}" data-original="{{scenePicUrl}}" class="J_lazyload">
+								</a>
+								<div class="m-866E-goods-info">
+									<p class="u-866E-goods-t"><a href="http://you.163.com/item/detail?id={{id}}" target="_blank">{{title}}</a></p>
+									{{#maker}}<p class="u-866E-goods-maker">{{maker}}</p>{{/maker}}
+									{{^maker}}<p class="u-866E-goods-maker">{{simpleDesc}}</p>{{/maker}}
+									<p class="u-866E-goods-price">
+										<span class="u-866E-offPrice">{{offPrice}}</span>
+										{{#unitPrice}}<span class="u-866E-unitPrice">{{unitPrice}}</span>{{/unitPrice}}
+									</p>
+									<div class="m-866E-btn">
+										<a href="javascript:;" target="_self" class="u-866E-cart J_866E_cart"></a>
+									</div>
+								</div>
+							</div>
+			           </div>
+			        {{/temp}}
+				</div>
+	       		 <!-- Add Arrows -->
+		        <div class=" slick-866E-prev"></div>
+		         <div class=" slick-866E-next"></div>
+	         </div>
+		</div>
+	</div>
+</div>
